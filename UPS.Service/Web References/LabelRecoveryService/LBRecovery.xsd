@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:lbrec="http://www.ups.com/XMLSchema/XOLTWS/LBRecovery/v1.0" xmlns:ups="http://www.ups.com/XMLSchema" xmlns:common="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0" elementFormDefault="qualified" targetNamespace="http://www.ups.com/XMLSchema/XOLTWS/LBRecovery/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="common.xsd" namespace="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0" />
+  <xsd:element name="LabelRecoveryRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="common:Request" />
+        <xsd:element minOccurs="0" name="LabelSpecification" type="lbrec:LabelSpecificationType" />
+        <xsd:element minOccurs="0" name="Translate" type="lbrec:TranslateType" />
+        <xsd:element minOccurs="0" name="LabelDelivery" type="lbrec:LabelDeliveryType" />
+        <xsd:element minOccurs="0" name="TrackingNumber" type="xsd:string" />
+        <xsd:element minOccurs="0" name="ReferenceValues" type="lbrec:ReferenceValuesType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ReferenceValuesType">
+    <xsd:sequence>
+      <xsd:element name="ReferenceNumber" type="lbrec:ReferenceNumberType" />
+      <xsd:element name="ShipperNumber" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReferenceNumberType">
+    <xsd:sequence>
+      <xsd:element name="Value" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LabelSpecificationType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="HTTPUserAgent" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LabelImageFormat" type="lbrec:LabelImageFormatType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LabelImageFormatType">
+    <xsd:sequence>
+      <xsd:element name="Code" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TranslateType">
+    <xsd:sequence>
+      <xsd:element name="LanguageCode" type="xsd:string" />
+      <xsd:element name="DialectCode" type="xsd:string" />
+      <xsd:element name="Code" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LabelDeliveryType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="LabelLinkIndicator" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ResendEMailIndicator" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EMailMessage" type="lbrec:EMailMessageType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EMailMessageType">
+    <xsd:sequence>
+      <xsd:element name="EMailAddress" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="LabelRecoveryResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="common:Response" />
+        <xsd:element minOccurs="0" name="ShipmentIdentificationNumber" type="xsd:string" />
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          <xsd:element name="LabelResults" type="lbrec:LabelResultsType" />
+          <xsd:element name="TrackingCandidate" type="lbrec:TrackingCandidateType" />
+        </xsd:choice>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="LabelResultsType">
+    <xsd:sequence>
+      <xsd:element name="TrackingNumber" type="xsd:string" />
+      <xsd:element name="LabelImage" type="lbrec:LabelImageType" />
+      <xsd:element minOccurs="0" name="Receipt" type="lbrec:ReceiptType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LabelImageType">
+    <xsd:sequence>
+      <xsd:element name="LabelImageFormat" type="lbrec:LabelImageFormatType" />
+      <xsd:element name="GraphicImage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="HTMLImage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PDF417" type="xsd:string" />
+      <xsd:element minOccurs="0" name="InternationalSignatureGraphicImage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="URL" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReceiptType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="HTMLImage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Image" type="lbrec:ImageType" />
+      <xsd:element minOccurs="0" name="URL" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImageType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ImageFormat" type="lbrec:LabelImageFormatType" />
+      <xsd:element minOccurs="0" name="GraphicImage" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TrackingCandidateType">
+    <xsd:sequence>
+      <xsd:element name="TrackingNumber" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DestinationPostalCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DestinationCountryCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PickupDateRange" type="lbrec:PickupDateRangeType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PickupDateRangeType">
+    <xsd:sequence>
+      <xsd:element name="BeginDate" type="xsd:string" />
+      <xsd:element name="EndDate" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,199 @@
+﻿@model Vital.Model.QuantumViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="twelve columns">
+        <br />
+        <h2>Quantum View Manage</h2>
+        <dl class="tabs contained">
+            <dd class="active" data-event="Outbound"><a href="#generic" onclick="GetShipmentData('Outbound','','')">Outbound</a></dd>
+            <dd data-event="ThirdParty"><a href="#generic" onclick="GetShipmentData('ThirdParty','','')">Third Party</a></dd>
+        </dl>
+        <ul class="tabs-content contained">
+            @*<li id="combinedTab">
+                    @Html.Partial("~/Views/Quantum/_Combined.cshtml")
+                </li>*@
+            <li id="genericTab" class="active">
+                @Html.Partial("~/Views/Quantum/_ShipmentDetails.cshtml")
+            </li>
+            <li id="thirdpartyTab">This is simple tab 2s content. Now you see it!</li>
+            <li id="importsTab">This is simple tab 3s content.</li>
+        </ul>
+        <br />
+    </div>
+</div>
+
+@section script{
+
+    <script>
+
+        $(document).ready(function () {
+
+            GetShipmentData('Outbound', '', '');
+
+            $('.fdatepicker').fdatepicker({
+            });
+
+        })
+
+        function ExportData() {
+
+            var data = $('.tabs dd.active').attr('data-event');
+            var fromDate = $('#StartDate').val()
+            var toDate = $('#EndDate').val()
+            var filter = $('#SearchFilter').val()
+            var tag = $('#SearchTag').val()
+
+            window.open('@Url.Content("~/Quantum/ExportToExcel?eventName=")' + data + '&filter=' + filter + '&tag=' + tag + '&fromDate=' + fromDate + '&toDate=' + toDate);
+
+        }
+
+        function GetShipmentData(
+            eventName,
+            shipmentNumber,
+            status) {
+
+            ShowLoading('');
+
+            $.ajax({
+
+                url: "@Url.Content("~/Quantum/GetShipmentDetails")",
+                data: {
+                    eventName: eventName, //$('.tabs dd.active').attr('data-event'),
+                    shipmentNumber: shipmentNumber,
+                    status: status,
+                    fromDate: $('#StartDate').val(),
+                    toDate: $('#EndDate').val(),
+                    filter: $('#SearchFilter').val(),
+                    tag: $('#SearchTag').val(),
+                },
+                method: 'POST',
+                success: function (data) {
+
+                    $('.shipmentDetails tbody').children().remove();
+
+                    $(data.data).each(function (index, element) {
+
+                        var rowAppend = ''
+                        rowAppend += '<tr>'
+                        rowAppend += '<td><a class="button" onclick="window.open(\'/TrackShipment/Info/' + element.TrackingNumber + '\')">' + element.TrackingNumber + '</a></td>'
+                        rowAppend += '<td>' + element.ReferenceNumber + '</td>'
+                        rowAppend += '<td>' + element.Status + '</td>'
+                        rowAppend += '<td>' + element.ManifestDate + '</td>'
+                        rowAppend += '<td>' + element.ShipTo + '</td>'
+
+                        rowAppend += '<td>' + element.ShipToAddressLine1 + '</td>'
+                        rowAppend += '<td>' + element.ShipToAddressLine2 + '</td>'
+                        rowAppend += '<td>' + element.ShipToCity + '</td>'
+                        rowAppend += '<td>' + element.ShipToStateProvince + '</td>'
+                        rowAppend += '<td>' + element.ShipToCountry + '</td>'
+                        rowAppend += '<td>' + element.ShipToPostalCode + '</td>'
+                        rowAppend += '<td>' + element.ShipToAttention + '</td>'
+                        rowAppend += '<td>' + element.ShipToName + '</td>'
+                        rowAppend += '<td>' + element.SignedBy + '</td>'
+                        rowAppend += '<td>' + element.ExceptionDescription + '</td>'
+
+                        rowAppend += '<td>' + element.Service + '</td>'
+                        rowAppend += '<td>' + element.ScheduledDelivery + '</td>'
+                        rowAppend += '<td>' + element.Images + '</td>'
+                        rowAppend += '</tr>'
+
+                        $('.shipmentDetails tbody').append(rowAppend)
+
+                    });
+
+                    $('.shipmentSummary tbody').children().remove();
+
+                    $(data.summary).each(function (index, element) {
+
+                        var rowAppend = ''
+                        rowAppend += '<tr>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'\')">' + element.UPSAccount + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Manifest\')">' + element.Manifest + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'In Transit\')">' + element.InTransit + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Out of Deliver\')">' + element.OutOfDeliver + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Ready for Pickup\')">' + element.ReadyForPickup + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Exception\')">' + element.Exception + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Delivered\')">' + element.Delivered + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Void\')">' + element.Void + '</a></td>'
+                        rowAppend += '<td><a onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'\')">' + element.Total + '</a></td>'
+                        rowAppend += '</tr>'
+
+                        $('.shipmentSummary tbody').append(rowAppend)
+
+                    });
+
+                    HideLoading();
+
+                }
+
+            });
+
+        }
+
+        function GetAllShipmentData(eventName, shipmentNumber, status) {
+
+            ShowLoading('');
+
+            $.ajax({
+
+                url: "@Url.Content("~/Quantum/GetShipmentDetails")",
+                data: { eventName: eventName, shipmentNumber: shipmentNumber, status: status },
+                method: 'POST',
+                success: function (data) {
+
+                    $('.shipmentDetails tbody').children().remove();
+
+                    $(data.data).each(function (index, element) {
+
+                        var rowAppend = ''
+                        rowAppend += '<tr>'
+                        rowAppend += '<td><a class="button" onclick="window.open(\'/TrackShipment/Info/' + element.TrackingNumber + '\')">' + element.TrackingNumber + '</a></td>'
+                        rowAppend += '<td>' + element.ReferenceNumber + '</td>'
+                        rowAppend += '<td>' + element.Status + '</td>'
+                        rowAppend += '<td>' + element.ManifestDate + '</td>'
+                        rowAppend += '<td>' + element.ShipTo + '</td>'
+                        rowAppend += '<td>' + element.Service + '</td>'
+                        rowAppend += '<td>' + element.ScheduledDelivery + '</td>'
+                        rowAppend += '<td>' + element.Images + '</td>'
+                        rowAppend += '</tr>'
+
+                        $('.shipmentDetails tbody').append(rowAppend)
+
+                    });
+
+                    $('.shipmentSummary tbody').children().remove();
+
+                    $(data.summary).each(function (index, element) {
+
+                        var rowAppend = ''
+                        rowAppend += '<tr>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'\')">' + element.UPSAccount + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Manifest\')">' + element.Manifest + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'In Transit\')">' + element.InTransit + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Out of Deliver\')">' + element.OutOfDeliver + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Ready for Pickup\')">' + element.ReadyForPickup + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Exception\')">' + element.Exception + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Delivered\')">' + element.Delivered + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'Void\')">' + element.Void + '</a></td>'
+                        rowAppend += '<td><a class="button" onclick="GetShipmentData(\'' + eventName + '\', \'' + element.UPSAccount + '\', \'\')">' + element.Total + '</a></td>'
+                        rowAppend += '</tr>'
+
+                        $('.shipmentSummary tbody').append(rowAppend)
+
+                    });
+
+                    HideLoading();
+
+                }
+
+            });
+
+        }
+
+    </script>
+}

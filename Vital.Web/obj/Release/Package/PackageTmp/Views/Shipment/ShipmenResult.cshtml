@@ -1,0 +1,28 @@
+﻿@model Vital.Model.ShipmentModel
+
+@{
+    ViewBag.Title = "ShipmenResult";
+}
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px; margin-bottom: 10px; padding-bottom: 0px;">
+    <div class="row">
+        <h4>Shipmen Result</h4>
+        @Model.Result
+        <br />
+        <img src="@Model.LabelGenerate" alt="receipt">
+        <br />
+        <br />
+        <br />
+
+        <a href="@Url.Content("~/Shipment")" class="button">Go to Shipment List</a>
+
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>

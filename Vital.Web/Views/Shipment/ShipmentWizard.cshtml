@@ -1,0 +1,586 @@
+﻿@model Vital.Models.UserProfileModel
+
+@{
+    ViewBag.Title = "Create Shipment Wizard";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $(".wizard-step:first").fadeIn(); // show first step
+
+        // attach backStep button handler
+        // hide on first step
+        $("#back-step").hide().click(function () {
+            var $step = $(".wizard-step:visible"); // get current step
+            if ($step.prev().hasClass("wizard-step")) { // is there any previous step?
+                $step.hide().prev().fadeIn();  // show it and hide current step
+
+                // disable backstep button?
+                if (!$step.prev().prev().hasClass("wizard-step")) {
+                    $("#back-step").hide();
+                }
+            }
+        });
+
+
+        // attach nextStep button handler       
+        $("#next-step").click(function () {
+
+            var $step = $(".wizard-step:visible"); // get current step
+
+            var validator = $("form").validate(); // obtain validator
+            var anyError = false;
+            $step.find("input").each(function () {
+                if (!validator.element(this)) { // validate every input element inside this step
+                    anyError = true;
+                }
+
+            });
+
+            if (anyError)
+                return false; // exit if any error found            
+            if ($step.next().hasClass("confirm")) { // is it confirmation?
+                // show confirmation asynchronously
+                $.post("/wizard/confirm", $("form").serialize(), function (r) {
+                    // inject response in confirmation step
+                    $(".wizard-step.confirm").html(r);
+                });
+
+            }
+
+            if ($step.next().hasClass("wizard-step")) { // is there any next step?
+                $step.hide().next().fadeIn();  // show it and hide current step
+                $("#back-step").show();   // recall to show backStep button
+            }
+
+            else { // this is last step, submit form
+                $("form").submit();
+            }
+        });
+
+    });
+
+</script>
+
+<style type="text/css">
+    .wizard-step {
+        display: none;
+    }
+
+    .display-field {
+        font-weight: bold;
+    }
+</style>
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px; margin-bottom: 10px; padding-bottom: 0px;">
+    @using (Html.BeginForm())
+    {
+        <!-- First Wizard -->
+        <div class="wizard-step">
+            <div class="row">
+                <div class="twelve columns">
+                    <dl class="tabs contained">
+                        <dd class="active"><a href="#rateshipUPS">Create a Shipment</a></dd>
+                        @*<dd><a href="#rateshipLTL">Rate+Ship LTL</a></dd>
+                        <dd><a href="#quote">Request a Quote</a></dd>*@
+                    </dl>
+
+                    <ul class="tabs-content contained">
+                        <li class="active" id="rateshipUPSTab">
+                            <p>Please provide information about your shipment including destination, origin, shipment date, and weight.</p>
+                            <p style="font-style: italic;">(Required fields are indicated with *)</p>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>Where are you Shipping?</h6>
+                                    </div>
+
+                                    <div class="panel" style="border: none;">
+                                        <div class="row">
+                                            <div class="seven columns">
+                                                <h6 style="margin-bottom: 0px; margin-top: 0px;">Address Book</h6>
+                                                @Html.DropDownList("AddressBook", ViewBag.Address1 as SelectList, "Select Address", new { id = "AddressID" })
+                                            </div>
+                                            <div id="AddNewAddress" class="twelve columns">
+                                                <a id="AddNewAddressButton" style="text-decoration: underline; cursor: pointer;">Add New Address</a>
+                                            </div>
+                                        </div>
+
+                                        <div id="AddressBookInfo" class="row" style="display: none;">
+                                            <div class="twelve columns">
+                                                <hr style="margin-top: 10px; margin-bottom: 10px;" />
+                                            </div>
+                                            <div class="panel" style="border: none;">
+                                                <div class="row">
+                                                    <div class="six columns">
+                                                        <h6 style="margin-bottom: 0px; margin-top: 0px;">Ship To Address:
+                                                            <a id="EditAddressBook" style="text-decoration: underline; font-weight: normal; cursor: pointer;">Edit</a></h6>
+                                                        <ul id="AddressDetails" style="list-style-type: none; margin-left: 0px;">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>Where is this shipment coming from?</h6>
+                                    </div>
+                                    <div class="panel" style="border: none;">
+                                        <div id="AddressConsignee" class="row">
+                                            @using (Html.BeginForm("Index", "Shipment", FormMethod.Post))
+                                            {
+                                                if (Model != null)
+                                                {
+                                                <div class="six columns">
+                                                    <h6 style="margin-bottom: 0px; margin-top: 0px;">Ship From Address: 
+                                                    <a id="EditCustomerProfile" href="#" data-reveal-id="EditProfileModal" style="text-decoration: underline; font-weight: normal; cursor: pointer;">Edit</a></h6>
+                                                    <ul style="list-style-type: none; margin-left: 0px;">
+                                                        <li>@Model.CompanyName</li>
+                                                        <li>@Model.ContactPerson</li>
+                                                        <li>@Model.Address1</li>
+                                                        <li>@Model.Address2</li>
+                                                        <li>@Model.City @Model.State @Model.Zip</li>
+                                                        <li>Telephone: @Model.Phone</li>
+                                                        <li>Email: @Model.Email</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="six columns">
+                                                    <p>If the shipment is undeliverable return to:</p>
+                                                    <h6 style="margin-bottom: 0px;">Contact:</h6>
+                                                    <input type="text" value="@Model.ContactPerson">
+                                                    <h6 style="margin-bottom: 0px;">Return Address:</h6>
+                                                    <select>
+                                                        <option>Same as Ship From</option>
+                                                        <option>Enter a Different Return Address</option>
+                                                    </select>
+                                                </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>What are you shipping?</h6>
+                                    </div>
+                                    <div class="panel" style="border: none;">
+                                        <div class="row">
+
+                                            <div id="" class="six columns">
+                                                <h6 style="margin-bottom: 0px; margin-top: 0px;">Number of Packages:</h6>
+                                                <select id="OptionPackageCount" class="three">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                    <option>10</option>
+                                                    <option>11</option>
+                                                    <option>12</option>
+                                                    <option>13</option>
+                                                    <option>14</option>
+                                                    <option>15</option>
+                                                    <option>16</option>
+                                                    <option>17</option>
+                                                    <option>18</option>
+                                                    <option>19</option>
+                                                    <option>20</option>
+                                                </select>
+
+                                                <div id="PackageContent">
+                                                    <h6 style="margin-bottom: 0px;">Unit of Measurement:</h6>
+                                                    <select>
+                                                        <option>Imperial (pounds/inches)</option>
+                                                        <option>Metric (kilograms/centimeters)</option>
+                                                    </select>
+                                                    <h6 style="margin-bottom: 0px;">*Packaging Type:</h6>
+                                                    <select id="OptionPackageType">
+                                                        <option>Other Packaging</option>
+                                                        <option>UPS EXPRESS BOX</option>
+                                                        <option>UPS PAK</option>
+                                                        <option>UPS TUBE</option>
+                                                        <option>UPS Express Envelope</option>
+                                                    </select>
+
+                                                    <div id="WeightPanel" style="display: none;">
+                                                        <h6 style="margin-bottom: 0px;">Weight:</h6>
+                                                        <div class="eight columns" style="padding-left: 0px;">
+                                                            <div class="nine columns" style="padding-right: 0px; padding-left: 0px;">
+                                                                <input type="text" />
+                                                            </div>
+                                                            <div class="three columns">
+                                                                <span class="postfix" style="border: none;">lb</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="PackageDimensionPanel" style="display: none;">
+                                                        <div class="twelve columns">
+                                                            <h6 style="margin-bottom: 0px;">Package Dimension:</h6>
+                                                        </div>
+                                                        <div class="three columns">
+                                                            <label>
+                                                                Length:
+                                                            <input name="Length" type="text" /></label>
+                                                        </div>
+                                                        <div class="one columns">
+                                                            <p style="margin-top: 25px;">x</p>
+                                                        </div>
+                                                        <div class="three columns">
+                                                            <label>
+                                                                Width:
+                                                            <input name="Width" type="text" /></label>
+                                                        </div>
+                                                        <div class="one columns">
+                                                            <p style="margin-top: 25px;">x</p>
+                                                        </div>
+                                                        <div class="three columns end">
+                                                            <label>
+                                                                Height:
+                                                            <input name="Height" type="text" /></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="OtherPackagingPanel" style="display: none;">
+                                                        <div class="twelve columns">
+                                                            <h6 style="margin-bottom: 5px;">Large or Unusually Shaped Packages:</h6>
+                                                        </div>
+                                                        <div class="twelve columns">
+                                                            <p>
+                                                                <input type="checkbox" />
+                                                                Large Package
+                                                            </p>
+                                                            <input type="checkbox" />
+                                                            Additional Handling
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <div class="twelve columns">
+                                                            <h6 style="margin-bottom: 0px;">Package Declared Value:</h6>
+                                                        </div>
+
+                                                        <div class="twelve columns" style="padding-left: 0px;">
+                                                            <div class="nine columns" style="padding-right: 0px; padding-left: 0px;">
+                                                                <input type="text" />
+                                                            </div>
+                                                            <div class="three columns">
+                                                                <span class="postfix" style="border: none;">CAD</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="six columns">
+                                                <h6 style="margin-bottom: 0px; margin-top: 0px;">Use the values for all packages?</h6>
+                                                <select id="OptionSameValues" class="three" disabled="disabled">
+                                                    <option>YES</option>
+                                                    <option>NO</option>
+                                                </select>
+                                            </div>
+                                            <div id="FooterMessage" class="twelve columns">
+                                                <p><strong>Note:</strong> Additional shipping fees may apply based on declared value.</p>
+                                            </div>
+                                            <div id="SameValuesMessage" class="twelve columns" style="display: none; margin-top: 10px;">
+                                                <strong>Note: </strong>Since you indicated that your packages have different values, you will be able to enter package details on the next page. Note: UPS Letters, UPS 10 KG Boxes, and UPS 25 KG Boxes cannot be included in multi-package shipments.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>How would you like to ship?</h6>
+                                    </div>
+                                    <div class="panel" style="border: none;">
+                                        <div class="row">
+                                            <div class="six columns">
+                                                <h6 style="margin-top: 0px; margin-bottom: 0px;">Services:</h6>
+                                                <select>
+                                                    <option>Select Services</option>
+                                                    <option>UPS Express Early A.M</option>
+                                                    <option>UPS Express</option>
+                                                    <option>UPS Express Saver</option>
+                                                    <option>UPS Expedited</option>
+                                                    <option disabled="disabled">-------------------------------------------------------------</option>
+                                                    <option>Freight (typically over 150 lbs)</option>
+                                                </select>
+                                            </div>
+                                            <div class="six columns">
+                                                <p style="margin-top: 15px;"><a href="#">Compare Time and Cost</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="twelve columns">
+                                                <p style="margin-bottom: 0px;">Do you need <a href="#">additional services?</a></p>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    Send E-mail Notifications</label>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    Receive Confirmation and Delivery</label>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    Delivery on Saturday</label>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    C.O.D</label>
+                                            </div>
+                                            <div class="six columns"></div>
+                                            <div class="twelve columns">
+                                                <p>Some services may require extra information. You will be to enter the required information on the next page.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>How would you like to add reference number to this shipment?</h6>
+                                    </div>
+                                    <div class="panel" style="border: none;">
+                                        <div class="row">
+                                            <div class="twelve columns">
+                                                <p>UPS gives you option to track your shipments using <a href="#">references</a> that you define.</p>
+                                                <h6 style="margin-bottom: 0px">Reference #1</h6>
+                                                <input class="six" type="text" />
+                                                <h6 style="margin-bottom: 0px">Reference #2</h6>
+                                                <input class="six" type="text" />
+                                                <label>
+                                                    <input type="checkbox">
+                                                    Add a bar code for Reference #1 to my Shipping label.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>How would you like to pay?</h6>
+                                    </div>
+                                    <div class="panel" style="border: none;">
+                                        <p>Please enter your payment information below. The information you enter will be transmitted using a secure connection. Required fields are indicated with *.</p>
+                                        <h6 style="margin-bottom: 0px;">*Bill Shipping Charges to:</h6>
+                                        <select class="seven">
+                                            <option>6F4138 - VITAL LOGISTICS VANCOUVER</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="eight columns">
+                                    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                        <h6>How would you like to schedule a pickup?</h6>
+                                    </div>
+                                    <div class="panel" style="border: none;">
+                                        <label>
+                                            <input type="checkbox">
+                                            Schedule a <a href="#">UPS On-Call Pickup</a>. - An additional fee may apply</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <label>
+                                <input type="checkbox">
+                                Review Shipping details, including price, before completing this shipment</label>
+                            <label>
+                                <input type="checkbox">
+                                Save As Shipping Ticket</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- First Wizard -->
+
+        <!-- Second Wizard -->
+        <div class="wizard-step">
+            Hello
+        </div>
+        <!-- Second Wizard -->
+        
+        <div class="row">
+            <div class="twelve columns">
+                <div class="button-bar" style="float: right; margin-bottom: 20px;">
+                    <input class="button" type="button" id="back-step" name="back-step" value="<< Back" />
+                    <input class="button" type="button" id="next-step" name="next-step" value="Next >>" />
+                    @*<ul class="button-group">
+                    <li><a href="#" class="button" id="back-step">Back &laquo;</a></li>
+                </ul>
+                <ul class="button-group">
+                    <li><a href="#" class="button" id="next-step">Next &raquo;</a></li>
+                </ul>*@
+                </div>
+            </div>
+        </div>                
+    }
+</div>
+
+<div id="EditProfileModal" class="reveal-modal medium" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 10px; margin-top: 0px; padding: 0 0 0 0;">
+    @{
+        Html.RenderPartial("~/Views/Shipment/UpdateMyProfile.cshtml", Model);
+    }
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#WeightPanel").show();
+        $("#PackageDimensionPanel").show();
+        $("#OtherPackagingPanel").show();
+
+        // JSON to Get the address book details 
+        $('#AddressID').change(function () {
+            $.getJSON('/Shipment/GetAddressBookDetails/' + $('#AddressID').val(), function (data) {
+                var items = '';
+                $.each(data, function (i, address) {
+                    items += '<li>' + address.Text + '<li/>';
+                });
+                $("#AddNewAddress").show();
+                $('#AddressDetails').html(items);
+                $("#AddressBookInfo").show();
+                $("#AddressBookPanel").hide();
+            });
+        });
+
+        // Add New address button
+        $("#AddNewAddressButton").on("click", function () {
+            $('#AddressBookPanel input').val('');
+            $('#OptionCountry')[0].selectedIndex = 0;
+            $('#AddressID')[0].selectedIndex = 0;
+            $("#NewAddressCaption").html("Add New Address");
+            $("#AddressBookInfo").hide();
+            $("#AddressBookPanel").show();
+            $("#AddNewAddress").hide();
+        });
+
+        // Editing The Consignees
+        $("#EditAddressBook").on("click", function () {
+            $.getJSON('/Shipment/EditConsignee/' + $('#AddressID').val(), function (data) {
+                $.each(data, function (key, value) {
+                    try {
+                        if (key == "Country") {
+                            var dd = document.getElementById('OptionCountry');
+                            for (var i = 0; i < dd.options.length; i++) {
+                                if (dd.options[i].text === value) {
+                                    dd.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                        } else {
+                            document.getElementById("TextBox" + key).value = value;
+                        }
+                    } catch (e) {
+                    }
+                });
+            });
+            $("#NewAddressCaption").html("Edit Address");
+            $("#AddressBookInfo").hide();
+            $("#AddressBookPanel").show();
+            $("#AddNewAddress").hide();
+        });
+
+        // 
+        $('#EditCustomerProfile').on("click", function () {
+            var dd = document.getElementById('EditCountry');
+            var country = document.getElementById('textBoxCountry');
+            //country,value = 'Philippines';
+            //alert('Value' + country.value);
+            for (var i = 0; i < dd.options.length; i++) {
+                if (dd.options[i].text === country.value) {
+                    dd.selectedIndex = i;
+                    break;
+                }
+            }
+        })
+
+        //
+        $('#EditCountry').on("click", function () {
+            var dd = document.getElementById('EditCountry');
+            var country = document.getElementById('textBoxCountry');
+            country.value = dd.options[dd.options.selectedIndex].text;
+        });
+
+        // On choosing the Number of Packages
+        $('#OptionPackageCount').on("change", function () {
+            var packageCount = document.getElementById('OptionPackageCount');
+            var sameValues = document.getElementById('OptionSameValues');
+
+            if (packageCount.selectedIndex == 0) {
+                sameValues.selectedIndex = 0;
+                sameValues.disabled = true;
+                $("#PackageContent").show();
+                $("#SameValuesMessage").hide();
+                $("#FooterMessage").show();
+            } else {
+
+                sameValues.disabled = false;
+            }
+        });
+
+        $('#OptionSameValues').on("change", function () {
+            var sameValues = document.getElementById('OptionSameValues');
+            if (sameValues.selectedIndex == 1) {
+                $("#PackageContent").hide();
+                $("#SameValuesMessage").show();
+                $("#FooterMessage").hide();
+            } else {
+                $("#PackageContent").show();
+                $("#SameValuesMessage").hide();
+                $("#FooterMessage").show();
+            }
+        });
+
+        $('#OptionPackageType').on('change', function () {
+            var selectedType = document.getElementById('OptionPackageType');
+            switch (selectedType.selectedIndex) {
+                case 0:
+                    $("#WeightPanel").show();
+                    $("#PackageDimensionPanel").show();
+                    $("#OtherPackagingPanel").show();
+                    break;
+                case 1:
+                    $("#WeightPanel").show();
+                    $("#PackageDimensionPanel").show();
+                    $("#OtherPackagingPanel").hide();
+                    break;
+                case 2:
+                    $("#WeightPanel").show();
+                    $("#PackageDimensionPanel").hide();
+                    $("#OtherPackagingPanel").hide();
+                    break;
+                case 3:
+                    $("#WeightPanel").show();
+                    $("#PackageDimensionPanel").show();
+                    $("#OtherPackagingPanel").hide();
+                    break;
+                case 4:
+                    $("#WeightPanel").show();
+                    $("#PackageDimensionPanel").hide();
+                    $("#OtherPackagingPanel").hide();
+                default:
+
+            }
+        });
+
+    });
+</script>

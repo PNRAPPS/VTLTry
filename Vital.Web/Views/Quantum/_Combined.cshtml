@@ -1,0 +1,42 @@
+﻿<div class="dvEvents">
+    <input type="checkbox" name="event" checked="checked" data-event="OVS" />&nbsp;OVS&nbsp;
+    <input type="checkbox" name="event" checked="checked" data-event="IVS" />&nbsp;IVS&nbsp;
+</div>
+<br />
+<table id="tblSummary" class="combinedShipmentSummary">
+    <thead>
+        <tr>
+            <th>UPS Account</th>
+            <th>Manifest</th>
+            <th>In Transit</th>
+            <th>Out for Deliver</th>
+            <th>Ready for Pickup</th>
+            <th>Exception</th>
+            <th>Delivered</th>
+            <th>Void</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<button class="button" onclick="window.open('data:application/csv,charset=utf-8,' + $('#combinedDvData').html())">Export as CSV</button>
+<br /><br />
+<div id="combinedDvData">
+
+    <table id="tblShipment" class="combinedShipmentDetails">
+        <thead>
+            <tr>
+                <th>Tracking Number</th>
+                <th>Reference Number</th>
+                <th>Status</th>
+                <th>Manifest Date</th>
+                <th>Ship To</th>
+                <th>Service</th>
+                <th>Scheduled Delivery</th>
+                <th>Images</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>

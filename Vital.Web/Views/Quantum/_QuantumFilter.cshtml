@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="eight columns">
+        <div class="row">
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        Custom View
+                    </td>
+                    <td>
+                        @Html.DropDownList("CustomView", (IEnumerable<SelectListItem>)ViewBag.OutboundCustomViews)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Start Date&nbsp;@Html.TextBox("StartDate", DateTime.Now.ToShortDateString(), new { @class = "fdatepicker", @readonly="readonly" })</td>
+                    <td>End Date&nbsp;@Html.TextBox("EndDate", DateTime.Now.ToShortDateString(), new { @class = "fdatepicker", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Search Tag&nbsp;@Html.TextBox("SearchTag")</td>
+                    <td>Search Filter<br />@Html.DropDownList("SearchFilter", (IEnumerable<SelectListItem>)ViewBag.OutboundSearchFilters)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="button" id="btnApply" onclick="GetShipmentData($('.tabs dd.active').attr('data-event'), '', '')">Apply Filters</button>
+                    </td>
+                    @*<td>
+                        <button class="button" id="btnSaveView">Save View</button>
+                    </td>*@
+                </tr>
+            </table>
+        </div>
+    </div>
+    @*<div class="four columns">
+        <p style="text-align: right">
+            @Html.ActionLink("Preferences", "OutboundPreferences", null, new { @class = "button" })&nbsp;@Html.ActionLink("Alerts", "OutboundAlerts", null, new { @class = "button" })
+        </p>
+    </div>*@
+</div>

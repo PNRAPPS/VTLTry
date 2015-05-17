@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c44725ece614193b21ac3f7c0e736fc" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="VITALDB_TESTModel.provision_marker_dss" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.schema_info_dss" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.scope_config_dss" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.scope_info_dss" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.C__MigrationHistory" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.AccessorialChargeAmount" Width="1.5" PointX="13.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.AccessorialCharge" Width="1.5" PointX="11.25" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.AddressBookInfo" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.AdminUser" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.BillingSummary" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Carrier" Width="1.5" PointX="9" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Consignee" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.CustomerAccount" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.CustomerMarkup" Width="1.5" PointX="5.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Customer" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.CustomerShipment" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.CustomerSpInstructionAmount" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Invoice" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.LookupTable" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.News" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.PostalCode" Width="1.5" PointX="11.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.PostalCodeZone" Width="1.5" PointX="13.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Role" Width="1.5" PointX="5.25" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.ShipmentDetail" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.ShipmentRequest" Width="1.5" PointX="11.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.ShippingType" Width="1.5" PointX="11.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.SkidRate" Width="1.5" PointX="16.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Skid" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.SkidWeight" Width="1.5" PointX="14" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.SpecialInstructionAmount" Width="1.5" PointX="14.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.SpecialInstruction" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Table" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Tax" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Term" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.UserAccount" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Weight" Width="1.5" PointX="14.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.ZoneDiscountPercentage" Width="1.5" PointX="13.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.ZoneRate" Width="1.5" PointX="16.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.Zone" Width="1.5" PointX="11.25" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_SkidRates_dbo_Carriers_CarrierId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_CustomerAccounts_dbo_Customers_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_CustomerAccounts_dbo_Terms_TermId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_CustomerMarkups_dbo_Customers_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_CustomerShipment_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ShipmentRequests_dbo_Customers_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_PostalCodeZones_dbo_Zones_ZoneId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ZoneRates_dbo_Weights_WeightId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.FK_dbo_ZoneRates_dbo_Zones_ZoneId" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.ConsigneeCustomers" ManuallyRouted="false" />
+        <AssociationConnector Association="VITALDB_TESTModel.RoleCustomers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.QVSyncSummary" Width="2.375" PointX="8.125" PointY="6.875" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.QVSubscriptionFile" Width="2" PointX="5.875" PointY="7" />
+        <EntityTypeShape EntityType="VITALDB_TESTModel.QVShipmentDetail" Width="1.5" PointX="18.375" PointY="15.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

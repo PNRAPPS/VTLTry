@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width" />
+    <title>Vital Logistics Ltd.</title>
+    <!-- Included CSS Files (Uncompressed) -->
+    <!--
+    <link rel="stylesheet" href="stylesheets/foundation.css">
+    -->
+    <!-- Included CSS Files (Compressed) -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/foundation-3.2.5/stylesheets/foundation.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/foundation-3.2.5/stylesheets/app.css")?v=@DateTime.Now.ToString("MMddyyyyss")">
+    <link href="@Url.Content("~/Content/foundation-datepicker.css")" rel="stylesheet" />
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- Included JS Files (Compressed) -->
+    <script src="~/Content/foundation-3.2.5/javascripts/foundation.min.js"></script>
+
+    <!-- Initialize JS Plugins -->
+    <script src="@Url.Content("~/Content/foundation-3.2.5/javascripts/app.js")?v=@DateTime.Now.ToString("MMddyyyyss")"></script>
+    <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="@Url.Content("~/Scripts/gmaps.js")"></script>
+    <script src="@Url.Content("~/Scripts/vital.js")?v=@DateTime.Now.ToString("MMddyyyyss")"></script>
+    <script src="@Url.Content("~/Scripts/kayalshri-tableExport.jquery.plugin-a891806/tableExport.js")"></script>
+    <script src="@Url.Content("~/Scripts/kayalshri-tableExport.jquery.plugin-a891806/jquery.base64.js")"></script>
+    <script src="@Url.Content("~/Content/foundation-3.2.5/javascripts/modernizr.foundation.js")"></script>
+    <script src="@Url.Content("~/Scripts/foundation-datepicker.js")"></script>
+
+
+    <style>
+        #border1 {
+            color: #f78f1e;
+        }
+
+            #border1:hover {
+                background: #ededed;
+                color: #f78f1e;
+                border: none;
+            }
+
+        #border2 {
+            color: #f78f1e;
+        }
+
+            #border2:hover {
+                background: #ededed;
+                color: #f78f1e;
+                border: none;
+            }
+
+        #border3 {
+            color: #f78f1e;
+        }
+
+            #border3:hover {
+                background: #ededed;
+                color: #f78f1e;
+                border: none;
+            }
+
+        #border4 {
+            color: #f78f1e;
+        }
+
+            #border4:hover {
+                background: #ededed;
+                color: #f78f1e;
+                border: none;
+            }
+    </style>
+</head>
+<body>
+    <!--[if lt IE 9]>
+        <div class="alert-box alert" style="margin-bottom:0px;">
+            You are using an outdated browser. Please <a href="http://browsehappy.com/" style="color:yellow">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true" style="color:yellow">activate Google Chrome Frame</a> to improve your experience.
+            <a href="" class="close">&times;</a>
+        </div>
+    <![endif]-->
+    <div class="panel" style="background: #ededed; border: #ededed; padding-bottom: 0px; margin-bottom: 0px; padding-top: 10px; margin-top: 0px;">
+        <div class="row">
+            <div class="four columns" style="padding: 0 0 0 0;">
+                <a href="/Home/Index">
+                    <img src="~/Content/images/logo2.png" style="max-width: 340px; padding-left: 15px;" />
+                </a>
+            </div>
+            <div class="eight columns" style="padding: 0 0 0 0;">
+                <ul id="topmenu" class="link-list right" style="padding-bottom: 0px; margin-bottom: 0px; margin-right: 20px;">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>Welcome @User.Identity.Name!</li>
+                        <li>|</li>
+                        <li><a href="/Account/Index">Rate Lookup</a></li>
+                        <li>|</li>
+                        <li><a href="/Contact/Index">Contact Us</a></li>
+                        <li>|</li>
+                        <li><a href="~/Account/Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Contact/Index">Contact Us</a></li>
+                        <li>|</li>
+                        <li><a href="#" data-reveal-id="loginModal">Login</a></li>
+                    }
+                </ul>
+                <ul class="nav-bar right" style="height:38px; margin-bottom: 0px; margin-top: 10px;">
+                    <li style="padding-left: 10px;"><a href="@Url.Content("~/Customer")" id="myvital">My Vital</a></li>
+                    <li id="border1">|</li>
+                    <li class="has-flyout" style="padding-left: 20px;">
+                        <a href="#" id="upscenter">UPS Center</a>
+                        <a href="#" class="flyout-toggle"><span></span></a>
+                        <div class="flyout small" style="background: #fff; width: 200px;border-top-color: white;">
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <div class="upsship">
+
+                                        <script type="text/javascript">
+
+                                            function clickUPS() {
+
+                                                var answer = confirm("This page is currently under construction. Would you like a Customer service representative to contact you? Kindly email us.");
+                                                if (answer) {
+                                                    window.location.href = "@Url.Content("~/Contact/")";
+                                                }
+                                            }
+
+
+                                        </script>
+
+                                        <!--
+                                                                                <p><a href="#" onclick="clickUPS()" id="lock1">Create Shipment</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="#" onclick="clickUPS()">View History</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="#" onclick="clickUPS()">Schedule Pickup</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="~/CalculateTime/Index">Obtain Time in Transit</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="~/TrackShipment/Index">Track Shipment</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="#" id="lock3" onclick="clickUPS()">Quantum View</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="~/AddressValidation/Index">Address Validation</a></p>
+                                                                                <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                                                                <p><a href="#" onclick="clickUPS()">UPS Locations</a></p>
+                                        !-->
+
+                                        <p><a href="@Url.Content("~/Shipment/Create")">Create Shipment</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="@Url.Content("~/Shipment")">View History</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="~/CalculateTime/Index">Obtain Time in Transit</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="~/TrackShipment/Index">Track Shipment</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="~/Locations/Index">UPS Locations</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="~/Quantum">Quantum View Manage</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="border2">|</li>
+                    <li class="has-flyout" style="padding-left: 20px;">
+                        <a href="#">Services</a>
+                        <a href="#" class="flyout-toggle"><span></span></a>
+                        <div class="flyout small" style="background: #fff; width: 200px;border-top-color: white;">
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <div class="upsship">
+
+                                        <p><a href="~/Services/Index">Freight Brokerage</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="~/Services/Freightforwarding">Freight Forwarding</a></p>
+                                        <hr style="margin-top: 0px; margin-bottom: 8px;" />
+                                        <p><a href="~/Services/Support">Support Services</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="border3">|</li>
+                    <li><a href="/About/Index">About Us</a></li>
+                    <li id="border4">|</li>
+                    <li><a href="~/FAQ/Index">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    @RenderBody()
+    <div class="row">
+        <div class="seven columns" style="width: 490px; padding-left: 0px;">
+            <div class="three columns" style="padding-right: 0px">
+                <p id="lnks1">
+                    <span style="font-weight: 600;">Company</span><br />
+                    <a href="~/About/VitalDifference">The Vital Difference</a><br />
+                    <!--<a href="~/About/UPSPartnership">UPS Partnership</a><br />-->
+                    <a href="~/About/VitalNetwork">Worldwide Network</a><br />
+                    <a href="~/News/Index">News</a><br />
+                    <a href="~/Career/Index">Careers</a>
+                </p>
+            </div>
+            <div class="three columns" style="padding-right: 0px">
+                <p id="lnks2">
+                    <span style="font-weight: 600;">Services</span><br />
+                    <a href="~/Services/Index">Freight Brokerage</a><br />
+                    <a href="~/Services/Index">Freight Forwarding</a><br />
+                    <a href="~/Services/Support">Support Services</a>
+                </p>
+            </div>
+            <div class="three columns" style="padding-right: 0px">
+                <p id="lnks3">
+                    <span style="font-weight: 600;">Customer</span><br />
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a href="~/Customer">My Vital</a>
+                    }
+                    else
+                    {
+                        <a href="~/Account/Login">Customer Login</a><br />
+                        <a href="~/Account/Login">My Vital</a>
+                    }
+
+                </p>
+            </div>
+            <div class="three columns" style="padding-right: 0px">
+                <p id="lnks4">
+                    <span style="font-weight: 600;">Resources</span><br />
+                    <a href="~/Quote/Index">Request a Quote</a><br />
+                    <a href="~/Tracking/Index">Tracking and Resources</a>
+                </p>
+            </div>
+        </div>
+        <div class="five columns" id="lnksborder">
+            <div class="five columns" style="padding-right: 0px; padding-left: 0px; width: 150px;">
+                <p id="lnks5">
+                    <span style="font-weight: 600;">Vital Logistics Ltd.</span><br />
+                    <a>Ontario:</a><br />
+                    <a>6—295 Queen St E, Suite 452</a><br />
+                    <a>Brampton, ON L6W 4S6</a><br />
+                    <a>British Columbia:</a><br />
+                    <a>810-207 W Hastings Street</a><br />
+                    <a>Vancouver BC V6B 1H7</a>
+                </p>
+            </div>
+            <div class="four columns" style="padding-right: 0px; width: 130px">
+                <p id="lnks6">
+                    <span style="font-weight: 600;">Contact Us</span><br />
+                    <a href="mailto:sales@vitallogistics.ca">sales@vitallogistics.ca</a><br />
+                    <a style="text-decoration: none;">Tel: 1.888.848.1879</a><br />
+                    <a style="text-decoration: none;">Fax: 1.866.827.6014 </a>
+                    <br />
+                </p>
+            </div>
+            <div class="three columns" style="width: 130px; padding-right: 0px;">
+                <p id="lnks7"><span style="font-weight: 600;">Follow Vital</span></p>
+                <a href="https://www.linkedin.com/company/vital-logistics-ltd-" target="_blank" title="LinkedIn" style="margin-left: 3px">
+                    <img src="~/Content/images/Linkedin.png" />
+                </a><a href="https://www.facebook.com/pages/Vital-Logistics-Ltd/401697573222915" target="_blank" title="Facebook" style="margin-left: 3px"><img src="~/Content/images/facebook.png" /></a>
+                <a href="https://twitter.com/Vital_Logistics" target="_blank" title="Twitter" style="margin-left: 3px"><img src="~/Content/images/twitter.png" /></a>
+                <!--<a href="#" title="Youtube" style="margin-left: 3px"><img src="~/Content/images/youtube.png" /></a>!-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="footer">
+            <div class="six columns">
+                <p style="width: 490px;">&copy; 2012 Vital Logistics Canada. All Rights Reserved.</p>
+            </div>
+            <div class="six columns">
+                <p style="float: right;"><a href="~/Misc/Index">Terms and Conditions</a><span class="listdivider">|</span><a href="~/Misc/PrivacyPolicy">Privacy Policy</a><span class="listdivider">|</span><a href="~/Faq/Index">FAQ</a></p>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("script", false)
+
+    <script>
+        $(window).load(function () {
+            $("#featured").orbit({ animation: 'fade', directionalNav: false, pauseOnHover: true, startClockOnMouseOut: true, startClockOnMouseOutAfter: 1000, fluid: '950x250', advanceSpeed: 6000 });
+        });
+    </script>
+
+    <div id="loginModal" class="reveal-modal small" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 10px; margin-top: 0px; padding: 0 0 0 0;">
+        @{
+            Html.RenderPartial("~/Views/Account/_LoginPartial.cshtml", new Vital.Model.LoginModel());
+        }
+    </div>
+    <div id="LoaderModal" class="reveal-modal" data-reveal aria-hidden="true" role="dialog">
+        <img height="16" width="16" src="@Url.Content("~/Content/spinnerb.gif")" /> <p class="lead">Loading Data...</p>
+    </div>
+    <script type="text/javascript">
+
+        function ShowLoader() {
+
+            $('#LoaderModal').foundation('reveal', 'open');
+
+        }
+
+        function HideLoader() {
+
+            $('#LoaderModal').foundation('reveal', 'close');
+
+        }
+
+    </script>
+</body>
+</html>

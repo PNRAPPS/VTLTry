@@ -1,0 +1,22 @@
+﻿@model Vital.Model.LocationResponseModel
+
+<div style="max-height:400px; overflow-y:scroll">
+    <table class="table" style="width: 100%">
+
+        @foreach (var item in Model.SearchResults)
+        {
+            <tr>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.ConsigneeName)</b><br />
+                    @Html.DisplayFor(modelItem => item.AddressLine)<br />
+                    @Html.DisplayFor(modelItem => item.PoliticalDivision2), @Html.DisplayFor(modelItem => item.PoliticalDivision1)<br />
+                    @Html.DisplayFor(modelItem => item.CountryCode)<br /><br />
+                    @Html.DisplayFor(modelItem => item.Distance) mi
+                    <a href="#" class="pan-to-marker button right" data-marker-lat="@item.Latitude" data-marker-lng="@item.Longitude">Go To Marker</a>
+                    <input type="hidden" value="@item.Latitude;@item.Longitude" data-consignee="@item.ConsigneeName" id="markers" />
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

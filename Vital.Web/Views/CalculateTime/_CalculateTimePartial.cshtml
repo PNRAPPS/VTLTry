@@ -1,0 +1,64 @@
+﻿@model Vital.Model.CalculateRequestModel
+
+@if (Model.ServiceSummaries != null)
+{
+    foreach (var item in Model.ServiceSummaries)
+    {
+        if (!string.IsNullOrEmpty(item.Rate))
+        {
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="three columns">
+                    <b>@item.Description</b>
+                </div>
+                <div class="three columns">
+                    @{
+            var dt = DateTime.ParseExact(item.PickUpDate,
+             "MM/dd/yyyy HH:mm:ss",
+             null);
+                    }
+                    <b>@dt.ToString("MM/dd/yyyy hh:mm tt")</b>
+                </div>
+                <div class="three columns">
+                    @{
+
+            var dt2 = DateTime.ParseExact(item.ArrivalDate,
+      "MM/dd/yyyy HH:mm:ss",
+      null);
+                    }
+                    <b>@dt2.ToString("MM/dd/yyyy hh:mm tt")</b>
+                </div>
+                <div class="three columns">
+                    <b>@item.Rate</b>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="three columns">
+                    <b>@item.Description</b>
+                </div>
+                <div class="three columns">
+
+                    @{
+            var dt = DateTime.ParseExact(item.ArrivalDate,
+             "MM/dd/yyyy HH:mm:ss",
+             null);
+                    }
+
+                    <b>@dt.ToString("MM/dd/yyyy hh:mm tt")</b>
+                </div>
+                <div class="three columns">
+
+                    @{
+            var dt2 = DateTime.ParseExact(item.PickUpDate,
+             "MM/dd/yyyy HH:mm:ss",
+             null);
+                    }
+
+                    <b>@dt2.ToString("MM/dd/yyyy hh:mm tt")</b>
+                </div>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,403 @@
+﻿@model Vital.Model.LocationsModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Locations", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="row">
+            <h2>Store Locations</h2>
+            <div class="four columns">
+                @if (ViewBag.LocationResponse != null)
+                {
+                    @Html.Partial("_LocationResponseView", (Vital.Model.LocationResponseModel)ViewBag.LocationResponse);
+                    <h4>Refine Search</h4>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+               <!--<div class="form-group">
+                    @Html.LabelFor(model => model.CurrentLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CurrentLocation, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CurrentLocation, "", new { @class = "text-danger" })
+                    </div>
+                </div> !-->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Country, @Vital.Web.Models.DropownReference.GetLocationCountries(), new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                    </div>
+                </div><br />
+                <p style="font-weight: bold">
+                    Narrow your search
+                </p>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsFindDropOff)&nbsp;@Html.DisplayNameFor(model => model.IsFindDropOff)
+                            @Html.ValidationMessageFor(model => model.IsFindDropOff, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsPayForAUPSLabel)&nbsp;@Html.DisplayNameFor(model => model.IsPayForAUPSLabel)
+                            @Html.ValidationMessageFor(model => model.IsPayForAUPSLabel, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsHelpWithPackagingShipment)&nbsp;@Html.DisplayNameFor(model => model.IsHelpWithPackagingShipment)
+                            @Html.ValidationMessageFor(model => model.IsHelpWithPackagingShipment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div><br />
+
+                <span style="font-weight:bold">
+                    Filter By:
+                </span>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsFilterByUPSWorldwide)&nbsp;@Html.DisplayNameFor(model => model.IsFilterByUPSWorldwide)
+                            @Html.ValidationMessageFor(model => model.IsFilterByUPSWorldwide, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <ul class="accordion">
+                    <li>
+                        <div class="title">
+                            <h5>Location Type</h5>
+                        </div>
+                        <div id="PanelLocationType" class="content">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsUPSStore, new { value = "002" })&nbsp;@Html.DisplayNameFor(model => model.IsUPSStore)
+                                        @Html.ValidationMessageFor(model => model.IsUPSStore, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsUPSAccessPoint, new { value = "018" })&nbsp;@Html.DisplayNameFor(model => model.IsUPSAccessPoint)
+                                        @Html.ValidationMessageFor(model => model.IsUPSAccessPoint, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsUPSDropbox, new { value = "003" })&nbsp;@Html.DisplayNameFor(model => model.IsUPSDropbox)
+                                        @Html.ValidationMessageFor(model => model.IsUPSDropbox, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsRetailChains, new { value = "007" })&nbsp;@Html.DisplayNameFor(model => model.IsRetailChains)
+                                        @Html.ValidationMessageFor(model => model.IsRetailChains, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsUPSCustomerCenter, new { value = "001" })&nbsp;@Html.DisplayNameFor(model => model.IsUPSCustomerCenter)
+                                        @Html.ValidationMessageFor(model => model.IsUPSCustomerCenter, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsAuthorizedShippingOutlet, new { value = "004" })&nbsp;@Html.DisplayNameFor(model => model.IsAuthorizedShippingOutlet)
+                                        @Html.ValidationMessageFor(model => model.IsAuthorizedShippingOutlet, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(model => model.IsAuthorizedServiceProvider, new { value = "013" })&nbsp;@Html.DisplayNameFor(model => model.IsAuthorizedServiceProvider)
+                                        @Html.ValidationMessageFor(model => model.IsAuthorizedServiceProvider, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            <h5>Other Services</h5>
+                        </div>
+                        <div id="PanelOtherServices" class="content">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsPurchasePackagingSupplies)&nbsp;@Html.DisplayNameFor(model => model.IsPurchasePackagingSupplies)
+                                        @Html.ValidationMessageFor(model => model.IsPurchasePackagingSupplies, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsOfficeSupplies)&nbsp;@Html.DisplayNameFor(model => model.IsOfficeSupplies)
+                                        @Html.ValidationMessageFor(model => model.IsOfficeSupplies, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsCopying)&nbsp;@Html.DisplayNameFor(model => model.IsCopying)
+                                        @Html.ValidationMessageFor(model => model.IsCopying, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsMailbox)&nbsp;@Html.DisplayNameFor(model => model.IsMailbox)
+                                        @Html.ValidationMessageFor(model => model.IsMailbox, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            <h5>Specialized Services and Programs</h5>
+                        </div>
+                        <div class="content">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsFilterByUPSWorldwide)&nbsp;@Html.DisplayNameFor(model => model.IsPackShipGuarantee)
+                                        @Html.ValidationMessageFor(model => model.IsFilterByUPSWorldwide, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsFilterByUPSWorldwide)&nbsp;@Html.DisplayNameFor(model => model.IsInternationalShippingExpert)
+                                        @Html.ValidationMessageFor(model => model.IsFilterByUPSWorldwide, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsFilterByUPSWorldwide)&nbsp;@Html.DisplayNameFor(model => model.IsAppleReturn)
+                                        @Html.ValidationMessageFor(model => model.IsFilterByUPSWorldwide, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            <h5>Location Filters</h5>
+                        </div>
+                        <div class="content">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsOnlyShowLocationWithin)&nbsp;@Html.DisplayNameFor(model => model.IsOnlyShowLocationWithin)
+                                        @Html.ValidationMessageFor(model => model.IsOnlyShowLocationWithin, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LocationDistance, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.LocationDistance, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.LocationDistance, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsOnlyShowLocationWithPickupTimeWithin)&nbsp;@Html.DisplayNameFor(model => model.IsOnlyShowLocationWithPickupTimeWithin)
+                                        @Html.ValidationMessageFor(model => model.IsOnlyShowLocationWithPickupTimeWithin, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ServiceType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ServiceType, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ServiceType, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PickupDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PickupDay, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PickupDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PickupTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PickupTime, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PickupTime, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsOnlyShowLocationsOpen)&nbsp;@Html.DisplayNameFor(model => model.IsOnlyShowLocationsOpen)
+                                        @Html.ValidationMessageFor(model => model.IsOnlyShowLocationsOpen, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OpenDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.OpenDay, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OpenDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OpenFrom, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.OpenFrom, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OpenFrom, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OpenTo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.OpenTo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.OpenTo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Search" class="button" />
+                    </div>
+                </div>
+            </div>
+            <div class="eight columns">
+                <div id="map" style="width:auto; height: 400px;"></div>
+                <br />
+            </div>
+        </div>
+        <br />
+    </div>
+    <script type="text/javascript">
+
+        var map;
+
+        $(document).ready(function () {
+
+            map = showMarkup();
+
+            $('.pan-to-marker').click(function () {
+
+                var lat, lng;
+
+                var $index = $(this).data('marker-index');
+                var $lat = $(this).data('marker-lat');
+                var $lng = $(this).data('marker-lng');
+
+                if ($index != undefined) {
+                    // using indices
+                    var position = map.markers[$index].getPosition();
+                    lat = position.lat();
+                    lng = position.lng();
+                }
+                else {
+                    // using coordinates
+                    lat = $lat;
+                    lng = $lng;
+                }
+
+                map.setCenter(lat, lng);
+
+            })
+
+        });
+
+        function showMarkup() {
+
+            var map = new GMaps({
+                div: '#map',
+                zoom: 16,
+                lat: -12.043333,
+                lng: -77.028333
+            });
+
+            $('input[id=markers]').each(function (index, element) {
+
+                var geocode = $(this).val().toString().split(";");
+
+                var cLat = geocode[0];
+                var cLng = geocode[1];
+
+                if (index == 0) {
+
+                    map = new GMaps({
+                        div: '#map',
+                        zoom: 16,
+                        lat: cLat,
+                        lng: cLng
+                    });
+
+                }
+
+                map.addMarker({
+                    lat: cLat,
+                    lng: cLng
+                });
+
+            });
+
+            return map;
+
+        }
+    </script>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

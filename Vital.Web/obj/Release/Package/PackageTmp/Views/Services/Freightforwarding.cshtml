@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Vital.Model.NewsModel>
+@{
+    ViewBag.Title = "Services";
+}
+
+<title>Services</title>
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <img src="~/Content/images/news.jpg" />
+        </div>
+    </div>
+</div>
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-top: 5px; margin-bottom: 0px;">Services</h2>
+            <div id="titleborder"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns" style="width: 29%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 10px; margin-bottom: 5px;"><a id="linkside1" href="~/Services/Index">Freight Brokerage</a></h5>
+                    <div id="linkside1border"></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 5px; margin-bottom: 5px;"><a id="linkside2" href="~/Services/Freightforwarding">Freight Forwarding</a></h5>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 5px; margin-bottom: 5px;"><a id="linkside2" href="~/Services/Support">Support Services</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="eight columns" id="abtborder" style="width: 70%;">
+            <div class="row">
+                <div class="twelve columns" style="text-align:justify">
+                    <h4 style="color: #f6a11d;">Freight Forwarding</h4>
+                    We combine the services that our customers require to move their freight door-to-door without the hassle of worrying about all the moving parts. We offer consolidated billing which is backed by our premium customer service and valuable understanding of what your company needs and how it should be done. Our portfolio of reliable partners allows us to save our customers money; our customers enjoy the peace of mind that comes with relying on the expertise of our Team.
+                    <br /><br />
+                    <ul id="faq" class="disc">
+                        <li><p class="toggler" id="toggler-1" style="cursor:pointer; color:#f79020;">Air Cargo</p></li>
+                        <p id="widget-1" class="widget" style="display:none; margin-top: 10px;">
+                            We offer domestic and world-wide air cargo solutions to fit your needs. We work with our partners to offer you a solution that moves your goods door-to-door, airport-to-airport, airport-to-door, door-to-airport.
+                        </p>
+
+                        <li><p id="toggler-2" class="toggler" style="cursor:pointer; color:#f79020;">Next Flight Out Air Cargo</p></li>
+                        <p id="widget-2" class="widget" style="display: none; margin-top: 10px;">
+                            Our experienced customer service team will work with our group of partners to secure your freight on the next available outbound flight. Our service includes door-to-door, anytime of day or night, your shipment will be taken from shipper to consignee on the next available flight.
+                           </p>
+
+                        <li><p id="toggler-3" class="toggler" style="cursor:pointer; color:#f79020;">Sea Freight</p></li>
+                        <p id="widget-3" class="widget" style="display: none; margin-top: 10px;">
+                            When you have time to move your goods across the globe, we offer competitive rates to our customers who chose to move their freight via Ocean Vessel.  </p>
+
+                        <li><p id="toggler-4" class="toggler" style="cursor:pointer; color:#f79020;">Customs Brokerage Services</p></li>
+                        <p id="widget-4" class="widget" style="display: none; margin-top: 10px;">
+                            We assist our customers in clearing their goods through customs barriers for importers and exporters by working with the some of the largest customs brokerage houses in Canada. We communicate with the Broker on behalf of our clients allowing them to focus on running their business and doing what they do, rather than spending countless hours dealing with government agencies and preparing what is often confusing and time consuming paperwork.
+                         </p>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.toggler', function () {
+            var id = this.id.split('-');
+            var myId = id[1];
+            $('#widget-' + myId).focus();
+            $(".widget").not("#widget-" + myId).slideUp('slow');
+            $('#widget-' + myId).slideToggle('slow');
+        });
+    });
+</script>

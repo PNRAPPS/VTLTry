@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Vital.Model.ConsigneeModel>
+
+@{
+    ViewBag.Title = "Access Address Book";
+}
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-bottom: 25px;">Access Address Book</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <dl class="tabs" style="border-bottom: solid 1px #ee8f1e; margin-bottom: 0px;">
+                <dd class="active"><a href="~/Customer" style="cursor: pointer; color: #ffffff; width: 120px; background: url('/Content/images/whitelockicon.png') no-repeat 78% #ee8f1e; border-left: 1px solid #ee8f1e; border-right: 1px solid #ee8f1e; font-weight: normal;">My Vital</a></dd>
+            </dl>
+            <ul class="tabs-content">
+                <li class="active" id="simple1Tab">
+                    <div class="panel" style="background: #fff; border: solid 1px #ee8f1e; margin: 0 0 22px 0; padding-top: 0px;">
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h5>Manage Address Book</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <fieldset>
+                                    <legend style="color: #f6a11d; margin-bottom: 10px;">Address Book Details</legend>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Country</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ConsigneeName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ConsigneeAddress1)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ConsigneeCity)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ConsigneeStateOrProvince)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ConsigneeCountry)
+                                                    </td>
+                                                    <td>
+                                                        <input type="button" class="button" value="Delete" onclick="deleteBook('@item.Id')" />
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <script type="text/javascript">
+
+                                        function deleteBook(id) {
+                                          
+                                            //var url = "http://localhost:60759/Account/DeleteAddressBook";
+                                            var url = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/DeleteAddressBook";
+                                            var answer = confirm("Do you really want to delete this data?");
+                                            if (answer) {
+                                                //delete here
+                                                $.post(url, { bookid: id }, function (result) {
+                                                    if (result.status == "success") {
+                                                        alert("You've successfully deleted a data.");
+                                                        window.location.href = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/AccessAddressBook";
+                                                    }
+                                                }, 'json');
+                                            }
+
+                                        }
+
+                                    </script>
+                                    <div class="row">
+                                        <div class="twelve columns">
+                                            @Html.ActionLink("Create New", "CreateConsignee")
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                       
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Vital.Model.CustomerModel>
+<table align="center" class="tablesorter">
+    <thead>
+        <tr style="font-weight:bold" align="center">
+            <td>&nbsp;</td>
+            <td>Username</td>
+            <td>Contact Person</td>
+            <td>Company</td>
+            <td>Email</td>
+            <td>State/Province</td>
+            <td>Country</td>
+            <td>Phone #</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- do the loop here !-->
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>&nbsp;</td>
+                <td>@Html.DisplayFor(modelItem => i.Username)</td>
+                <td>@Html.DisplayFor(modelItem => i.ContactPerson)</td>
+                <td>@Html.DisplayFor(modelItem => i.CompanyName)</td>
+                <td>@Html.DisplayFor(modelItem => i.Email)</td>
+                <td>@Html.DisplayFor(modelItem => i.State)</td>
+                <td>@Html.DisplayFor(modelItem => i.Country)</td>
+                <td>@Html.DisplayFor(modelItem => i.Phone)</td>
+                <td><input type="button" id="addInvoiceBtn" value="Add Invoice" onclick="window.location.href='/Admin/AddInvoice/?username=@i.Username'" /></td>
+
+                <td><input type="button" id="viewBtn" value="View" onclick="window.location.href='/Admin/ViewAccounts/?username=@i.Username'" /></td>
+                <td><input type="button" id="deleteBtn" value="Delete" onclick="deleteAccount('@i.Username')" /></td>
+            </tr>
+
+        }
+
+
+
+        <!-- end !-->
+    </tbody>
+</table>

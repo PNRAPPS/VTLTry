@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "FAQ";
+}
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <img src="~/Content/images/faq.jpg">
+        </div>
+    </div>
+</div>
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-top: 5px; margin-bottom: 0px;">FAQ</h2>
+            <div id="titleborder"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns" style="width: 29%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 10px; margin-bottom: 5px;"><a id="linkside1" href="/Faq/Index">Frequently Asked Questions</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="eight columns" id="abtborder" style="width: 70%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h4 style="color: #ed6c16;">Frequently Asked Questions</h4>
+                    <p>Click on any question below to get the answer:</p>
+                    <ul id="faq" class="disc">
+                        <li><p class="toggler" id="toggler-1" style="cursor:pointer; color:#f79020;">What makes Vital Logistics Ltd. different from other logistics companies?</p></li>
+                        <p id="widget-1" class="widget" style="display:none; margin-top: 10px;">There are 2 reasons we are different. First, Vital Logistics Ltd. offers a full-service one-stop-shop at highly competitive rates. We have negotiated volume agreements with major carriers and our customers share the savings in a co-op like environment. Second, our customer service is second-to-none. Clients with low volumes are usually left behind by major carriers and don’t receive the customer service required, with minimal discounts. Our priority is to service this market; we speak on behalf of the small and mid-size business with the power of the high volume account. Larger businesses also benefit from our one-stop-shop service options, reducing shipping and labour costs, and enhancing automation.</p>
+
+                        <li><p id="toggler-2" class="toggler" style="cursor:pointer; color:#f79020;">What is the benefit of using Vital Logistics Ltd. as opposed to going to a major carrier directly?</p></li>
+                        <p id="widget-2" class="widget" style="display: none; margin-top: 10px;">Volume dictates discounts in logistics. By combining the volume of our customers, we pay wholesale prices, allowing our customers to share these discounts.</p>
+
+                        <li><p id="toggler-3" class="toggler" style="cursor:pointer; color:#f79020;">Who performs the pickups?</p></li>
+                        <p id="widget-3" class="widget" style="display: none; margin-top: 10px;">Our dedicated carriers will pick up on behalf of Vital Logistics Ltd.. Each carrier is fully and routinely screened to ensure proper registration and industry standard compliance, as well as maintaining the highest on-time performance.</p>
+
+                        <li><p id="toggler-4" class="toggler" style="cursor:pointer; color:#f79020;">Who will send the invoices?</p></li>
+                        <p id="widget-4" class="widget" style="display: none; margin-top: 10px;">Invoicing is provided by Vital Logistics Ltd.. We have numerous billing options available which can be customized according to your needs. We are happy to speak to your finance department to see what works best for your organization. Electronic billing is also available.</p>
+
+                        <li><p id="toggler-5" class="toggler" style="cursor:pointer; color:#f79020;">Who do we contact for customer service?</p></li>
+                        <p id="widget-5" class="widget" style="display: none; margin-top: 10px;">You can contact us through our website, speak with your sales representative directly, or call our client care department. For tracking and tracing inquiries, web tracking is available to our customers through most of our carrier websites.</p>
+
+                        <li><p id="toggler-6" class="toggler" style="cursor:pointer; color:#f79020;">What automation solutions are available?</p></li>
+                        <p id="widget-6" class="widget" style="display: none; margin-top: 10px;">We have the ability to fully automate and integrate your system. Your sales representative will discuss the options with you to determine the best solution.</p>
+                        <li>
+                            <p id="toggler-7" class="toggler" style="cursor:pointer; color:#f79020;">Do you have any trade references?</p>
+                        </li>
+                        <p id="widget-7" class="widget" style="display: none; margin-top: 10px;">Our customers happily endorse us. We will gladly send an endorsement letter upon request.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.toggler', function () {
+            var id = this.id.split('-');
+            var myId = id[1];
+            $('#widget-' + myId).focus();
+            $(".widget").not("#widget-" + myId).slideUp('slow');
+            $('#widget-' + myId).slideToggle('slow');
+        });
+    });
+</script>

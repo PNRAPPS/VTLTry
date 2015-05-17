@@ -1,0 +1,185 @@
+﻿@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Would you like to schedule a pickup?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+
+        <div class="row">
+            <script>
+                $(document).ready(function () {
+                    $("#checkbox").click(function () {
+                        //if (this.checked) {
+                        $("#container").slideToggle("slow");
+
+                        ///}
+
+                    });
+
+                });
+
+            </script>
+            <div class="twelve columns">
+                <input type="checkbox" checked id="checkbox" name="IsScheduledPickup" /> Schedule a UPS On-Call Pickup.
+            </div>
+            <div id="container" style="float:left;width:100%;height:auto;">
+
+                <div style="float:left;width:100%;height:auto;margin-bottom:5px">
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Collection Date</b>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        <select style="width:250px;" name="collectionDate">
+                            @{
+                                int ctr = 1;
+                                int collectedDate = 0;
+
+                                do
+                                {
+                                    DateTime currentDate = DateTime.Now.AddDays(ctr);
+                                    string valueDate = currentDate.Year.ToString() + currentDate.Month.ToString("00") + currentDate.Day.ToString("00");
+
+                                    switch (currentDate.ToString("dddd"))
+                                    {
+                                        case "Monday":
+                                        case "Tuesday":
+                                        case "Wednesday":
+                                        case "Thursday":
+                                        case "Friday":
+                                            <option value="@valueDate">@String.Format("{0:dddd, MMMM d, yyyy}", currentDate)</option>
+                                            collectedDate = collectedDate + 1;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                    ctr = ctr + 1;
+
+                                } while (collectedDate < 3);
+                            }
+                        </select>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Note:</b> Pickups are available for a lower fee if you schedule them a day or more in advance.
+                    </div>
+                </div>
+
+                <div style="float:left;width:100%;height:auto;margin-bottom:5px">
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Latest Pickup Time:</b>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        <select id="time1" name="latestPickupTimeHour" style="width:100px;">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        &nbsp;:&nbsp;
+                        <select id="time2" name="latestPickupTimeMinute" style="width:100px;">
+                            <option value="00">00</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        &nbsp;
+                        <input type="radio" name="ampm" /> A.M.
+                        &nbsp;
+                        <input type="radio" name="ampm" /> P.M.
+                    </div>
+                </div>
+
+                <div style="float:left;width:100%;height:auto;margin-bottom:5px">
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Earliest Pickup Time:</b>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        <select id="time3" name="earliestPickupTimeHour" style="width:100px;">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        &nbsp;:&nbsp;
+                        <select id="time4" name="earliestPickupTimeMinute" style="width:100px;">
+                            <option value="00">00</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        &nbsp;
+                        P.M.
+                        <br /><br />
+                        <b>Contact Name</b> <br />
+                        <input type="text" name="contactName" />
+                        <b>Telephone</b><br />
+                        <input type="text" name="telephone" />
+                        <b>Ext.</b><br />
+                        <input type="text" name="extension" />
+                        <b>Suite/Room</b> <br />
+                        <input type="text" name="room" />
+                        <b>Floor</b><br />
+                        <input type="text" name="floor" />
+
+                        <b>Preferred Pickup Location:</b><br />
+                        <select style="width:100px;" name="pickupLocation">
+                            <option value="">Choose one</option>
+                            <option value="01">Front Door</option>
+                            <option value="02">Back Door</option>
+                            <option value="03">Shipping</option>
+                            <option value="04">Receiving</option>
+                            <option value="05">Reception</option>
+                            <option value="06">Office</option>
+                            <option value="07">Mail Room</option>
+                            <option value="08">Garage</option>
+                            <option value="09">Upstairs</option>>
+                            <option value="10">Downstairs</option>
+                            <option value="11">Guard House</option>
+                            <option value="11">Third Party</option>
+                            <option value="11">Warehouse</option>
+
+                        </select>
+                        <br /><br />
+                        <input type="checkbox" name="IsResidential" />&nbsp;Residential Area?
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

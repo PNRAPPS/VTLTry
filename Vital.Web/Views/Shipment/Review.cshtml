@@ -1,0 +1,325 @@
+﻿@model Vital.Model.ShipmentModel
+
+@{
+    ViewBag.Title = "Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    th {
+        width: 150px;
+        text-align: left;
+    }
+</style>
+
+<div class="row">
+    <h4>Review your Shipment</h4>
+    <hr />
+    Please review your shipping information for accuracy. Select Edit to modify information.
+    @using (Html.BeginForm("CheckReview", "Shipment", FormMethod.Post))
+    {
+        <br />
+        @Html.HiddenFor(r => r.DraftId);
+        <div id="addressInformation" class="twelve columns">
+            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                <h6>Address Information</h6>
+            </div>
+            <div id="addressPanel" class="panel" style="border: none;">
+                <div class="row">
+                    <div class="four columns">
+                        <b>Ship To:</b>
+                        <br />
+                        @string.Format(
+                    "{0} {1} {2} {3} {4} {5} {6} Telephone: {7} x{8}",
+                    Model.ConsigneeCompanyName,
+                    Model.ConsigneeContactName,
+                    Model.ConsigneeAddress1,
+                    Model.ConsigneeCity,
+                    Model.ConsigneeProvince,
+                    Model.ConsigneeCountry,
+                    Model.ConsigneePostalCode,
+                    Model.ConsigneeTelephone,
+                    Model.ConsigneeTelephoneExt
+                    )
+                    </div>
+                    <div class="four columns">
+                        <b>Ship From:</b>
+                        <br />
+                        @string.Format(
+                    "{0} {1} {2} {3} {4} {5} {6} Telephone: {7} x{8}",
+                    Model.ConsignorAddress1,
+                    Model.ConsignorContactName,
+                    Model.ConsignorAddress1,
+                    Model.ConsignorCity,
+                    Model.ConsignorProvince,
+                    Model.ConsignorCountry,
+                    Model.ConsignorPostalCode,
+                    Model.ConsignorTelephone,
+                    Model.ConsignorTelephoneExt
+                    )
+                    </div>
+                    <div class="four columns">
+                        <b>Return Address:</b>
+                        <br />
+                        @string.Format(
+                    "{0} {1} {2} {3} {4} {5} {6} Telephone: {7} x{8}",
+                    Model.ConsigneeCompanyName,
+                    Model.ConsigneeContactName,
+                    Model.ConsigneeAddress1,
+                    Model.ConsigneeCity,
+                    Model.ConsigneeProvince,
+                    Model.ConsigneeCountry,
+                    Model.ConsigneePostalCode,
+                    Model.ConsigneeTelephone,
+                    Model.ConsigneeTelephoneExt
+                    )
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="packageInformation" class="twelve columns">
+            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                <h6>Package Information</h6>
+            </div>
+            <div id="packagePanel" class="panel" style="border: none;">
+                <div class="row">
+                    <table class="twelve columns">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Weight
+                                </th>
+                                <th>
+                                    Dimensions/ Packaging
+                                </th>
+                                <th>
+                                    Declared Value
+                                </th>
+                                <th>
+                                    Reference Numbers
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @string.Format("{0} lbs ({0} lbs billable)", @Model.Weight, @Model.UnitOfMeasurement)
+                                </td>
+                                <td>
+                                    @*@Model.PackagingType*@
+                                    @ViewBag.PackagingType
+                                </td>
+                                <td>
+                                    @string.Format("{0} CAD", @Model.PackageDeclaredValueCAD)
+                                </td>
+                                <td>
+                                    @string.Format("{0} {1} {2}", Model.ReferenceNumber1, Model.ReferenceNumber2, Model.ReferenceNumber3)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="shippingInformation" class="twelve columns">
+            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                <h6>Shipping Information</h6>
+            </div>
+            <div id="shippingPanel" class="panel" style="border: none;">
+                <b>Service:&nbsp;</b>@ViewBag.ServiceType<br />
+                <b>Guaranteed By:&nbsp;</b>@ViewBag.GuaranteedBy
+                <br /><br />
+                <b>Do you need it there sooner?</b><br />
+                Negotiated rates were applied to this shipment<br /><br />
+                <div class="row">
+                    <table class="twelve columns">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Charge Value</th>
+                                <th>Estimated Arrival</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in (List<Vital.Model.PaymentInformationModel>)ViewBag.PaymentList)
+                            {
+                                if (Convert.ToDecimal(item.ChargeValue) >= Convert.ToDecimal(ViewBag.CurrentCharge))
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (item.ServiceName.Equals(@ViewBag.ServiceType))
+                                            {
+                                                <input type="radio" value="@item.ServiceName" name="ReviewServiceName" checked />@item.ServiceName
+                                            }
+                                            else
+                                            {
+                                                <input type="radio" value="@item.ServiceName" name="ReviewServiceName" />@item.ServiceName
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.ServiceName.Equals(@ViewBag.ServiceType))
+                                            {
+                                                <span>Currently Selected</span>
+                                            }
+                                            else
+                                            {
+                                                if (Convert.ToDecimal(item.ChargeValue) > Convert.ToDecimal(ViewBag.CurrentCharge))
+                                                {
+                                                    <span>@(Convert.ToDecimal(item.ChargeValue) - Convert.ToDecimal(ViewBag.CurrentCharge))&nbsp;@item.CurrencyCode more***</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>@(Convert.ToDecimal(ViewBag.CurrentCharge) - Convert.ToDecimal(item.ChargeValue))&nbsp;@item.CurrencyCode less***</span>
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @item.EstimatedArrival
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <b>*** Taxes Included</b>
+                    <br /><br />
+                    <b>Shipping Fees Subtotal:</b>&nbsp;@ViewBag.CurrentCharge CAD
+                </div>
+            </div>
+        </div>
+        <br />
+        if (Model.IsScheduledPickup)
+        {
+            <div id="pickupInformation" class="twelve columns">
+                <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                    <h6>Pickup Information</h6>
+                </div>
+                <div id="pickupPanel" class="panel" style="border: none;">
+                    <div class="row">
+                        <div class="six columns">
+                            <b>Pickup Address:</b><br />
+                            @string.Format(
+                    "{0} {1} {2} {3} {4} {5} {6} Telephone: {7} x{8}",
+                    Model.ConsignorAddress1,
+                    Model.ConsignorContactName,
+                    Model.ConsignorAddress1,
+                    Model.ConsignorCity,
+                    Model.ConsignorProvince,
+                    Model.ConsignorCountry,
+                    Model.ConsignorPostalCode,
+                    Model.ConsignorTelephone,
+                    Model.ConsignorTelephoneExt
+                    )
+                            <br /><br />
+                            <button class="button" type="button" onclick="CancelScheduledPickup();">Cancel Scheduled Pickup</button>
+                            <script type="text/javascript">
+
+                                function CancelScheduledPickup() {
+
+                                    $.ajax({
+                                        url: "@Url.Content("~/Shipment/CancelScheduledPickup")",
+                                        dataType: "json",
+                                        type: "GET",
+                                        data: { id: '@Model.DraftId' },
+                                        success: function (result) {
+                                            alert(result.msg);
+                                            location.reload();
+                                        }
+
+                                    })
+                                }
+
+                            </script>
+                        </div>
+                        <div class="six columns">
+                            <b>Earliest Pickup Time:</b><br />
+                            @Model.collectionDate.Substring(0, 4)/@Model.collectionDate.Substring(4, 2)/@Model.collectionDate.Substring(6, 2) @Model.earliestPickupTimeHour:@Model.earliestPickupTimeMinute @Model.ampm<br />
+                            <b>Latest Pickup Time:</b><br />
+                            @Model.collectionDate.Substring(0, 4)/@Model.collectionDate.Substring(4, 2)/@Model.collectionDate.Substring(6, 2) @Model.latestPickupTimeHour:@Model.latestPickupTimeMinute P.M.<br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+        <div id="paymentInformation" class="twelve columns">
+            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                <h6>Payment Information</h6>
+            </div>
+            <div id="paymentPanel" class="panel" style="border: none;">
+                <b>Bill Shipment Charges To: </b>&nbsp;Shipper's Account&nbsp;@Model.AccountNumber<br />
+                <b>Charges: </b>&nbsp;@ViewBag.CurrentCharge CAD
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.DraftId);
+        @Html.HiddenFor(model => model.AccountNumber)
+        @Html.HiddenFor(model => model.ConsigneeCompanyName)
+        @Html.HiddenFor(model => model.ConsigneeContactName)
+        @Html.HiddenFor(model => model.ConsigneeCountry)
+        @Html.HiddenFor(model => model.ConsigneeAddress1)
+        @Html.HiddenFor(model => model.ConsigneeAddress2)
+        @Html.HiddenFor(model => model.ConsigneeAddress3)
+        @Html.HiddenFor(model => model.ConsigneeCity)
+        @Html.HiddenFor(model => model.ConsigneeProvince)
+        @Html.HiddenFor(model => model.ConsigneePostalCode)
+        @Html.HiddenFor(model => model.ConsigneeTelephone)
+        @Html.HiddenFor(model => model.ConsigneeTelephoneExt)
+        @Html.HiddenFor(model => model.ConsigneeEmail)
+        @Html.HiddenFor(model => model.ConsigneeIsResidential)
+        @Html.HiddenFor(model => model.ConsignorCompanyName)
+        @Html.HiddenFor(model => model.ConsignorContactName)
+        @Html.HiddenFor(model => model.ConsignorCountry)
+        @Html.HiddenFor(model => model.ConsignorAddress1)
+        @Html.HiddenFor(model => model.ConsignorAddress2)
+        @Html.HiddenFor(model => model.ConsignorAddress3)
+        @Html.HiddenFor(model => model.ConsignorCity)
+        @Html.HiddenFor(model => model.ConsignorProvince)
+        @Html.HiddenFor(model => model.ConsignorPostalCode)
+        @Html.HiddenFor(model => model.ConsignorTelephone)
+        @Html.HiddenFor(model => model.ConsignorTelephoneExt)
+        @Html.HiddenFor(model => model.ConsignorEmail)
+        @Html.HiddenFor(model => model.ConsignorIsResidential)
+        @Html.HiddenFor(model => model.NoOfPackage)
+        @Html.HiddenFor(model => model.Weight)
+        @Html.HiddenFor(model => model.UnitOfMeasurement)
+        @Html.HiddenFor(model => model.PackagingType)
+        @Html.HiddenFor(model => model.PackageDimensionsLength)
+        @Html.HiddenFor(model => model.PackageDimensionsWidth)
+        @Html.HiddenFor(model => model.PackageDimensionsHeight)
+        @Html.HiddenFor(model => model.PackageDeclaredValueCAD)
+        @Html.HiddenFor(model => model.AdditionalHandling)
+        @Html.HiddenFor(model => model.ServiceType)
+        @Html.HiddenFor(model => model.ReferenceNumber1)
+        @Html.HiddenFor(model => model.ReferenceNumber2)
+        @Html.HiddenFor(model => model.ReferenceNumber3)
+        @Html.HiddenFor(model => model.collectionDate)
+        @Html.HiddenFor(model => model.latestPickupTimeHour)
+        @Html.HiddenFor(model => model.latestPickupTimeMinute)
+        @Html.HiddenFor(model => model.earliestPickupTimeHour)
+        @Html.HiddenFor(model => model.earliestPickupTimeMinute)
+        @Html.HiddenFor(model => model.contactName)
+        @Html.HiddenFor(model => model.telephone)
+        @Html.HiddenFor(model => model.extension)
+        @Html.HiddenFor(model => model.extension)
+        @Html.HiddenFor(model => model.room)
+        @Html.HiddenFor(model => model.floor)
+        @Html.HiddenFor(model => model.pickupLocation)
+        @Html.HiddenFor(model => model.IsScheduledPickup)
+
+        <div class="row">
+            <div class="button-bar" style="float: right;">
+                <ul class="button-group">
+                    <li><a class="button" href="@Url.Content("~/Shipment/Create?s=")@Model.DraftId">Go Back</a></li>
+                </ul>
+                <ul class="button-group">
+                    <li>
+                        <input type="submit" value="Submit" class="button" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>

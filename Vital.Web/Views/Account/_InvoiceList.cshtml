@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Vital.Model.InvoiceModel>
+
+<table style="width:100%;">
+    <thead>
+        <tr>
+            <th>Invoice Date</th>
+            <th>Invoice Subject</th>
+            <th>Invoice Details</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+     
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.Raw(item.invoiceDate.ToString("MMMM dd, yyyy"))</td>
+                <td>@Html.DisplayFor(modelItem => item.invoiceSubject)</td>
+                <td>
+                    @{
+                        
+            var TempData = item.invoiceDetails.Replace("\n", "<br>");
+            var base64EncodedPDF = System.Convert.ToBase64String(item.invoiceFileName);
+           
+                        }
+                @foreach (var j in TempData)
+                {
+                    @Html.Raw(j);
+
+                }
+            </td>
+            <td><a href="javascript:void(0)" onclick="openTab('@base64EncodedPDF')">View</a></td>
+        </tr>
+        }
+       
+
+    </tbody>
+</table>
+<script type="text/javascript">
+
+    function openTab(data) {
+        window.open("data:application/pdf;base64, " + data);
+    }
+</script>

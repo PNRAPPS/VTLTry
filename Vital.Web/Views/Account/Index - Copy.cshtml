@@ -1,0 +1,306 @@
+﻿@{
+    ViewBag.Title = "Rate Lookup";
+}
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px; margin-bottom: 20px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h4 style="color: #ed6c16; margin-bottom: 30px;">Rate Lookup</h4>
+            <dl class="tabs contained">
+                <dd class="active"><a href="#rateshipUPS">Rate+Ship UPS</a></dd>
+                <dd><a href="#rateshipLTL">Rate+Ship LTL</a></dd>
+                <dd><a href="@Url.Content("~/Quote/")">Request a Quote</a></dd>
+            </dl>
+            <ul class="tabs-content contained">
+                <li class="active" id="rateshipUPSTab">
+                    <p>Please provide information about your shipment including destination, origin, shipment date, and weight.</p>
+                    <p style="font-style: italic;">(Required fields are indicated with *)</p>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>Where are you Shipping?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <div class="row">
+                                    <div class="seven columns">
+                                        <h6 style="margin-bottom: 0px; margin-top: 0px;">Address Book</h6>
+                                        <select>
+                                            <option>Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="seven columns">
+                                        <h6 style="color: #8f8375">Enter a New Address</h6>
+                                        <h6 style="margin-bottom: 0px;">*Company Or Name:</h6>
+                                        <input type="text" />
+                                        <h6 style="margin-bottom: 0px;">Contact Name:</h6>
+                                        <input type="text" />
+                                        <h6 style="margin-bottom: 0px;">*Country:</h6>
+                                        <select>
+                                            <option>Canada</option>
+                                        </select>
+                                        <h6 style="margin-bottom: 0px;">*Address Line 1:</h6>
+                                        <input type="text" />
+                                        <h6 style="margin-bottom: 0px;">Address Line 2:</h6>
+                                        <input type="text" />
+                                        <p>Apartment, suite, unit, building, floor, etc.</p>
+                                        <h6 style="margin-bottom: 0px;">Address Line 3:</h6>
+                                        <input type="text" />
+                                        <p>Department, c/o, etc.</p>
+                                        <h6 style="margin-bottom: 0px;">*City:</h6>
+                                        <input type="text" />
+                                        <h6 style="margin-bottom: 0px;">*Province:</h6>
+                                        <select>
+                                            <option>Select One</option>
+                                        </select>
+                                        <h6 style="margin-bottom: 0px;">*Postal Code:</h6>
+                                        <input type="text" />
+                                        <div class="eight columns" style="padding-left: 0px;">
+                                            <h6 style="margin-bottom: 0px;">Telephone:</h6>
+                                            <input type="tel" />
+                                        </div>
+                                        <div class="four columns">
+                                            <h6 style="margin-bottom: 0px;">Ext.:</h6>
+                                            <input type="tel" />
+                                        </div>
+                                        <h6 style="margin-bottom: 0px;">E-mail:</h6>
+                                        <input type="email" />
+                                        <label>
+                                            <input type="checkbox" />
+                                            Residential address</label>
+                                    </div>
+                                    <div class="twelve columns">
+                                        <hr style="margin-top: 10px; margin-bottom: 10px;" />
+                                    </div>
+                                    <div class="six columns">
+                                        <h6 style="margin-bottom: 0px;">Save Options for Address:</h6>
+                                        <select>
+                                            <option>Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="six columns" style="padding-left: 0px;">
+                                        <h6 style="margin-bottom: 0px;">Save this to my Address Book as:</h6>
+                                        <input type="tel" />
+                                    </div>
+                                    <div class="six columns">
+                                        <h6 style="margin-bottom: 0px;">Save Options for Address:</h6>
+                                        <select>
+                                            <option>Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="six columns" style="padding-left: 0px;">
+                                        <h6 style="margin-bottom: 0px;">Save to Corporate Address Book as:</h6>
+                                        <input type="tel" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>Where is this shipment coming from?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <div class="row">
+                                    <div class="six columns">
+                                        <h6 style="margin-bottom: 0px; margin-top: 0px;">Ship From Address: <a href="#" style="text-decoration: underline; font-weight: normal;">Edit</a></h6>
+                                        <ul style="list-style-type: none; margin-left: 0px;">
+                                            <li>VITAL LOGISTICS VANCOUVER</li>
+                                            <li>Gon Prix</li>
+                                            <li>207 West Hastings St.</li>
+                                            <li>Suite 911</li>
+                                            <li>VANCOUVER BC V6B1H7</li>
+                                            <li>Telephone:18888</li>
+                                            <li>x332</li>
+                                        </ul>
+                                    </div>
+                                    <div class="six columns">
+                                        <p>If the shipment is undeliverable return to:</p>
+                                        <h6 style="margin-bottom: 0px;">Contact:</h6>
+                                        <input type="text" />
+                                        <h6 style="margin-bottom: 0px;">Return Address:</h6>
+                                        <input type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>What are you shipping?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <div class="row">
+                                    <div class="six columns">
+                                        <h6 style="margin-bottom: 0px; margin-top: 0px;">Number of Packages:</h6>
+                                        <select class="three">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>13</option>
+                                            <option>14</option>
+                                            <option>15</option>
+                                            <option>16</option>
+                                            <option>17</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                        </select>
+                                        <h6 style="margin-bottom: 0px;">Unit of Measurement:</h6>
+                                        <select>
+                                            <option>Imperial (pounds/inches)</option>
+                                            <option>Metric (kilograms/centimeters)</option>
+                                        </select>
+                                        <h6 style="margin-bottom: 0px;">*Packaging Type:</h6>
+                                        <select>
+                                            <option>Select One</option>
+                                        </select>
+                                        <h6 style="margin-bottom: 0px;">Package Declared Value:</h6>
+                                        <div class="eight columns" style="padding-left: 0px;">
+                                            <div class="nine columns" style="padding-right: 0px; padding-left: 0px;">
+                                                <input type="text" />
+                                            </div>
+                                            <div class="three columns">
+                                                <span class="postfix" style="border: none;">CAD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="six columns">
+                                        <h6 style="margin-bottom: 0px; margin-top: 0px;">Use the values for all packages?</h6>
+                                        <select class="three">
+                                            <option>YES</option>
+                                            <option>NO</option>
+                                        </select>
+                                    </div>
+                                    <div class="twelve columns">
+                                        <p><strong>Note:</strong> Additional shipping fees may apply based on declared value.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>How would you like to ship?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <div class="row">
+                                    <div class="six columns">
+                                        <h6 style="margin-top: 0px; margin-bottom: 0px;">Services:</h6>
+                                        <select>
+                                            <option>Select Services</option>
+                                        </select>
+                                    </div>
+                                    <div class="six columns">
+                                        <p style="margin-top: 15px;"><a href="#">Compare Time and Cost</a></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="six columns">
+                                        <p style="margin-bottom: 0px;">Do you need <a href="#">additional services?</a></p>
+                                        <label>
+                                            <input type="checkbox">
+                                            Send E-mail Notifications</label>
+                                        <label>
+                                            <input type="checkbox">
+                                            Receive Confirmation and Delivery</label>
+                                        <label>
+                                            <input type="checkbox">
+                                            Delivery on Saturday</label>
+                                        <label>
+                                            <input type="checkbox">
+                                            C.O.D</label>
+                                    </div>
+                                    <div class="six columns"></div>
+                                    <div class="twelve columns">
+                                        <p>Some services may require extra information. You will be to enter the required information on the next page.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>How would you like to add reference number to this shipment?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <div class="row">
+                                    <div class="twelve columns">
+                                        <p>UPS gives you option to track your shipments using <a href="#">references</a> that you define.</p>
+                                        <h6 style="margin-bottom: 0px">Reference #1</h6>
+                                        <input class="six" type="text" />
+                                        <h6 style="margin-bottom: 0px">Reference #2</h6>
+                                        <input class="six" type="text" />
+                                        <h6 style="margin-bottom: 0px">Reference #3</h6>
+                                        <input class="six" type="text" />
+                                        <label>
+                                            <input type="checkbox">
+                                            Add a bar code for Reference #1 to my Shipping label.</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>How would you like to pay?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <p>Please enter your payment information below. The information you enter will be transmitted using a secure connection. Required fields are indicated with *.</p>
+                                <h6 style="margin-bottom: 0px;">*Bill Shipping Charges to:</h6>
+                                <select class="seven">
+                                    <option>6F4138 - VITAL LOGISTICS VANCOUVER</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="eight columns">
+                            <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+                                <h6>How would you like to schedule a pickup?</h6>
+                            </div>
+                            <div class="panel" style="border: none;">
+                                <label>
+                                    <input type="checkbox">
+                                    Schedule a <a href="#">UPS On-Call Pickup</a>. - An additional fee may apply</label>
+                            </div>
+                        </div>
+                    </div>
+                    <label>
+                        <input type="checkbox">
+                        Review Shipping details, including price, before completing this shipment</label>
+                    <label>
+                        <input type="checkbox">
+                        Save As Shipping Ticket</label>
+                    <div class="row">
+                        <div class="button-bar" style="float: right;">
+                            <ul class="button-group">
+                                <li><a href="#" class="button">Start Over</a></li>
+                            </ul>
+                            <ul class="button-group">
+                                <li><a href="#" class="button">Next &raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li id="rateshipLTLTab">This is simple tab 2s content. Now you see it!</li>
+                <li id="quoteTab">This is simple tab 3s content.</li>
+            </ul>
+        </div>
+    </div>
+</div>

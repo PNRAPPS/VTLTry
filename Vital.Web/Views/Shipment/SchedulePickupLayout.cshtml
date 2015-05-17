@@ -1,0 +1,80 @@
+﻿@using Vital.Model
+@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Would you like to schedule a pickup?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+        <div class="row">
+            <script>
+                $(document).ready(function () {
+                    $("#IsScheduledPickup").click(function () {
+                        $("#container").slideToggle("slow");
+                    });
+
+                    @if (!Model.IsScheduledPickup)
+                    {
+                        <text>$("#container").slideToggle("slow");</text>
+                    }
+                });
+            </script>
+            <div class="twelve columns">
+                @Html.CheckBoxFor(r => r.IsScheduledPickup)&nbsp;Schedule a UPS On-Call Pickup.
+            </div>
+            <div id="container" style="float:left;width:100%;height:auto;">
+                <div style="float:left;width:100%;height:auto;margin-bottom:5px">
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Collection Date</b>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        @Html.DropDownListFor(r => r.collectionDate, (IEnumerable<SelectListItem>)ViewBag.CollectionDates, new { @style = "width:250px" })
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Note:</b> Pickups are available for a lower fee if you schedule them a day or more in advance.
+                    </div>
+                </div>
+                <div style="float:left;width:100%;height:auto;margin-bottom:5px">
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Earliest Pickup Time:</b>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        @Html.DropDownListFor(r => r.earliestPickupTimeHour, (IEnumerable<SelectListItem>)ViewBag.PickupHours, new { @style = "width:100px" })
+                        &nbsp;:&nbsp;
+                        @Html.DropDownListFor(r => r.earliestPickupTimeMinute, (IEnumerable<SelectListItem>)ViewBag.PickupMinutes, new { @style = "width:100px" })
+                        &nbsp;
+                        @Html.RadioButtonFor(r => r.ampm, "A.M.")&nbsp;A.M.
+                        &nbsp;
+                        @Html.RadioButtonFor(r => r.ampm, "P.M.")&nbsp;P.M.
+                    </div>
+                </div>
+                <div style="float:left;width:100%;height:auto;margin-bottom:5px">
+                    <div style="float:left;width:100%;height:auto;">
+                        <b>Latest Pickup Time:</b>
+                    </div>
+                    <div style="float:left;width:100%;height:auto;">
+                        @Html.DropDownListFor(r => r.latestPickupTimeHour, (IEnumerable<SelectListItem>)ViewBag.PickupHours, new { @style = "width:100px" })
+                        &nbsp;:&nbsp;
+                        @Html.DropDownListFor(r => r.latestPickupTimeMinute, (IEnumerable<SelectListItem>)ViewBag.PickupMinutes, new { @style = "width:100px" })
+                        &nbsp;
+                        P.M.
+                        <br /><br />
+                        <b>Contact Name</b> <br />
+                        @Html.TextBoxFor(r => r.contactName)
+                        <b>Telephone</b><br />
+                        @Html.TextBoxFor(r => r.telephone)
+                        <b>Ext.</b><br />
+                        @Html.TextBoxFor(r => r.extension)
+                        <b>Suite/Room</b> <br />
+                        @Html.TextBoxFor(r => r.room)
+                        <b>Floor</b><br />
+                        @Html.TextBoxFor(r => r.floor)
+                        <b>Preferred Pickup Location:</b><br />
+                        @Html.DropDownListFor(r => r.pickupLocation, (IEnumerable<SelectListItem>)ViewBag.PickupLocations, new { @style = "width:100%" })
+                        <br /><br />
+                        @Html.CheckBoxFor(r => r.IsResidential)&nbsp;@Html.DisplayNameFor(r => r.IsResidential)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

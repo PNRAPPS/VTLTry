@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Vital.Model.CustomerAccountModel>
+
+<html>
+<head>
+    <title>Vital Admin</title>
+    <link rel="stylesheet" href="~/Content/admincss/style.css" />
+    <link rel="stylesheet" href="~/Content/admincss/blue/style.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+
+</head>
+
+<body>
+    <form action="" id="formSubmit" method="post" enctype="multipart/form-data">
+
+
+        <div class="mainContainer">
+            <div class="homeContainer">
+                <div class="header">
+                    <div style="float:left;width:auto;">
+                        <img src="~/Content/adminimages/bannerimage.png" />
+                    </div>
+                    <div style="float:right;width:auto;">
+                        <br />
+                        <a href="/Admin/Accounts">ACCOUNTS</a> | <a href="/Admin/News">NEWS</a> | <a href="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Admin/">LOGOUT</a>
+
+                    </div>
+                </div>
+                <input type="hidden" name="username" value="@Request["username"]" />
+                <div class="mainBody">
+                    <table>
+                        <tr>
+                            <td>Username:</td>
+                            <td>@Request["username"]</td>
+
+                        </tr>
+                        <tr>
+                            <td>Account Number:</td>
+                            <td>
+                                <select id="accountnumber" name="accountnumber">
+                                    <option value="">Select Account Number</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.Id</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Invoice Date</td>
+                            <td>
+                                <select id="datemonth" name="datemonth">
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select id="dateday" name="dateday">
+
+                                    @for (int i = 1; i < 32; i++)
+                                    {
+
+                                        <option value="@i">@i</option>
+                                    }
+
+                                </select>
+                                <select id="dateyear" name="dateyear">
+
+                                    @for (int j = DateTime.Now.Year; j >= DateTime.Now.AddYears(-5).Year; j--)
+                                    {
+                                        <option value="@j">@j</option>
+                                    }
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Invoice Subject</td>
+                            <td>
+                                <input type="text" style="width:500px;" id="invoicesubject" name="invoicesubject" placeholder="Invoice Subject" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Upload</td>
+                            <td>
+                                <input type="file" name="file" id="file" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>Invoice Details</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea id="invoicedetails" cols="100" name="invoicedetails" rows="15"></textarea>
+                            </td>
+                        </tr>
+
+                        <th colspan="2"><input type="button" onclick="submitForm()" value="Submit" id="submitBtn" /></th>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function submitForm() {
+
+            if ($("#accountnumber").val() == "") {
+
+                alert("please select an account number.");
+            } else if ($("#file").val() == "") {
+                alert("please select a PDF file to upload.");
+            } else {
+                alert("Successfully submitted.");
+                $("#formSubmit").submit();
+                
+            }
+
+        }
+    </script>
+</body>
+</html>

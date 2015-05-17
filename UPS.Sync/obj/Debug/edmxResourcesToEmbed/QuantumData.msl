@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VITALDB_TESTModelStoreContainer" CdmEntityContainer="VITALDB_TESTEntities">
+    <EntitySetMapping Name="provision_marker_dss">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.provision_marker_dss">
+        <MappingFragment StoreEntitySet="provision_marker_dss">
+          <ScalarProperty Name="object_id" ColumnName="object_id" />
+          <ScalarProperty Name="owner_scope_local_id" ColumnName="owner_scope_local_id" />
+          <ScalarProperty Name="provision_scope_local_id" ColumnName="provision_scope_local_id" />
+          <ScalarProperty Name="provision_timestamp" ColumnName="provision_timestamp" />
+          <ScalarProperty Name="provision_local_peer_key" ColumnName="provision_local_peer_key" />
+          <ScalarProperty Name="provision_scope_peer_key" ColumnName="provision_scope_peer_key" />
+          <ScalarProperty Name="provision_scope_peer_timestamp" ColumnName="provision_scope_peer_timestamp" />
+          <ScalarProperty Name="provision_datetime" ColumnName="provision_datetime" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="schema_info_dss">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.schema_info_dss">
+        <MappingFragment StoreEntitySet="schema_info_dss">
+          <ScalarProperty Name="schema_major_version" ColumnName="schema_major_version" />
+          <ScalarProperty Name="schema_minor_version" ColumnName="schema_minor_version" />
+          <ScalarProperty Name="schema_extended_info" ColumnName="schema_extended_info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scope_config_dss">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.scope_config_dss">
+        <MappingFragment StoreEntitySet="scope_config_dss">
+          <ScalarProperty Name="config_id" ColumnName="config_id" />
+          <ScalarProperty Name="config_data" ColumnName="config_data" />
+          <ScalarProperty Name="scope_status" ColumnName="scope_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scope_info_dss">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.scope_info_dss">
+        <MappingFragment StoreEntitySet="scope_info_dss">
+          <ScalarProperty Name="scope_local_id" ColumnName="scope_local_id" />
+          <ScalarProperty Name="scope_id" ColumnName="scope_id" />
+          <ScalarProperty Name="sync_scope_name" ColumnName="sync_scope_name" />
+          <ScalarProperty Name="scope_sync_knowledge" ColumnName="scope_sync_knowledge" />
+          <ScalarProperty Name="scope_tombstone_cleanup_knowledge" ColumnName="scope_tombstone_cleanup_knowledge" />
+          <ScalarProperty Name="scope_timestamp" ColumnName="scope_timestamp" />
+          <ScalarProperty Name="scope_config_id" ColumnName="scope_config_id" />
+          <ScalarProperty Name="scope_restore_count" ColumnName="scope_restore_count" />
+          <ScalarProperty Name="scope_user_comment" ColumnName="scope_user_comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessorialChargeAmounts">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.AccessorialChargeAmount">
+        <MappingFragment StoreEntitySet="AccessorialChargeAmounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AccessorialChargeId" ColumnName="AccessorialChargeId" />
+          <ScalarProperty Name="CustomerAccountId" ColumnName="CustomerAccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccessorialCharges">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.AccessorialCharge">
+        <MappingFragment StoreEntitySet="AccessorialCharges">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccessorialChargeName" ColumnName="AccessorialChargeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressBookInfoes">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.AddressBookInfo">
+        <MappingFragment StoreEntitySet="AddressBookInfoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="CompanyOrName" ColumnName="CompanyOrName" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="IsResidential" ColumnName="IsResidential" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="SaveAsShipperFromFlag" ColumnName="SaveAsShipperFromFlag" />
+          <ScalarProperty Name="ReceiverUPSAccount" ColumnName="ReceiverUPSAccount" />
+          <ScalarProperty Name="ReceiverPostalCode" ColumnName="ReceiverPostalCode" />
+          <ScalarProperty Name="ReferenceType1" ColumnName="ReferenceType1" />
+          <ScalarProperty Name="ReferenceType2" ColumnName="ReferenceType2" />
+          <ScalarProperty Name="OwnerOfAddressBook_Id" ColumnName="OwnerOfAddressBook_Id" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminUsers">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.AdminUser">
+        <MappingFragment StoreEntitySet="AdminUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingSummaries">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.BillingSummary">
+        <MappingFragment StoreEntitySet="BillingSummaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BillingDate" ColumnName="BillingDate" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="TotalInvoiceAmount" ColumnName="TotalInvoiceAmount" />
+          <ScalarProperty Name="ExemptBRK" ColumnName="ExemptBRK" />
+          <ScalarProperty Name="CustomsGSTorVAT" ColumnName="CustomsGSTorVAT" />
+          <ScalarProperty Name="ExemptCharges" ColumnName="ExemptCharges" />
+          <ScalarProperty Name="TaxableBRK" ColumnName="TaxableBRK" />
+          <ScalarProperty Name="BRKTax" ColumnName="BRKTax" />
+          <ScalarProperty Name="GSTApp" ColumnName="GSTApp" />
+          <ScalarProperty Name="GSTAmt" ColumnName="GSTAmt" />
+          <ScalarProperty Name="HBCApp" ColumnName="HBCApp" />
+          <ScalarProperty Name="HBCAmt" ColumnName="HBCAmt" />
+          <ScalarProperty Name="HONApp" ColumnName="HONApp" />
+          <ScalarProperty Name="HONAmt" ColumnName="HONAmt" />
+          <ScalarProperty Name="HNSApp" ColumnName="HNSApp" />
+          <ScalarProperty Name="HNSAmt" ColumnName="HNSAmt" />
+          <ScalarProperty Name="HSTApp" ColumnName="HSTApp" />
+          <ScalarProperty Name="HSTAmt" ColumnName="HSTAmt" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="AgentCommission" ColumnName="AgentCommission" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carriers">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Carrier">
+        <MappingFragment StoreEntitySet="Carriers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BillToAdd" ColumnName="BillToAdd" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consignees">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Consignee">
+        <MappingFragment StoreEntitySet="Consignees">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AddressBookName" ColumnName="AddressBookName" />
+          <ScalarProperty Name="ConsigneeName" ColumnName="ConsigneeName" />
+          <ScalarProperty Name="ConsigneeAddress1" ColumnName="ConsigneeAddress1" />
+          <ScalarProperty Name="ConsigneeAddress2" ColumnName="ConsigneeAddress2" />
+          <ScalarProperty Name="ConsigneeAddress3" ColumnName="ConsigneeAddress3" />
+          <ScalarProperty Name="ConsigneeCity" ColumnName="ConsigneeCity" />
+          <ScalarProperty Name="ConsigneeStateOrProvince" ColumnName="ConsigneeStateOrProvince" />
+          <ScalarProperty Name="COnsigneePostalOrZip" ColumnName="COnsigneePostalOrZip" />
+          <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+          <ScalarProperty Name="ConsigneeContactPerson" ColumnName="ConsigneeContactPerson" />
+          <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
+          <ScalarProperty Name="ConsigneePhoneExt" ColumnName="ConsigneePhoneExt" />
+          <ScalarProperty Name="ConsigneeEmail" ColumnName="ConsigneeEmail" />
+          <ScalarProperty Name="ConsigneeIsResidential" ColumnName="ConsigneeIsResidential" />
+          <ScalarProperty Name="UPSId" ColumnName="UPSId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerAccounts">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.CustomerAccount">
+        <MappingFragment StoreEntitySet="CustomerAccounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RateYear" ColumnName="RateYear" />
+          <ScalarProperty Name="UPSEnabled" ColumnName="UPSEnabled" />
+          <ScalarProperty Name="TermId" ColumnName="TermId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerMarkups">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.CustomerMarkup">
+        <MappingFragment StoreEntitySet="CustomerMarkups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MarkupPercentage" ColumnName="MarkupPercentage" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="AlternateEmail" ColumnName="AlternateEmail" />
+          <ScalarProperty Name="AlternateContact" ColumnName="AlternateContact" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PhoneExt" ColumnName="PhoneExt" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="AltPhone" ColumnName="AltPhone" />
+          <ScalarProperty Name="AltContactPerson" ColumnName="AltContactPerson" />
+          <ScalarProperty Name="Email1" ColumnName="Email1" />
+          <ScalarProperty Name="Email2" ColumnName="Email2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="SalesRepresentative" ColumnName="SalesRepresentative" />
+          <ScalarProperty Name="CommissionRate" ColumnName="CommissionRate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UPSUsername" ColumnName="UPSUsername" />
+          <ScalarProperty Name="UPSPassword" ColumnName="UPSPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerShipments">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.CustomerShipment">
+        <MappingFragment StoreEntitySet="CustomerShipment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="trackingNumber" ColumnName="trackingNumber" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="pickupNumber" ColumnName="pickupNumber" />
+          <ScalarProperty Name="modifiedDate" ColumnName="modifiedDate" />
+          <ScalarProperty Name="shipmentLabel" ColumnName="shipmentLabel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerSpInstructionAmounts">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.CustomerSpInstructionAmount">
+        <MappingFragment StoreEntitySet="CustomerSpInstructionAmounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerAmount" ColumnName="CustomerAmount" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="SpecialInstructionId" ColumnName="SpecialInstructionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="invoiceId" ColumnName="invoiceId" />
+          <ScalarProperty Name="invoiceSubject" ColumnName="invoiceSubject" />
+          <ScalarProperty Name="invoiceDetails" ColumnName="invoiceDetails" />
+          <ScalarProperty Name="invoiceDate" ColumnName="invoiceDate" />
+          <ScalarProperty Name="invoiceFileName" ColumnName="invoiceFileName" />
+          <ScalarProperty Name="dateUpload" ColumnName="dateUpload" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookupTables">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.LookupTable">
+        <MappingFragment StoreEntitySet="LookupTable">
+          <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+          <ScalarProperty Name="LookupCode" ColumnName="LookupCode" />
+          <ScalarProperty Name="LookupValue" ColumnName="LookupValue" />
+          <ScalarProperty Name="LookupText" ColumnName="LookupText" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+          <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+          <ScalarProperty Name="NewsCaption" ColumnName="NewsCaption" />
+          <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostalCodes">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.PostalCode">
+        <MappingFragment StoreEntitySet="PostalCodes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginCountry" ColumnName="OriginCountry" />
+          <ScalarProperty Name="OriginPostalCodeMin" ColumnName="OriginPostalCodeMin" />
+          <ScalarProperty Name="OriginPostalCodeMax" ColumnName="OriginPostalCodeMax" />
+          <ScalarProperty Name="DestinationCountry" ColumnName="DestinationCountry" />
+          <ScalarProperty Name="DestinationPostalCodeMin" ColumnName="DestinationPostalCodeMin" />
+          <ScalarProperty Name="DestinationPostalCodeMax" ColumnName="DestinationPostalCodeMax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostalCodeZones">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.PostalCodeZone">
+        <MappingFragment StoreEntitySet="PostalCodeZones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostalCodeId" ColumnName="PostalCodeId" />
+          <ScalarProperty Name="ShippingTypeId" ColumnName="ShippingTypeId" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentDetails">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.ShipmentDetail">
+        <MappingFragment StoreEntitySet="ShipmentDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="ShipmentReferenceNumber" ColumnName="ShipmentReferenceNumber" />
+          <ScalarProperty Name="PackageQuantity" ColumnName="PackageQuantity" />
+          <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+          <ScalarProperty Name="EnteredWeight" ColumnName="EnteredWeight" />
+          <ScalarProperty Name="EnteredWeightUnitOfMeasure" ColumnName="EnteredWeightUnitOfMeasure" />
+          <ScalarProperty Name="BilledWeight" ColumnName="BilledWeight" />
+          <ScalarProperty Name="BilledWeightUnitOfMeasure" ColumnName="BilledWeightUnitOfMeasure" />
+          <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
+          <ScalarProperty Name="Zone" ColumnName="Zone" />
+          <ScalarProperty Name="ChargeClassificationCode" ColumnName="ChargeClassificationCode" />
+          <ScalarProperty Name="ChargeDescription" ColumnName="ChargeDescription" />
+          <ScalarProperty Name="InvoiceCurrencyCode" ColumnName="InvoiceCurrencyCode" />
+          <ScalarProperty Name="FreightCharge" ColumnName="FreightCharge" />
+          <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+          <ScalarProperty Name="SalesTax" ColumnName="SalesTax" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="SenderCompanyName" ColumnName="SenderCompanyName" />
+          <ScalarProperty Name="SenderAddressLine1" ColumnName="SenderAddressLine1" />
+          <ScalarProperty Name="SenderAddressLine2" ColumnName="SenderAddressLine2" />
+          <ScalarProperty Name="SenderCity" ColumnName="SenderCity" />
+          <ScalarProperty Name="SenderState" ColumnName="SenderState" />
+          <ScalarProperty Name="SenderPostal" ColumnName="SenderPostal" />
+          <ScalarProperty Name="SenderCountry" ColumnName="SenderCountry" />
+          <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+          <ScalarProperty Name="ReceiverCompanyName" ColumnName="ReceiverCompanyName" />
+          <ScalarProperty Name="ReceiverAddressLine1" ColumnName="ReceiverAddressLine1" />
+          <ScalarProperty Name="ReceiverAddressLine2" ColumnName="ReceiverAddressLine2" />
+          <ScalarProperty Name="ReceiverCity" ColumnName="ReceiverCity" />
+          <ScalarProperty Name="ReceiverState" ColumnName="ReceiverState" />
+          <ScalarProperty Name="ReceiverPostal" ColumnName="ReceiverPostal" />
+          <ScalarProperty Name="ReceiverCountry" ColumnName="ReceiverCountry" />
+          <ScalarProperty Name="SoldToCompanyName" ColumnName="SoldToCompanyName" />
+          <ScalarProperty Name="SoldToAddressLine1" ColumnName="SoldToAddressLine1" />
+          <ScalarProperty Name="SoldToAddressLine2" ColumnName="SoldToAddressLine2" />
+          <ScalarProperty Name="SoldToCity" ColumnName="SoldToCity" />
+          <ScalarProperty Name="SoldToState" ColumnName="SoldToState" />
+          <ScalarProperty Name="SoldToPostal" ColumnName="SoldToPostal" />
+          <ScalarProperty Name="SoldToCountry" ColumnName="SoldToCountry" />
+          <ScalarProperty Name="LeadShipmentNumber" ColumnName="LeadShipmentNumber" />
+          <ScalarProperty Name="WorldEaseNumber" ColumnName="WorldEaseNumber" />
+          <ScalarProperty Name="EnteredHeight" ColumnName="EnteredHeight" />
+          <ScalarProperty Name="EnteredWidth" ColumnName="EnteredWidth" />
+          <ScalarProperty Name="EnteredLength" ColumnName="EnteredLength" />
+          <ScalarProperty Name="IsLargePackage" ColumnName="IsLargePackage" />
+          <ScalarProperty Name="IsAdditionalHandling" ColumnName="IsAdditionalHandling" />
+          <ScalarProperty Name="PackageDeclaredValue" ColumnName="PackageDeclaredValue" />
+          <ScalarProperty Name="ServiceCode" ColumnName="ServiceCode" />
+          <ScalarProperty Name="SendEmailNotificationFlag" ColumnName="SendEmailNotificationFlag" />
+          <ScalarProperty Name="ReceiveConfirmationAndDeliveryFlag" ColumnName="ReceiveConfirmationAndDeliveryFlag" />
+          <ScalarProperty Name="DeliveryOnSundayFlag" ColumnName="DeliveryOnSundayFlag" />
+          <ScalarProperty Name="CODFlag" ColumnName="CODFlag" />
+          <ScalarProperty Name="ReferenceNumber1" ColumnName="ReferenceNumber1" />
+          <ScalarProperty Name="ReferenceNumber2" ColumnName="ReferenceNumber2" />
+          <ScalarProperty Name="ReferenceNumber3" ColumnName="ReferenceNumber3" />
+          <ScalarProperty Name="BillShippingChargesTo" ColumnName="BillShippingChargesTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentRequests">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.ShipmentRequest">
+        <MappingFragment StoreEntitySet="ShipmentRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SpecialInstruction1" ColumnName="SpecialInstruction1" />
+          <ScalarProperty Name="SpecialInstruction1Amount" ColumnName="SpecialInstruction1Amount" />
+          <ScalarProperty Name="SpecialInstruction2" ColumnName="SpecialInstruction2" />
+          <ScalarProperty Name="SpecialInstruction2Amount" ColumnName="SpecialInstruction2Amount" />
+          <ScalarProperty Name="SpecialInstruction3" ColumnName="SpecialInstruction3" />
+          <ScalarProperty Name="SpecialInstruction3Amount" ColumnName="SpecialInstruction3Amount" />
+          <ScalarProperty Name="WeightAs" ColumnName="WeightAs" />
+          <ScalarProperty Name="SkidRate" ColumnName="SkidRate" />
+          <ScalarProperty Name="EstimatedCost" ColumnName="EstimatedCost" />
+          <ScalarProperty Name="ActualCost" ColumnName="ActualCost" />
+          <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+          <ScalarProperty Name="NumberOfPieces" ColumnName="NumberOfPieces" />
+          <ScalarProperty Name="FreightCharge" ColumnName="FreightCharge" />
+          <ScalarProperty Name="FuelSurcharge" ColumnName="FuelSurcharge" />
+          <ScalarProperty Name="CustomerMarkup" ColumnName="CustomerMarkup" />
+          <ScalarProperty Name="SalesTax" ColumnName="SalesTax" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ShipperName" ColumnName="ShipperName" />
+          <ScalarProperty Name="ShipperReference" ColumnName="ShipperReference" />
+          <ScalarProperty Name="ShipperAddress1" ColumnName="ShipperAddress1" />
+          <ScalarProperty Name="ShipperAddress2" ColumnName="ShipperAddress2" />
+          <ScalarProperty Name="ShipperCity" ColumnName="ShipperCity" />
+          <ScalarProperty Name="ShipperProvince" ColumnName="ShipperProvince" />
+          <ScalarProperty Name="ShipperPostal" ColumnName="ShipperPostal" />
+          <ScalarProperty Name="ShipperCountry" ColumnName="ShipperCountry" />
+          <ScalarProperty Name="ConsigneeName" ColumnName="ConsigneeName" />
+          <ScalarProperty Name="ConsigneeReference" ColumnName="ConsigneeReference" />
+          <ScalarProperty Name="ConsigneeAddress1" ColumnName="ConsigneeAddress1" />
+          <ScalarProperty Name="ConsigneeAddress2" ColumnName="ConsigneeAddress2" />
+          <ScalarProperty Name="ConsigneeCity" ColumnName="ConsigneeCity" />
+          <ScalarProperty Name="ConsigneeProvince" ColumnName="ConsigneeProvince" />
+          <ScalarProperty Name="ConsigneePostal" ColumnName="ConsigneePostal" />
+          <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ConsigneeId" ColumnName="ConsigneeId" />
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingTypes">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.ShippingType">
+        <MappingFragment StoreEntitySet="ShippingTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Service" ColumnName="Service" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkidRates">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.SkidRate">
+        <MappingFragment StoreEntitySet="SkidRates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SkidPieces" ColumnName="SkidPieces" />
+          <ScalarProperty Name="OriginCity" ColumnName="OriginCity" />
+          <ScalarProperty Name="OriginState" ColumnName="OriginState" />
+          <ScalarProperty Name="OriginAbbreviation" ColumnName="OriginAbbreviation" />
+          <ScalarProperty Name="OriginCountry" ColumnName="OriginCountry" />
+          <ScalarProperty Name="DestinationCity" ColumnName="DestinationCity" />
+          <ScalarProperty Name="DestinationState" ColumnName="DestinationState" />
+          <ScalarProperty Name="DestinationAbbreviation" ColumnName="DestinationAbbreviation" />
+          <ScalarProperty Name="DestinationCountry" ColumnName="DestinationCountry" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+          <ScalarProperty Name="SkidWeightId" ColumnName="SkidWeightId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skids">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Skid">
+        <MappingFragment StoreEntitySet="Skids">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SkidDescription" ColumnName="SkidDescription" />
+          <ScalarProperty Name="ItemLength" ColumnName="ItemLength" />
+          <ScalarProperty Name="ItemWidth" ColumnName="ItemWidth" />
+          <ScalarProperty Name="ItemHeight" ColumnName="ItemHeight" />
+          <ScalarProperty Name="SkidVolume" ColumnName="SkidVolume" />
+          <ScalarProperty Name="SkidWeight" ColumnName="SkidWeight" />
+          <ScalarProperty Name="UnitOfMeasurement" ColumnName="UnitOfMeasurement" />
+          <ScalarProperty Name="QuotationId" ColumnName="QuotationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkidWeights">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.SkidWeight">
+        <MappingFragment StoreEntitySet="SkidWeights">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="Low" ColumnName="Low" />
+          <ScalarProperty Name="High" ColumnName="High" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialInstructionAmounts">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.SpecialInstructionAmount">
+        <MappingFragment StoreEntitySet="SpecialInstructionAmounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarrierAmount" ColumnName="CarrierAmount" />
+          <ScalarProperty Name="CarrierId" ColumnName="CarrierId" />
+          <ScalarProperty Name="SpecialInstructionId" ColumnName="SpecialInstructionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialInstructions">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.SpecialInstruction">
+        <MappingFragment StoreEntitySet="SpecialInstructions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SpecialInstructionName" ColumnName="SpecialInstructionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+          <ScalarProperty Name="LookupCode" ColumnName="LookupCode" />
+          <ScalarProperty Name="LookupValue" ColumnName="LookupValue" />
+          <ScalarProperty Name="LookupText" ColumnName="LookupText" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Tax">
+        <MappingFragment StoreEntitySet="Taxes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+          <ScalarProperty Name="TaxStateAbbreviation" ColumnName="TaxStateAbbreviation" />
+          <ScalarProperty Name="TaxState" ColumnName="TaxState" />
+          <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Terms">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Term">
+        <MappingFragment StoreEntitySet="Terms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TermName" ColumnName="TermName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Weights">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Weight">
+        <MappingFragment StoreEntitySet="Weights">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Low" ColumnName="Low" />
+          <ScalarProperty Name="High" ColumnName="High" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZoneDiscountPercentages">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.ZoneDiscountPercentage">
+        <MappingFragment StoreEntitySet="ZoneDiscountPercentages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="PAKDiscountPercentage" ColumnName="PAKDiscountPercentage" />
+          <ScalarProperty Name="LTRDiscountPercentage" ColumnName="LTRDiscountPercentage" />
+          <ScalarProperty Name="CustomerAccountId" ColumnName="CustomerAccountId" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZoneRates">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.ZoneRate">
+        <MappingFragment StoreEntitySet="ZoneRates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="RateYear" ColumnName="RateYear" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="WeightId" ColumnName="WeightId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.Zone">
+        <MappingFragment StoreEntitySet="Zones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ConsigneeCustomers" TypeName="VITALDB_TESTModel.ConsigneeCustomers" StoreEntitySet="ConsigneeCustomers">
+      <EndProperty Name="Consignees">
+        <ScalarProperty Name="Id" ColumnName="Consignee_Id" />
+      </EndProperty>
+      <EndProperty Name="Customers">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleCustomers" TypeName="VITALDB_TESTModel.RoleCustomers" StoreEntitySet="RoleCustomers">
+      <EndProperty Name="Customers">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="Id" ColumnName="Role_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="QVSyncSummaries">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.QVSyncSummary">
+        <MappingFragment StoreEntitySet="QVSyncSummary">
+          <ScalarProperty Name="QVEventName" ColumnName="QVEventName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="QVSyncStatusDescription" ColumnName="QVSyncStatusDescription" />
+          <ScalarProperty Name="QVSyncStatusCode" ColumnName="QVSyncStatusCode" />
+          <ScalarProperty Name="QVSyncDate" ColumnName="QVSyncDate" />
+          <ScalarProperty Name="QVSyncId" ColumnName="QVSyncId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QVSubscriptionFiles">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.QVSubscriptionFile">
+        <MappingFragment StoreEntitySet="QVSubscriptionFile">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SubscriptionNumber" ColumnName="SubscriptionNumber" />
+          <ScalarProperty Name="SubscriptionFileName" ColumnName="SubscriptionFileName" />
+          <ScalarProperty Name="SyncId" ColumnName="SyncId" />
+          <ScalarProperty Name="SubscriptionFileId" ColumnName="SubscriptionFileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QVShipmentDetails">
+      <EntityTypeMapping TypeName="VITALDB_TESTModel.QVShipmentDetail">
+        <MappingFragment StoreEntitySet="QVShipmentDetails">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ExceptionDescription" ColumnName="ExceptionDescription" />
+          <ScalarProperty Name="ShipToCountry" ColumnName="ShipToCountry" />
+          <ScalarProperty Name="ShipToPostalCode" ColumnName="ShipToPostalCode" />
+          <ScalarProperty Name="ShipToStateProvince" ColumnName="ShipToStateProvince" />
+          <ScalarProperty Name="ShipToCity" ColumnName="ShipToCity" />
+          <ScalarProperty Name="ShipToTelephoneNumber" ColumnName="ShipToTelephoneNumber" />
+          <ScalarProperty Name="ShipToAddressLine2" ColumnName="ShipToAddressLine2" />
+          <ScalarProperty Name="ShipToAddressLine1" ColumnName="ShipToAddressLine1" />
+          <ScalarProperty Name="ShipToAttention" ColumnName="ShipToAttention" />
+          <ScalarProperty Name="ShipToName" ColumnName="ShipToName" />
+          <ScalarProperty Name="SignedBy" ColumnName="SignedBy" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Service" ColumnName="Service" />
+          <ScalarProperty Name="ShipTo" ColumnName="ShipTo" />
+          <ScalarProperty Name="ManifestDate" ColumnName="ManifestDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="ShipmentEvent" ColumnName="ShipmentEvent" />
+          <ScalarProperty Name="ShipperNumber" ColumnName="ShipperNumber" />
+          <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+          <ScalarProperty Name="SubscriptionFileId" ColumnName="SubscriptionFileId" />
+          <ScalarProperty Name="QVShipmentDetailId" ColumnName="QVShipmentDetailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

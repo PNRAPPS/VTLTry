@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+    <title>Vital Admin</title>
+    <link rel="stylesheet" href="~/Content/admincss/style.css" />
+    <link rel="stylesheet" href="~/Content/admincss/blue/style.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="homeContainer">
+            <div class="header">
+                <div style="float:left;width:auto;">
+                    <img src="~/Content/adminimages/bannerimage.png" />
+                </div>
+                <div style="float:right;width:auto;">
+                    <br />
+                  <a href="/Admin/Accounts">ACCOUNTS</a> | <a href="/Admin/News">NEWS</a> | <a href="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Admin/">LOGOUT</a>
+
+                </div>
+            </div>
+
+            <div class="mainBody">
+                <table>
+                    <tr>
+                        <td>Title</td>
+                        <td><input type="text" style="width:500px;" name="title" id="title" placeholder="News Title" /></td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>
+                            <select id="datemonth">
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <select id="dateday">
+
+                                @for (int i = 1; i < 32; i++) { 
+                                
+                                    <option value="@i">@i</option>
+                                }
+
+                            </select>
+                            <select id="dateyear">
+                                
+                                @for (int j = DateTime.Now.Year; j >= DateTime.Now.AddYears(-5).Year; j--)
+                                { 
+                                    <option value="@j">@j</option>
+                                }
+                                </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>News Caption</td>
+                        <td>
+                            <input type="text" style="width:500px;" id="newscaption" placeholder="News Caption" />
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>News Content</td>
+                    </tr>
+
+                    <td>
+                        <textarea id="newscontent" cols="100" rows="15"></textarea>
+                    </td>
+                    </tr>
+                    <th colspan="2"><input type="button" value="Submit" id="submitBtn" onclick="SubmitNewsBtn()" /> | <input type="button" value="Reset" id="resetBtn" onclick="ResetBtn()" /></th>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

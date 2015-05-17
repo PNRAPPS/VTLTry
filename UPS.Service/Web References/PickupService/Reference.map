@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Pickup_Pkg_Gnd/PickupforPACKAGEWebService/SCHEMAS-WSDLs/UPSSecurity.xsd" filename="UPSSecurity.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Pickup_Pkg_Gnd/PickupforPACKAGEWebService/SCHEMAS-WSDLs/Pickup.wsdl" filename="Pickup.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Pickup_Pkg_Gnd/PickupforPACKAGEWebService/SCHEMAS-WSDLs/common.xsd" filename="common.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Pickup_Pkg_Gnd/PickupforPACKAGEWebService/SCHEMAS-WSDLs/Error1.1.xsd" filename="Error1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Pickup_Pkg_Gnd/PickupforPACKAGEWebService/SCHEMAS-WSDLs/PickupWebServiceSchema.xsd" filename="PickupWebServiceSchema.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

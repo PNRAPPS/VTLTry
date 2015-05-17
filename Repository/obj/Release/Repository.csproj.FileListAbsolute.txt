@@ -1,0 +1,19 @@
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\Repository.dll.config
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\Repository.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\Repository.pdb
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\EntityFramework.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\EntityFramework.xml
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\obj\Release\Repository.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Repository\obj\Release\Repository.pdb
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\Repository.dll.config
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\Repository.dll
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\Repository.pdb
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\EntityFramework.dll
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\EntityFramework.xml
+C:\Users\Asus\Desktop\Vital Nike\Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Asus\Desktop\Vital Nike\Repository\obj\Release\Repository.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Desktop\Vital Nike\Repository\obj\Release\Repository.dll
+C:\Users\Asus\Desktop\Vital Nike\Repository\obj\Release\Repository.pdb

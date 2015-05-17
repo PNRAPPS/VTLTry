@@ -1,0 +1,587 @@
+﻿@model Vital.Model.ShipmentModel
+
+@{
+    ViewBag.Title = "Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    th {
+        width: 150px;
+        text-align: left;
+    }
+</style>
+
+<div class="row">
+    <h4>Review your Shipment</h4>
+    <hr />
+    @using (Html.BeginForm("CheckReview", "Shipment", FormMethod.Post))
+    {
+        <dl class="tabs contained">
+            <dd class="active"><a href="#combined">User Details</a></dd>
+            <dd><a href="#outbound">Destination Address</a></dd>
+            <dd><a href="#inbound">Package Details</a></dd>
+            <dd><a href="#thirdparty">Reference Number(s)</a></dd>
+            @if (!string.IsNullOrEmpty(@Model.IsScheduledPickup))
+            {
+                <dd><a href="#pickup">Scheduled Pickup</a></dd>
+            }
+        </dl>
+        <ul class="tabs-content contained">
+            <li id="combinedTab" class="active">
+                <table class="twelve columns">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AccountNumber)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.AccountNumber)
+                            @Html.DisplayFor(model => model.AccountNumber)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeCompanyName)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeCompanyName)
+                            @Html.DisplayFor(model => model.ConsigneeCompanyName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeContactName)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeContactName)
+                            @Html.DisplayFor(model => model.ConsigneeContactName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeCountry)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeCountry)
+                            @Html.DisplayFor(model => model.ConsigneeCountry)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeAddress1)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeAddress1)
+                            @Html.DisplayFor(model => model.ConsigneeAddress1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeAddress2)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeAddress2)
+                            @Html.DisplayFor(model => model.ConsigneeAddress2)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeAddress3)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeAddress3)
+                            @Html.DisplayFor(model => model.ConsigneeAddress3)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeCity)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeCity)
+                            @Html.DisplayFor(model => model.ConsigneeCity)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeProvince)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeProvince)
+                            @Html.DisplayFor(model => model.ConsigneeProvince)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneePostalCode)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneePostalCode)
+                            @Html.DisplayFor(model => model.ConsigneePostalCode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeTelephone)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeTelephone)
+                            @Html.DisplayFor(model => model.ConsigneeTelephone)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeTelephoneExt)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeTelephoneExt)
+                            @Html.DisplayFor(model => model.ConsigneeTelephoneExt)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeEmail)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeEmail)
+                            @Html.DisplayFor(model => model.ConsigneeEmail)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsigneeIsResidential)
+                        </th>
+                        <td>
+                            @Html.HiddenFor(model => model.ConsigneeIsResidential)
+                            @Html.DisplayFor(model => model.ConsigneeIsResidential)
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li id="outboundTab">
+                <table class="twelve columns">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorCompanyName)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorCompanyName)
+                            @Html.DisplayFor(model => model.ConsignorCompanyName)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorContactName)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorContactName)
+                            @Html.DisplayFor(model => model.ConsignorContactName)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorCountry)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorCountry)
+                            @Html.DisplayFor(model => model.ConsignorCountry)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorAddress1)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorAddress1)
+                            @Html.DisplayFor(model => model.ConsignorAddress1)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorAddress2)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorAddress2)
+                            @Html.DisplayFor(model => model.ConsignorAddress2)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorAddress3)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorAddress3)
+                            @Html.DisplayFor(model => model.ConsignorAddress3)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorCity)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorCity)
+                            @Html.DisplayFor(model => model.ConsignorCity)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorProvince)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorProvince)
+                            @Html.DisplayFor(model => model.ConsignorProvince)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorPostalCode)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorPostalCode)
+                            @Html.DisplayFor(model => model.ConsignorPostalCode)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorTelephone)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorTelephone)
+                            @Html.DisplayFor(model => model.ConsignorTelephone)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorTelephoneExt)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorTelephoneExt)
+                            @Html.DisplayFor(model => model.ConsignorTelephoneExt)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorEmail)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorEmail)
+                            @Html.DisplayFor(model => model.ConsignorEmail)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ConsignorIsResidential)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ConsignorIsResidential)
+                            @Html.DisplayFor(model => model.ConsignorIsResidential)
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li id="inboundTab">
+                <table class="twelve columns">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoOfPackage)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.NoOfPackage)
+                            @Html.DisplayFor(model => model.NoOfPackage)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Weight)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.Weight)
+                            @Html.DisplayFor(model => model.Weight)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitOfMeasurement)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.UnitOfMeasurement)
+                            @Html.DisplayFor(model => model.UnitOfMeasurement)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackagingType)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.PackagingType)
+                            @ViewBag.PackagingType
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackageDimensionsLength)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.PackageDimensionsLength)
+                            @Html.DisplayFor(model => model.PackageDimensionsLength)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackageDimensionsWidth)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.PackageDimensionsWidth)
+                            @Html.DisplayFor(model => model.PackageDimensionsWidth)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+
+                            @Html.DisplayNameFor(model => model.PackageDimensionsHeight)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.PackageDimensionsHeight)
+                            @Html.DisplayFor(model => model.PackageDimensionsHeight)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackageDeclaredValueCAD)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.PackageDeclaredValueCAD)
+                            @Html.DisplayFor(model => model.PackageDeclaredValueCAD)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdditionalHandling)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.AdditionalHandling)
+                            @Html.DisplayFor(model => model.AdditionalHandling)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceType)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ServiceType)
+                            @ViewBag.ServiceType
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li id="thirdpartyTab">
+                <table class="twelve columns">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReferenceNumber1)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ReferenceNumber1)
+                            @Html.DisplayFor(model => model.ReferenceNumber1)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReferenceNumber2)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ReferenceNumber2)
+                            @Html.DisplayFor(model => model.ReferenceNumber2)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReferenceNumber3)
+                        </th>
+
+                        <td>
+                            @Html.HiddenFor(model => model.ReferenceNumber3)
+                            @Html.DisplayFor(model => model.ReferenceNumber3)
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            @if (!string.IsNullOrEmpty(@Model.IsScheduledPickup))
+            {
+                <li id="pickupTab">
+                    <table class="twelve columns">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.collectionDate)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.collectionDate)
+                                @Html.DisplayFor(model => model.collectionDate)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                Latest Pickup Time
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.latestPickupTimeHour)
+                                @Html.HiddenFor(model => model.latestPickupTimeMinute)
+                                @Convert.ToDateTime(string.Format("{0}:{1}", @Html.DisplayFor(model => model.latestPickupTimeHour), @Html.DisplayFor(model => model.latestPickupTimeMinute))).ToShortTimeString()
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                Earliest Pickup Time
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.earliestPickupTimeHour)
+                                @Html.HiddenFor(model => model.earliestPickupTimeMinute)
+                                @Convert.ToDateTime(string.Format("{0}:{1}", @Html.DisplayFor(model => model.earliestPickupTimeHour), @Html.DisplayFor(model => model.earliestPickupTimeMinute))).ToShortTimeString()
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.contactName)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.contactName)
+                                @Html.DisplayFor(model => model.contactName)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.telephone)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.telephone)
+                                @Html.DisplayFor(model => model.telephone)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.extension)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.extension)
+                                @Html.DisplayFor(model => model.extension)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.room)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.room)
+                                @Html.DisplayFor(model => model.room)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.floor)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.floor)
+                                @Html.DisplayFor(model => model.floor)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pickupLocation)
+                            </th>
+
+                            <td>
+                                @Html.HiddenFor(model => model.pickupLocation)
+                                @Html.DisplayFor(model => model.pickupLocation)
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            
+            }
+        </ul>
+
+        @Html.HiddenFor(model => model.IsScheduledPickup)
+
+        
+
+        <div class="row">
+            <div class="button-bar" style="float: right;">
+                <ul class="button-group">
+                    <li><a href="#" class="button" onclick="window.location.reload();">Go Back</a></li>
+                </ul>
+                <ul class="button-group">
+                    <li>
+                        <input type="submit" value="Submit" class="button" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+
+</div>

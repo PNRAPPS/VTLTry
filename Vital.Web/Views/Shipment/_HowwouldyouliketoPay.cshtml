@@ -1,0 +1,21 @@
+﻿@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>How would you like to pay?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+        <div class="row">
+            Please enter your payment information below. The information you enter will be transmitted using a secure connection. Required fields are indicated with.
+        </div>
+        <br />
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => model.AccountNumber)
+                <div>
+                    @Html.DropDownListFor(model => model.AccountNumber, (ViewBag.CustomerAccountNumber as SelectList))
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

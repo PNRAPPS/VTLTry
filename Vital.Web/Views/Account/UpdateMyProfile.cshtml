@@ -1,0 +1,240 @@
+﻿@model Vital.Model.CustomerModel
+
+@{
+    ViewBag.Title = "Update My Profile";
+}
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-bottom: 25px;">Update My Profile</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <dl class="tabs" style="border-bottom: solid 1px #ee8f1e; margin-bottom: 0px;">
+                <dd class="active"><a href="~/Customer" style="cursor: pointer; color: #ffffff; width: 120px; background: url('/Content/images/whitelockicon.png') no-repeat 78% #ee8f1e; border-left: 1px solid #ee8f1e; border-right: 1px solid #ee8f1e; font-weight: normal;">My Vital</a></dd>
+            </dl>
+            <ul class="tabs-content">
+                <li class="active" id="simple1Tab">
+                    @using (Html.BeginForm("UpdateMyProfile", "Account", FormMethod.Post))
+                    {
+                        <div class="panel" style="background: #fff; border: solid 1px #ee8f1e; margin: 0 0 22px 0; padding-top: 0px;">
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <h5>Update My Profile</h5>
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary()
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="twelve columns">
+                                    <fieldset>
+                                        <legend style="color: #f6a11d; margin-bottom: 10px;">Login Information</legend>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 83px">Username:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                <p style="margin-top: 5px;">@Model.Username</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 86px">Password:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 54px">New Password:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.PasswordFor(c => Model.Password, new { @class = "eight" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline">Confirm New Password:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.PasswordFor(c => Model.VerifyPassword, new { @class = "eight" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div> !-->
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <fieldset>
+                                        <legend style="color: #f6a11d; margin-bottom: 10px;">Personal Information</legend>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 110px;">Name:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.ContactPerson, new { @class = "eight", @id="name" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 112px;">Email:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.Email, new { @class = "eight", @id = "email" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 49px;">Company Name:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.CompanyName, new { @class = "eight", @id = "company" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 95px;">Country:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.Country, new { @class = "eight", @id = "country" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 53px">Address Line 1:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.Address1, new { @class = "eight",  @id="address1" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 53px">Address Line 2:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.Address2, new { @class = "eight",  @id="address2" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 120px;">City:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.City, new { @class = "eight", @id="city" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 90px">Province:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.State, new { @class = "eight", @id="province" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 71px">Postal Code:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.Zip, new { @class = "eight", @id="postal" })
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="three columns">
+                                                <label class="right inline" style="padding-right: 77px">Telephone:</label>
+                                            </div>
+                                            <div class="nine columns">
+                                                @Html.TextBoxFor(c => Model.Phone, new { @class = "eight", @id="telephone" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns">
+                                    <input class="large button right" type="button" onclick="updateProfile()" value="Save Changes">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <script type="text/javascript">
+
+                        function updateProfile() {
+                            var url = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/UpdateProfileInfo";
+                           // var url = "http://localhost:60759/Account/UpdateProfileInfo";
+                            var answer = confirm("Do you really want to update your profile?");
+                            if (answer) {
+                                var name = $("#name");
+                                var email = $("#email");
+                                var company = $("#company");
+                                var country = $("#country");
+                                var address1 = $("#address1");
+                                var address2 = $("#address2");
+                                var city = $("#city");
+                                var province = $("#province");
+                                var postal = $("#postal");
+                                var telephone = $("#telephone");
+
+                                if (name.val() == "") {
+                               
+                                    alert("Please input a name.");
+                                    name.focus();
+
+                                } else if (email.val() == "") {
+                                    alert("Please input an email.");
+                                    email.focus();
+                                } else if (!checkEmail(email.val())) {
+                                    alert("Invalid email format.");
+                                    $("#email").focus();
+                                } else {
+
+                                    //save here the update
+                                    $.post(url, { name: name.val(), email: email.val(), company: company.val(), country: country.val(), address1: address1.val(), address2: address2.val(), city: city.val(), province: province.val(), postal: postal.val(), telephone: telephone.val() }, function (data) {
+                                        if (data.status == "success") {
+                                            alert("You've successfully updated your profile.");
+                                            window.location = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/UpdateMyProfile";
+                                        }
+                                    },"json");
+
+                                }
+
+                            }
+
+                        }
+
+                        function checkEmail(emailAddress) {
+                            var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
+                            var sDtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
+                            var sAtom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
+                            var sQuotedPair = '\\x5c[\\x00-\\x7f]';
+                            var sDomainLiteral = '\\x5b(' + sDtext + '|' + sQuotedPair + ')*\\x5d';
+                            var sQuotedString = '\\x22(' + sQtext + '|' + sQuotedPair + ')*\\x22';
+                            var sDomain_ref = sAtom;
+                            var sSubDomain = '(' + sDomain_ref + '|' + sDomainLiteral + ')';
+                            var sWord = '(' + sAtom + '|' + sQuotedString + ')';
+                            var sDomain = sSubDomain + '(\\x2e' + sSubDomain + ')*';
+                            var sLocalPart = sWord + '(\\x2e' + sWord + ')*';
+                            var sAddrSpec = sLocalPart + '\\x40' + sDomain; // complete RFC822 email address spec
+                            var sValidEmail = '^' + sAddrSpec + '$'; // as whole string
+
+                            var reValidEmail = new RegExp(sValidEmail);
+
+                            if (reValidEmail.test(emailAddress)) {
+                                return true;
+                            }
+
+                            return false;
+                        }
+
+                    </script>
+                    <div>
+                        @Html.ActionLink("Back to MyVital", "../Customer")
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

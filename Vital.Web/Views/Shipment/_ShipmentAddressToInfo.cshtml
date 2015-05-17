@@ -1,0 +1,32 @@
+﻿@model Vital.Model.ShipmentModel
+<div id="whereShipping" class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Where is this shipment going?</h6>
+    </div>
+    <div id="consigneeAddress" class="panel" style="border: none;">
+        <div class="row">
+            <div class="twelve columns">
+                <h6 style="margin-bottom: 0px; margin-top: 0px;">Address Book</h6>
+                @Html.DropDownListFor(model => model.ConsigneeAddressBookId, new SelectList((ViewBag.ConsigneeAddress as List<Vital.Model.ValueText>), "Value", "Text"))
+            </div>
+            <div id="AddNewAddress" class="twelve columns">
+                <a id="AddNewAddressButton" style="text-decoration: underline; cursor: pointer;">Add New Address</a>
+            </div>
+        </div>
+        <div id="AddressBookInfo" class="row" style="display: none;">
+        </div>
+
+        @if (Model.ConsigneeIsEditMode == "Y")
+        {
+            <div id="AddressBookPanel" class="row">
+                @Html.Partial("_AddressBook", Model)
+            </div>
+            
+        }
+        else
+        {
+            <div id="AddressBookPanel" class="row" style="display: none;">
+            </div>
+        }
+    </div>
+</div>

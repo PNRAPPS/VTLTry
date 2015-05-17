@@ -1,0 +1,45 @@
+﻿@model Vital.Model.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<script type="text/javascript">
+
+    function submitx() {
+
+        var uname = $("#username");
+        var pword = $("#password");
+
+        if (uname.val() == "" || pword.val() == "") {
+            alert("Please input a username and password.");
+        } else {
+            $("#loginForm").submit();
+        }
+
+       
+    }
+
+</script>
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px;margin-bottom: 0px; padding-bottom: 60px;">
+    <div class="six columns centered">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @style = "padding-left: 20px; padding-right: 20px; padding-top: 20px;", @id="loginForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+        
+            <h2 style="color: #58585a;">Login</h2>
+            <label class="lead">Username</label>
+            @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Enter your username.", @id="username"})
+            <label class="lead">Password</label>
+            @Html.PasswordFor(model => model.Password, new { @placeholder = "Enter your password.", @id = "password" })
+            <label>
+                @Html.EditorFor(model => model.RememberMe)
+                Remember Me</label>
+            <input class="radius button right" value="Login" type="button" onclick="submitx()" />
+        }
+    </div>
+</div>
+<div class="panel" style="background: #58585a; border: #58585a; padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;">
+    <p style="color: white;text-align: center;">Don't have an account? <a href="~/Account/Register">Register Now!</a></p>
+</div>
+

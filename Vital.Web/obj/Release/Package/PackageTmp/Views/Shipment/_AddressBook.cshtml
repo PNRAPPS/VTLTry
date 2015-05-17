@@ -1,0 +1,65 @@
+﻿@model Vital.Model.ShipmentModel
+
+<div class="twelve columns">
+    <hr style="margin-top: 10px; margin-bottom: 10px;" />
+</div>
+
+<div class="seven columns">
+    <h6 id="NewAddressCaption" style="color: #8f8375">Add New Address</h6>
+    <h6 style="margin-bottom: 0px;">
+        *Company Or
+        :
+    </h6>
+    @Html.TextBoxFor(model => model.ConsigneeCompanyName)
+    <h6 style="margin-bottom: 0px;">Contact Name:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeContactName)
+    <h6 style="margin-bottom: 0px;">*Country:</h6>
+    @Html.DropDownListFor(model => model.ConsigneeCountry, VitalHtmlHelper.GetCountryList().ToSelectList())
+    <h6 style="margin-bottom: 0px;">*Address Line 1:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeAddress1)
+    <h6 style="margin-bottom: 0px;">Address Line 2:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeAddress2)
+    <p>Apartment, suite, unit, building, floor, etc.</p>
+    <h6 style="margin-bottom: 0px;">Address Line 3:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeAddress3)
+    <p>Department, c/o, etc.</p>
+    <h6 style="margin-bottom: 0px;">*City:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeCity)
+    <h6 style="margin-bottom: 0px;">*Province:</h6>
+    @Html.DropDownListFor(model => model.ConsigneeProvince, VitalHtmlHelper.GetStateProvince().ToSelectList())
+    <h6 style="margin-bottom: 0px;">*Postal Code:</h6>
+    @Html.TextBoxFor(model => model.ConsigneePostalCode)
+    <div class="eight columns" style="padding-left: 0px;">
+        <h6 style="margin-bottom: 0px;">Telephone:</h6>
+        @Html.TextBoxFor(model => model.ConsigneeTelephone)
+    </div>
+    <div class="four columns">
+        <h6 style="margin-bottom: 0px;">Ext.:</h6>
+        @Html.TextBoxFor(model => model.ConsigneeTelephoneExt)
+    </div>
+    <h6 style="margin-bottom: 0px;">E-mail:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeEmail)
+    <label>
+        @Html.CheckBoxFor(model => model.ConsigneeIsResidential)
+        Residential address
+    </label>
+</div>
+<div class="twelve columns">
+    <hr style="margin-top: 10px; margin-bottom: 10px;" />
+</div>
+<div class="six columns">
+    <h6 style="margin-bottom: 0px;">Save Options for Address:</h6>
+    @Html.DropDownListFor(model => model.ConsigneeSaveOptionForAddress, VitalHtmlHelper.GetSaveOptionForAddressList().ToSelectList())
+</div>
+<div class="six columns" style="padding-left: 0px;">
+    <h6 style="margin-bottom: 0px;">Save this to my Address Book as:</h6>
+    @Html.TextBoxFor(model => model.ConsigneeSaveAddressBookAs)
+</div>
+@*<div class="six columns">
+        <h6 style="margin-bottom: 0px;">Save Options for Address:</h6>
+        @Html.DropDownListFor(model => model.ConsigneeSaveOptionForCorporateAddress, VitalHtmlHelper.GetSaveOptionForAddressList().ToSelectList())
+    </div>
+    <div class="six columns" style="padding-left: 0px;">
+        <h6 style="margin-bottom: 0px;">Save to Corporate Address Book as:</h6>
+        @Html.TextBoxFor(model => model.ConsigneeSaveCorporateAddressBookAs)
+    </div>*@

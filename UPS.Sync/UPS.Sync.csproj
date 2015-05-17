@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB89E42E-0D0F-4799-A20B-A9AB8EE3B6CD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UPS.Sync</RootNamespace>
+    <AssemblyName>UPS.Sync</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessorialCharge.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccessorialChargeAmount.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddressBookInfo.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUser.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingSummary.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Carrier.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consignee.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAccount.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerMarkup.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerShipment.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSpInstructionAmount.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LookupTable.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="News.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostalCode.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostalCodeZone.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="provision_marker_dss.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuantumData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuantumData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuantumData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuantumData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuantumData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="QuantumService.cs" />
+    <Compile Include="QVShipmentDetail.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QVSubscriptionFile.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QVSyncSummary.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="schema_info_dss.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="scope_config_dss.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="scope_info_dss.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentDetail.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShipmentRequest.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShippingType.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Skid.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkidRate.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkidWeight.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialInstruction.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialInstructionAmount.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Table.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tax.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Term.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrackService.cs" />
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TrackService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Weight.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zone.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneDiscountPercentage.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneRate.cs">
+      <DependentUpon>QuantumData.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="QuantumData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuantumData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="QuantumData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuantumData.edmx</DependentUpon>
+      <LastGenOutput>QuantumData.Context.cs</LastGenOutput>
+    </None>
+    <None Include="QuantumData.edmx.diagram">
+      <DependentUpon>QuantumData.edmx</DependentUpon>
+    </None>
+    <None Include="QuantumData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuantumData.edmx</DependentUpon>
+      <LastGenOutput>QuantumData.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TrackService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TrackService\Track.wsdl" />
+    <None Include="Web References\TrackService\TrackResponse1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TrackService\TrackWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UPS.Service\UPS.Service.csproj">
+      <Project>{622fc112-a6dd-4861-a27f-1e643cc839e2}</Project>
+      <Name>UPS.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vital.Model\Vital.Model.csproj">
+      <Project>{26f7289b-2981-4dfe-ba69-90f7ef412154}</Project>
+      <Name>Vital.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="C:\Users\Asus\Downloads\Tracking\TrackingPACKAGE\TRACKINGWebServices\SCHEMAS-WSDLs\Track.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TrackService\</RelPath>
+      <UpdateFromURL>C:\Users\Asus\Downloads\Tracking\TrackingPACKAGE\TRACKINGWebServices\SCHEMAS-WSDLs\Track.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Sync_WebReference_TrackService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

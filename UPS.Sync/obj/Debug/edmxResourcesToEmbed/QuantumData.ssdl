@@ -1,0 +1,1164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VITALDB_TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="provision_marker_dss">
+    <Key>
+      <PropertyRef Name="object_id" />
+      <PropertyRef Name="owner_scope_local_id" />
+    </Key>
+    <Property Name="object_id" Type="int" Nullable="false" />
+    <Property Name="owner_scope_local_id" Type="int" Nullable="false" />
+    <Property Name="provision_scope_local_id" Type="int" />
+    <Property Name="provision_timestamp" Type="bigint" Nullable="false" />
+    <Property Name="provision_local_peer_key" Type="int" Nullable="false" />
+    <Property Name="provision_scope_peer_key" Type="int" />
+    <Property Name="provision_scope_peer_timestamp" Type="bigint" />
+    <Property Name="provision_datetime" Type="datetime" />
+    <Property Name="state" Type="int" />
+    <Property Name="version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="schema_info_dss">
+    <Key>
+      <PropertyRef Name="schema_major_version" />
+      <PropertyRef Name="schema_minor_version" />
+    </Key>
+    <Property Name="schema_major_version" Type="int" Nullable="false" />
+    <Property Name="schema_minor_version" Type="int" Nullable="false" />
+    <Property Name="schema_extended_info" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scope_config_dss">
+    <Key>
+      <PropertyRef Name="config_id" />
+    </Key>
+    <Property Name="config_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="config_data" Type="xml" Nullable="false" />
+    <Property Name="scope_status" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="scope_info_dss">
+    <Key>
+      <PropertyRef Name="sync_scope_name" />
+    </Key>
+    <Property Name="scope_local_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="scope_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sync_scope_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="scope_sync_knowledge" Type="varbinary(max)" />
+    <Property Name="scope_tombstone_cleanup_knowledge" Type="varbinary(max)" />
+    <Property Name="scope_timestamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+    <Property Name="scope_config_id" Type="uniqueidentifier" />
+    <Property Name="scope_restore_count" Type="int" Nullable="false" />
+    <Property Name="scope_user_comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccessorialChargeAmounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Content" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="20" />
+    <Property Name="AccessorialChargeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerAccountId" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccessorialCharges">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccessorialChargeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AddressBookInfoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="NickName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyOrName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="Province" Type="nvarchar" MaxLength="100" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsResidential" Type="bit" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="100" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="100" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="LocationID" Type="nvarchar" MaxLength="100" />
+    <Property Name="SaveAsShipperFromFlag" Type="bit" Nullable="false" />
+    <Property Name="ReceiverUPSAccount" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverPostalCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceType1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceType2" Type="nvarchar" MaxLength="100" />
+    <Property Name="OwnerOfAddressBook_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Customer_Id" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="BillingSummaries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BillingDate" Type="datetime" Nullable="false" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="100" />
+    <Property Name="TotalInvoiceAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExemptBRK" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomsGSTorVAT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExemptCharges" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TaxableBRK" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BRKTax" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GSTApp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GSTAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HBCApp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HBCAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HONApp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HONAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HNSApp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HNSAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HSTApp" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HSTAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Commission" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AgentCommission" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Agent" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Carriers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BillToAdd" Type="nvarchar" MaxLength="50" />
+    <Property Name="Company" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AccountNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ConsigneeCustomers">
+    <Key>
+      <PropertyRef Name="Consignee_Id" />
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Consignee_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Customer_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consignees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AddressBookName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ConsigneeAddress1" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConsigneeAddress2" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConsigneeAddress3" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConsigneeCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConsigneeStateOrProvince" Type="nvarchar" MaxLength="50" />
+    <Property Name="COnsigneePostalOrZip" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConsigneeCountry" Type="nvarchar" MaxLength="15" />
+    <Property Name="ConsigneeContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConsigneePhone" Type="nvarchar" MaxLength="30" />
+    <Property Name="ConsigneePhoneExt" Type="nvarchar" MaxLength="20" />
+    <Property Name="ConsigneeEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeIsResidential" Type="bit" />
+    <Property Name="UPSId" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="CustomerAccounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RateYear" Type="int" Nullable="false" />
+    <Property Name="UPSEnabled" Type="bit" Nullable="false" />
+    <Property Name="TermId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerMarkups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MarkupPercentage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+    <Property Name="PhoneExt" Type="nvarchar" MaxLength="30" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="30" />
+    <Property Name="AltPhone" Type="nvarchar" MaxLength="30" />
+    <Property Name="AltContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Province" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="15" />
+    <Property Name="SalesRepresentative" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommissionRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="UPSUsername" Type="nvarchar" MaxLength="100" />
+    <Property Name="UPSPassword" Type="nvarchar" MaxLength="100" />
+    <Property Name="FaxNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="AlternateContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="AlternateEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CustomerShipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="customerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="trackingNumber" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="createdDate" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="pickupNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="modifiedDate" Type="datetime" />
+    <Property Name="shipmentLabel" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="CustomerSpInstructionAmounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SpecialInstructionId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="invoiceId" />
+    </Key>
+    <Property Name="invoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="invoiceSubject" Type="nvarchar(max)" />
+    <Property Name="invoiceDetails" Type="nvarchar(max)" />
+    <Property Name="invoiceDate" Type="datetime" Nullable="false" />
+    <Property Name="invoiceFileName" Type="varbinary(max)" Nullable="false" />
+    <Property Name="dateUpload" Type="datetime" Nullable="false" />
+    <Property Name="username" Type="varchar(max)" Nullable="false" />
+    <Property Name="accountnumber" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookupTable">
+    <Key>
+      <PropertyRef Name="LookupId" />
+    </Key>
+    <Property Name="LookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookupCode" Type="varchar" MaxLength="100" />
+    <Property Name="LookupValue" Type="varchar" MaxLength="100" />
+    <Property Name="LookupText" Type="varchar" MaxLength="100" />
+    <Property Name="DateAdded" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsTitle" Type="varchar(max)" Nullable="false" />
+    <Property Name="NewsDate" Type="datetime" Nullable="false" />
+    <Property Name="NewsCaption" Type="varchar(max)" />
+    <Property Name="NewsContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostalCodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OriginCountry" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="OriginPostalCodeMin" Type="nvarchar" MaxLength="10" />
+    <Property Name="OriginPostalCodeMax" Type="nvarchar" MaxLength="10" />
+    <Property Name="DestinationCountry" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DestinationPostalCodeMin" Type="nvarchar" MaxLength="10" />
+    <Property Name="DestinationPostalCodeMax" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="PostalCodeZones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PostalCodeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ShippingTypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ZoneId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QVShipmentDetails">
+    <Key>
+      <PropertyRef Name="QVShipmentDetailId" />
+    </Key>
+    <Property Name="QVShipmentDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubscriptionFileId" Type="int" />
+    <Property Name="TrackingNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ShipperNumber" Type="varchar" MaxLength="500" />
+    <Property Name="ShipmentEvent" Type="varchar" MaxLength="500" />
+    <Property Name="ReferenceNumber" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="varchar" MaxLength="500" />
+    <Property Name="ManifestDate" Type="datetime" />
+    <Property Name="ShipTo" Type="varchar" MaxLength="500" />
+    <Property Name="Service" Type="varchar" MaxLength="500" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="Images" Type="varchar(max)" />
+    <Property Name="SignedBy" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToName" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToAttention" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToAddressLine1" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToAddressLine2" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToTelephoneNumber" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToCity" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToStateProvince" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToPostalCode" Type="varchar" MaxLength="500" />
+    <Property Name="ShipToCountry" Type="varchar" MaxLength="500" />
+    <Property Name="ExceptionDescription" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="QVSubscriptionFile">
+    <Key>
+      <PropertyRef Name="SubscriptionFileId" />
+    </Key>
+    <Property Name="SubscriptionFileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SyncId" Type="int" />
+    <Property Name="SubscriptionFileName" Type="varchar" MaxLength="50" />
+    <Property Name="SubscriptionNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="QVSyncSummary">
+    <Key>
+      <PropertyRef Name="QVSyncId" />
+    </Key>
+    <Property Name="QVSyncId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QVSyncDate" Type="datetime" />
+    <Property Name="QVEventName" Type="varchar" MaxLength="50" />
+    <Property Name="QVSyncStatusCode" Type="varchar" MaxLength="50" />
+    <Property Name="QVSyncStatusDescription" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="RoleCustomers">
+    <Key>
+      <PropertyRef Name="Role_Id" />
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+    <Property Name="Customer_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ShipmentDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InvoiceDate" Type="date" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="int" Nullable="false" />
+    <Property Name="AccountNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="ShipmentReferenceNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="PackageQuantity" Type="int" Nullable="false" />
+    <Property Name="TrackingNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnteredWeight" Type="int" Nullable="false" />
+    <Property Name="EnteredWeightUnitOfMeasure" Type="nvarchar" MaxLength="100" />
+    <Property Name="BilledWeight" Type="int" Nullable="false" />
+    <Property Name="BilledWeightUnitOfMeasure" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContainerType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Zone" Type="int" Nullable="false" />
+    <Property Name="ChargeClassificationCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChargeDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="InvoiceCurrencyCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="FreightCharge" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Fuel" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SalesTax" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SenderName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SenderCompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SenderAddressLine1" Type="nvarchar" MaxLength="100" />
+    <Property Name="SenderAddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="SenderCity" Type="nvarchar" MaxLength="100" />
+    <Property Name="SenderState" Type="nvarchar" MaxLength="6" />
+    <Property Name="SenderPostal" Type="nvarchar" MaxLength="100" />
+    <Property Name="SenderCountry" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverCompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverAddressLine1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverAddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverCity" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverState" Type="nvarchar" MaxLength="6" />
+    <Property Name="ReceiverPostal" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReceiverCountry" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoldToCompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoldToAddressLine1" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoldToAddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoldToCity" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoldToState" Type="nvarchar" MaxLength="6" />
+    <Property Name="SoldToPostal" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoldToCountry" Type="nvarchar" MaxLength="100" />
+    <Property Name="LeadShipmentNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="WorldEaseNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="EnteredHeight" Type="int" Nullable="false" />
+    <Property Name="EnteredWidth" Type="int" Nullable="false" />
+    <Property Name="EnteredLength" Type="int" Nullable="false" />
+    <Property Name="IsLargePackage" Type="bit" Nullable="false" />
+    <Property Name="IsAdditionalHandling" Type="bit" Nullable="false" />
+    <Property Name="PackageDeclaredValue" Type="int" Nullable="false" />
+    <Property Name="ServiceCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="SendEmailNotificationFlag" Type="bit" Nullable="false" />
+    <Property Name="ReceiveConfirmationAndDeliveryFlag" Type="bit" Nullable="false" />
+    <Property Name="DeliveryOnSundayFlag" Type="bit" Nullable="false" />
+    <Property Name="CODFlag" Type="bit" Nullable="false" />
+    <Property Name="ReferenceNumber1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceNumber2" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceNumber3" Type="nvarchar" MaxLength="100" />
+    <Property Name="BillShippingChargesTo" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ShipmentRequests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="int" Nullable="false" />
+    <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="ShipmentDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SpecialInstruction1" Type="nvarchar" MaxLength="100" />
+    <Property Name="SpecialInstruction1Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SpecialInstruction2" Type="nvarchar" MaxLength="100" />
+    <Property Name="SpecialInstruction2Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SpecialInstruction3" Type="nvarchar" MaxLength="100" />
+    <Property Name="SpecialInstruction3Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="WeightAs" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SkidRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="EstimatedCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ActualCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NumberOfPieces" Type="int" Nullable="false" />
+    <Property Name="FreightCharge" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FuelSurcharge" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerMarkup" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SalesTax" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ShipperName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShipperReference" Type="nvarchar" MaxLength="100" />
+    <Property Name="ShipperAddress1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ShipperAddress2" Type="nvarchar" MaxLength="100" />
+    <Property Name="ShipperCity" Type="nvarchar" MaxLength="100" />
+    <Property Name="ShipperProvince" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShipperPostal" Type="nvarchar" MaxLength="100" />
+    <Property Name="ShipperCountry" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ConsigneeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ConsigneeReference" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeAddress1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeAddress2" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeCity" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeProvince" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ConsigneePostal" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConsigneeCountry" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ConsigneeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CarrierId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShippingTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Service" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkidRates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SkidPieces" Type="int" Nullable="false" />
+    <Property Name="OriginCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OriginState" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OriginAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="OriginCountry" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DestinationCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DestinationState" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DestinationAbbreviation" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DestinationCountry" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CarrierId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SkidWeightId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Skids">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SkidDescription" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ItemLength" Type="float" Nullable="false" />
+    <Property Name="ItemWidth" Type="float" Nullable="false" />
+    <Property Name="ItemHeight" Type="float" Nullable="false" />
+    <Property Name="SkidVolume" Type="float" Nullable="false" />
+    <Property Name="SkidWeight" Type="float" Nullable="false" />
+    <Property Name="UnitOfMeasurement" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="QuotationId" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkidWeights">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Low" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="High" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecialInstructionAmounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CarrierAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CarrierId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SpecialInstructionId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecialInstructions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SpecialInstructionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="LookupId" />
+    </Key>
+    <Property Name="LookupId" Type="int" Nullable="false" />
+    <Property Name="LookupCode" Type="varchar" MaxLength="100" />
+    <Property Name="LookupValue" Type="varchar" MaxLength="100" />
+    <Property Name="LookupText" Type="varchar" MaxLength="100" />
+    <Property Name="DateAdded" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Taxes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TaxName" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="TaxStateAbbreviation" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="TaxState" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="TaxPercent" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Terms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TermName" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserAccounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Weights">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Low" Type="int" Nullable="false" />
+    <Property Name="High" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZoneDiscountPercentages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Content" Type="float" Nullable="false" />
+    <Property Name="PAKDiscountPercentage" Type="float" Nullable="false" />
+    <Property Name="LTRDiscountPercentage" Type="float" Nullable="false" />
+    <Property Name="CustomerAccountId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ZoneId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZoneRates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Minimum" Type="float" Nullable="false" />
+    <Property Name="Rate" Type="float" Nullable="false" />
+    <Property Name="RateYear" Type="int" Nullable="false" />
+    <Property Name="ZoneId" Type="int" Nullable="false" />
+    <Property Name="WeightId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ZoneName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CustomerShipment_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="CustomerShipment" Type="Self.CustomerShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerShipment">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId">
+    <End Role="AccessorialCharges" Type="Self.AccessorialCharges" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessorialChargeAmounts" Type="Self.AccessorialChargeAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessorialCharges">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccessorialChargeAmounts">
+        <PropertyRef Name="AccessorialChargeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId">
+    <End Role="CustomerAccounts" Type="Self.CustomerAccounts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessorialChargeAmounts" Type="Self.AccessorialChargeAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccessorialChargeAmounts">
+        <PropertyRef Name="CustomerAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="AddressBookInfoes" Type="Self.AddressBookInfoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddressBookInfoes">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ConsigneeCustomers_dbo_Consignees_Consignee_Id">
+    <End Role="Consignees" Type="Self.Consignees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ConsigneeCustomers" Type="Self.ConsigneeCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consignees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConsigneeCustomers">
+        <PropertyRef Name="Consignee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ConsigneeCustomers_dbo_Customers_Customer_Id">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ConsigneeCustomers" Type="Self.ConsigneeCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConsigneeCustomers">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerAccounts_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerAccounts" Type="Self.CustomerAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerAccounts">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerAccounts_dbo_Terms_TermId">
+    <End Role="Terms" Type="Self.Terms" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerAccounts" Type="Self.CustomerAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerAccounts">
+        <PropertyRef Name="TermId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerMarkups_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerMarkups" Type="Self.CustomerMarkups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerMarkups">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerSpInstructionAmounts" Type="Self.CustomerSpInstructionAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerSpInstructionAmounts">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+    <End Role="SpecialInstructions" Type="Self.SpecialInstructions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerSpInstructionAmounts" Type="Self.CustomerSpInstructionAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialInstructions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerSpInstructionAmounts">
+        <PropertyRef Name="SpecialInstructionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId">
+    <End Role="PostalCodes" Type="Self.PostalCodes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostalCodeZones" Type="Self.PostalCodeZones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostalCodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalCodeZones">
+        <PropertyRef Name="PostalCodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId">
+    <End Role="ShippingTypes" Type="Self.ShippingTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostalCodeZones" Type="Self.PostalCodeZones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShippingTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalCodeZones">
+        <PropertyRef Name="ShippingTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PostalCodeZones_dbo_Zones_ZoneId">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostalCodeZones" Type="Self.PostalCodeZones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalCodeZones">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_RoleCustomers_dbo_Customers_Customer_Id">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleCustomers" Type="Self.RoleCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleCustomers">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_RoleCustomers_dbo_Roles_Role_Id">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleCustomers" Type="Self.RoleCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleCustomers">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId">
+    <End Role="Carriers" Type="Self.Carriers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentRequests" Type="Self.ShipmentRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentRequests">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId">
+    <End Role="Consignees" Type="Self.Consignees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentRequests" Type="Self.ShipmentRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consignees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentRequests">
+        <PropertyRef Name="ConsigneeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ShipmentRequests_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentRequests" Type="Self.ShipmentRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentRequests">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SkidRates_dbo_Carriers_CarrierId">
+    <End Role="Carriers" Type="Self.Carriers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SkidRates" Type="Self.SkidRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkidRates">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId">
+    <End Role="SkidWeights" Type="Self.SkidWeights" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SkidRates" Type="Self.SkidRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkidWeights">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkidRates">
+        <PropertyRef Name="SkidWeightId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId">
+    <End Role="Carriers" Type="Self.Carriers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SpecialInstructionAmounts" Type="Self.SpecialInstructionAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecialInstructionAmounts">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+    <End Role="SpecialInstructions" Type="Self.SpecialInstructions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SpecialInstructionAmounts" Type="Self.SpecialInstructionAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialInstructions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecialInstructionAmounts">
+        <PropertyRef Name="SpecialInstructionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId">
+    <End Role="CustomerAccounts" Type="Self.CustomerAccounts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneDiscountPercentages" Type="Self.ZoneDiscountPercentages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneDiscountPercentages">
+        <PropertyRef Name="CustomerAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneDiscountPercentages" Type="Self.ZoneDiscountPercentages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneDiscountPercentages">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneRates_dbo_Weights_WeightId">
+    <End Role="Weights" Type="Self.Weights" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneRates" Type="Self.ZoneRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Weights">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneRates">
+        <PropertyRef Name="WeightId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneRates_dbo_Zones_ZoneId">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneRates" Type="Self.ZoneRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneRates">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VITALDB_TESTModelStoreContainer">
+    <EntitySet Name="provision_marker_dss" EntityType="Self.provision_marker_dss" Schema="DataSync" store:Type="Tables" />
+    <EntitySet Name="schema_info_dss" EntityType="Self.schema_info_dss" Schema="DataSync" store:Type="Tables" />
+    <EntitySet Name="scope_config_dss" EntityType="Self.scope_config_dss" Schema="DataSync" store:Type="Tables" />
+    <EntitySet Name="scope_info_dss" EntityType="Self.scope_info_dss" Schema="DataSync" store:Type="Tables" />
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccessorialChargeAmounts" EntityType="Self.AccessorialChargeAmounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccessorialCharges" EntityType="Self.AccessorialCharges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddressBookInfoes" EntityType="Self.AddressBookInfoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillingSummaries" EntityType="Self.BillingSummaries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carriers" EntityType="Self.Carriers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsigneeCustomers" EntityType="Self.ConsigneeCustomers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consignees" EntityType="Self.Consignees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerAccounts" EntityType="Self.CustomerAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerMarkups" EntityType="Self.CustomerMarkups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerShipment" EntityType="Self.CustomerShipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerSpInstructionAmounts" EntityType="Self.CustomerSpInstructionAmounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupTable" EntityType="Self.LookupTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostalCodes" EntityType="Self.PostalCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostalCodeZones" EntityType="Self.PostalCodeZones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QVShipmentDetails" EntityType="Self.QVShipmentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QVSubscriptionFile" EntityType="Self.QVSubscriptionFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QVSyncSummary" EntityType="Self.QVSyncSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleCustomers" EntityType="Self.RoleCustomers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipmentDetails" EntityType="Self.ShipmentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipmentRequests" EntityType="Self.ShipmentRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShippingTypes" EntityType="Self.ShippingTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SkidRates" EntityType="Self.SkidRates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Skids" EntityType="Self.Skids" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SkidWeights" EntityType="Self.SkidWeights" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecialInstructionAmounts" EntityType="Self.SpecialInstructionAmounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecialInstructions" EntityType="Self.SpecialInstructions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Taxes" EntityType="Self.Taxes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Terms" EntityType="Self.Terms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Weights" EntityType="Self.Weights" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZoneDiscountPercentages" EntityType="Self.ZoneDiscountPercentages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZoneRates" EntityType="Self.ZoneRates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zones" EntityType="Self.Zones" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CustomerShipment_Customers" Association="Self.FK_CustomerShipment_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerShipment" EntitySet="CustomerShipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId" Association="Self.FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId">
+      <End Role="AccessorialCharges" EntitySet="AccessorialCharges" />
+      <End Role="AccessorialChargeAmounts" EntitySet="AccessorialChargeAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId" Association="Self.FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId">
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+      <End Role="AccessorialChargeAmounts" EntitySet="AccessorialChargeAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id" Association="Self.FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="AddressBookInfoes" EntitySet="AddressBookInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ConsigneeCustomers_dbo_Consignees_Consignee_Id" Association="Self.FK_dbo_ConsigneeCustomers_dbo_Consignees_Consignee_Id">
+      <End Role="Consignees" EntitySet="Consignees" />
+      <End Role="ConsigneeCustomers" EntitySet="ConsigneeCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ConsigneeCustomers_dbo_Customers_Customer_Id" Association="Self.FK_dbo_ConsigneeCustomers_dbo_Customers_Customer_Id">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="ConsigneeCustomers" EntitySet="ConsigneeCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerAccounts_dbo_Customers_CustomerId" Association="Self.FK_dbo_CustomerAccounts_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerAccounts_dbo_Terms_TermId" Association="Self.FK_dbo_CustomerAccounts_dbo_Terms_TermId">
+      <End Role="Terms" EntitySet="Terms" />
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerMarkups_dbo_Customers_CustomerId" Association="Self.FK_dbo_CustomerMarkups_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerMarkups" EntitySet="CustomerMarkups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId" Association="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerSpInstructionAmounts" EntitySet="CustomerSpInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" Association="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+      <End Role="SpecialInstructions" EntitySet="SpecialInstructions" />
+      <End Role="CustomerSpInstructionAmounts" EntitySet="CustomerSpInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId" Association="Self.FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId">
+      <End Role="PostalCodes" EntitySet="PostalCodes" />
+      <End Role="PostalCodeZones" EntitySet="PostalCodeZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId" Association="Self.FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId">
+      <End Role="ShippingTypes" EntitySet="ShippingTypes" />
+      <End Role="PostalCodeZones" EntitySet="PostalCodeZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PostalCodeZones_dbo_Zones_ZoneId" Association="Self.FK_dbo_PostalCodeZones_dbo_Zones_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="PostalCodeZones" EntitySet="PostalCodeZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_RoleCustomers_dbo_Customers_Customer_Id" Association="Self.FK_dbo_RoleCustomers_dbo_Customers_Customer_Id">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="RoleCustomers" EntitySet="RoleCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_RoleCustomers_dbo_Roles_Role_Id" Association="Self.FK_dbo_RoleCustomers_dbo_Roles_Role_Id">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RoleCustomers" EntitySet="RoleCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId" Association="Self.FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="ShipmentRequests" EntitySet="ShipmentRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId" Association="Self.FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId">
+      <End Role="Consignees" EntitySet="Consignees" />
+      <End Role="ShipmentRequests" EntitySet="ShipmentRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ShipmentRequests_dbo_Customers_CustomerId" Association="Self.FK_dbo_ShipmentRequests_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="ShipmentRequests" EntitySet="ShipmentRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SkidRates_dbo_Carriers_CarrierId" Association="Self.FK_dbo_SkidRates_dbo_Carriers_CarrierId">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="SkidRates" EntitySet="SkidRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId" Association="Self.FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId">
+      <End Role="SkidWeights" EntitySet="SkidWeights" />
+      <End Role="SkidRates" EntitySet="SkidRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId" Association="Self.FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="SpecialInstructionAmounts" EntitySet="SpecialInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" Association="Self.FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+      <End Role="SpecialInstructions" EntitySet="SpecialInstructions" />
+      <End Role="SpecialInstructionAmounts" EntitySet="SpecialInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId" Association="Self.FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId">
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+      <End Role="ZoneDiscountPercentages" EntitySet="ZoneDiscountPercentages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId" Association="Self.FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="ZoneDiscountPercentages" EntitySet="ZoneDiscountPercentages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneRates_dbo_Weights_WeightId" Association="Self.FK_dbo_ZoneRates_dbo_Weights_WeightId">
+      <End Role="Weights" EntitySet="Weights" />
+      <End Role="ZoneRates" EntitySet="ZoneRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneRates_dbo_Zones_ZoneId" Association="Self.FK_dbo_ZoneRates_dbo_Zones_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="ZoneRates" EntitySet="ZoneRates" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

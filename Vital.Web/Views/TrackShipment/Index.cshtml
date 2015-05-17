@@ -1,0 +1,94 @@
+﻿@model List<Vital.Model.TrackingResultModel>
+
+@{
+    ViewBag.Title = "Track a Shipment";
+}
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-bottom: 25px;">Enter Tracking Numbers</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <dl class="tabs" style="border-bottom: solid 1px #ee8f1e; margin-bottom: 0px;">
+                <dd class="active"><a href="#simple1" style="cursor: default; color: #ffffff; background: #ee8f1e; border-left: 1px solid #ee8f1e; border-right: 1px solid #ee8f1e; font-weight: normal;">Track a Shipment</a></dd>
+            </dl>
+            <ul class="tabs-content">
+                <li class="active" id="simple1Tab">
+                    <div class="panel" style="background: #fff; border: solid 1px #ee8f1e; margin: 0 0 22px 0; padding-top: 0px;">
+                        <div class="row">
+                            @using (Html.BeginForm("Index", "TrackShipment", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary()
+                                <div class="five columns">
+                                    <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                        <div class="row">
+                                            <div class="twelve columns">
+                                                <h5 style="margin-top: 0; margin-bottom: 0;">Enter Tracking Number</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0px; margin-top: 0px; padding-top: 20px; padding-bottom: 0px;">
+                                        <div class="row">
+                                            <div class="twelve columns">
+                                                <textarea name="trackingNumbers" style="max-height: 200px; min-height: 200px;" placeholder="Enter up to 25 tracking or InfoNotice numbers, one per line."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 20px;">
+                                            <div class="twelve columns">
+                                                <input type="submit" class=" small button right" value="Track">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="seven columns">
+                                <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                    <div class="row">
+                                        <div class="twelve columns">
+                                            <h5 style="margin-top: 0; margin-bottom: 0;">Recently Tracked</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 0px; margin-bottom: 0px; margin-top: 0px; padding-top: 5px; padding-bottom: 5px;">
+                                    <div class="row">
+                                        <table style="margin:0 5px 0 0px; width: 100%;">
+                                            <tr>
+                                                <th>Tracking Number</th>
+                                                <th>Description</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            @if (Model != null)
+                                            {
+                                                foreach (var item in Model)
+                                                {
+                                                    <tr style="background:#e7e7e7;">
+
+                                                        @if (@item.Status == "No tracking information available")
+                                                        {
+                                                            <td>@item.TrackingNumber</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td><a style="text-decoration: underline;" href='@Url.Action("Info", new { id = @item.TrackingNumber })'>@item.TrackingNumber</a></td>
+                                                        }
+                                                        <td>@item.Description</td>
+                                                        <td>@item.Status</td>        
+                                                </tr>    
+                                                }
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Shipping_Pkg_Gnd/ShippingPACKAGE/PACKAGEWebServices/SCHEMA-WSDLs/UPSSecurity.xsd" filename="UPSSecurity.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Shipping_Pkg_Gnd/ShippingPACKAGE/PACKAGEWebServices/SCHEMA-WSDLs/IFWS.xsd" filename="IFWS.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Shipping_Pkg_Gnd/ShippingPACKAGE/PACKAGEWebServices/SCHEMA-WSDLs/ShipWebServiceSchema.xsd" filename="ShipWebServiceSchema.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Shipping_Pkg_Gnd/ShippingPACKAGE/PACKAGEWebServices/SCHEMA-WSDLs/Error1.1.xsd" filename="Error1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Shipping_Pkg_Gnd/ShippingPACKAGE/PACKAGEWebServices/SCHEMA-WSDLs/common.xsd" filename="common.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="file:///C:/Users/j.e.bolante/Desktop/VITAL/API/Shipping_Pkg_Gnd/ShippingPACKAGE/PACKAGEWebServices/SCHEMA-WSDLs/Ship.wsdl" filename="Ship.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

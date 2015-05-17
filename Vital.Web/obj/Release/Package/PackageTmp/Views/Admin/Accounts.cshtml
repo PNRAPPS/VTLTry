@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Vital.Model.CustomerModel>
+<html>
+<head>
+    <title>Vital Admin</title>
+    <link rel="stylesheet" href="~/Content/admincss/style.css" />
+    <link rel="stylesheet" href="~/Content/admincss/blue/style.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="homeContainer">
+            <div class="header">
+                <div style="float:left;width:auto;">
+                    <img src="~/Content/adminimages/bannerimage.png" />
+                </div>
+                <div style="float:right;width:auto;">
+                    <br />
+                   <a href="/Admin/Accounts">ACCOUNTS</a> | <a href="/Admin/News">NEWS</a> | <a href="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Admin/">LOGOUT</a>
+
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+                function Search() {
+
+                    var searchitem = $("#search").val();
+
+                    if (searchitem == "") {
+                        alert("please input a text to search.");
+                    } else {
+                        $("#table1").remove();
+                        $(".loadsearchhere").show();
+                        $(".loadsearchhere").load("Search?search=" + searchitem + "");
+                      
+                    }
+
+                }
+
+            </script>
+
+            <div class="mainBody">
+                    <input type="text" name="search" id="search" style="width:200px;" placeholder="Search username here..." /> <input type="button" class="button" value="Search" onclick="Search()" />
+                    
+                <div class="loadsearchhere" style="display:none;">
+                    <center>Please wait..</center>
+                </div>
+                
+                <table align="center" class="tablesorter" id="table1">
+                    <thead>
+                        <tr style="font-weight:bold" align="center">
+                            
+                            <td>Username</td>
+                            <td>Contact Person</td>
+                            <td>Company</td>
+                            <td>Email</td>
+                            <td>Country</td>
+                            <td>Phone #</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- do the loop here !-->
+                        @foreach (var i in Model) {
+                         <tr>
+                            
+                            <td>@Html.DisplayFor(modelItem => i.Username)</td>
+                            <td>@Html.DisplayFor(modelItem => i.ContactPerson)</td>
+                            <td>@Html.DisplayFor(modelItem => i.CompanyName)</td>
+                            <td>@Html.DisplayFor(modelItem => i.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => i.Country)</td>
+                            <td>@Html.DisplayFor(modelItem => i.Phone)</td>
+                             <td><input type="button" id="addInvoiceBtn" value="Add Invoice" onclick="window.location.href='/Admin/AddInvoice/?username=@i.Username'" /></td>
+
+                             <td><input type="button" id="viewBtn" value="View" onclick="window.location.href='/Admin/ViewAccounts/?username=@i.Username'" /></td>
+                             <td><input type="button" id="deleteBtn" value="Delete" onclick="deleteAccount('@i.Username')" /></td>
+                        </tr>
+                        
+                        }
+                       
+
+                       
+                        <!-- end !-->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

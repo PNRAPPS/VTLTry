@@ -1,0 +1,52 @@
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\obj\Debug\Vital.Service.csprojResolveAssemblyReference.cache
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Vital.Service.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Vital.Service.pdb
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Repository.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Vital.Data.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Vital.Model.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\EntityFramework.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Repository.pdb
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Vital.Data.pdb
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\Vital.Model.pdb
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\bin\Debug\EntityFramework.xml
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\obj\Debug\Vital.Service.dll
+C:\Users\User\Downloads\Vital Web_001\Vital Web\Vital.Service\obj\Debug\Vital.Service.pdb
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Vital.Service.dll
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Vital.Service.pdb
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Repository.dll
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Vital.Data.dll
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Vital.Model.dll
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\EntityFramework.dll
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Repository.pdb
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Vital.Data.pdb
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\Vital.Model.pdb
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\bin\Debug\EntityFramework.xml
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\obj\Debug\Vital.Service.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\obj\Debug\Vital.Service.dll
+C:\Users\Asus\Desktop\Vital Nike\Vital.Service\obj\Debug\Vital.Service.pdb
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Vital.Service.dll
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Vital.Service.pdb
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Repository.dll
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Vital.Data.dll
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Vital.Model.dll
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\EntityFramework.dll
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Repository.pdb
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Vital.Data.pdb
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\Vital.Model.pdb
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\bin\Debug\EntityFramework.xml
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\obj\Debug\Vital.Service.csprojResolveAssemblyReference.cache
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\obj\Debug\Vital.Service.dll
+C:\Users\User\Downloads\Vital Nike_03102015\Vital.Service\obj\Debug\Vital.Service.pdb
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Vital.Service.dll
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Vital.Service.pdb
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Repository.dll
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Vital.Data.dll
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Vital.Model.dll
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\EntityFramework.dll
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Repository.pdb
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Vital.Data.pdb
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\Vital.Model.pdb
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\bin\Debug\EntityFramework.xml
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\obj\Debug\Vital.Service.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\obj\Debug\Vital.Service.dll
+C:\Users\Asus\Desktop\Vital Nike Source\Vital.Service\obj\Debug\Vital.Service.pdb

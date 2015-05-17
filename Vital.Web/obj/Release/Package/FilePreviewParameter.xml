@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Vital.Web_IN_0_Web" tags="PhysicalPath">
+    <parameterEntry kind="ProviderPath" scope="contentPath" match="^C:\\Users\\Asus\\Desktop\\Vital\ Nike\\Vital\.Web\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Asus\\Desktop\\Vital\ Nike\\Vital\.Web\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Repository.Providers.EntityFramework.DataContext-Web.config Connection String" description="" value="Data Source=tcp:iypztuwgm5.database.windows.net,1433;Initial Catalog=VITALDB_TEST;Integrated Security=False;User ID=senditoutadmin@iypztuwgm5;Password=Vital@1234;Connect Timeout=30;Encrypt=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\Downloads\\Vital\ Web_001\\Vital\ Web\\Vital\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Repository.Providers.EntityFramework.DataContext']/@connectionString" />
+  </parameter>
+  <parameter name="VitalConnection-Web.config Connection String" description="" value="Data Source=tcp:iypztuwgm5.database.windows.net,1433;Initial Catalog=VITALDB_TEST;Integrated Security=False;User ID=senditoutadmin@iypztuwgm5;Password=Vital@1234;Connect Timeout=30;Encrypt=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\Downloads\\Vital\ Web_001\\Vital\ Web\\Vital\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='VitalConnection']/@connectionString" />
+  </parameter>
+</parameters>

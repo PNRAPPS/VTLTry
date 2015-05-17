@@ -1,0 +1,241 @@
+﻿@model Vital.Model.ConsigneeModel
+
+@{
+    ViewBag.Title = "CreateConsignee";
+}
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-bottom: 25px;">Access Address Book</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <dl class="tabs" style="border-bottom: solid 1px #ee8f1e; margin-bottom: 0px;">
+                <dd class="active"><a href="~/Customer/" style="cursor: pointer; color: #ffffff; width: 120px; background: url('/Content/images/whitelockicon.png') no-repeat 78% #ee8f1e; border-left: 1px solid #ee8f1e; border-right: 1px solid #ee8f1e; font-weight: normal;">My Vital</a></dd>
+            </dl>
+
+            <ul class="tabs-content">
+                <li class="active" id="simple1Tab">
+                    <div class="panel" style="background: #fff; border: solid 1px #ee8f1e; margin: 0 0 22px 0; padding-top: 0px;">
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h5>Manage Address Book</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="six columns">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary()
+
+                                    <fieldset>
+                                        <legend style="color: #f6a11d; margin-bottom: 10px;">Consignee Information</legend>
+                                        <font color="red">Asterisk(*) means required.</font>
+                                        <div class="editor-label">
+                                            *Consignee Name
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneeName, new { @id = "consigneeName" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneeName)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee Contact Person
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneeContactPerson, new { @id = "consigneeContactPerson" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneeContactPerson)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee Email
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneeEmail, new { @id = "consigneeEmail" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneeEmail)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee Address 1
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneeAddress1, new { @id = "consigneeAddr1" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneeAddress1)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            Consignee Address 2
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneeAddress2, new { @id = "consigneeAddr2" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneeAddress2)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            @Html.LabelFor(model => model.ConsigneeCountry)
+                                        </div>
+                                        <div class="editor-field">
+                                            <select name="Country" id="consigneeCountry">
+                                                <option>Canada</option>
+                                                <option>USA</option>
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.ConsigneeCountry)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee City
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneeCity, new { @id = "consigneeCity" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneeCity)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee State
+                                            )
+                                        </div>
+                                        <div class="editor-field">
+                                            <select name="State" id="consigneeStateOrProvince">
+                                                <option value="" selected="selected">Select a State</option>
+                                                <option value="AL">Alabama</option>
+                                                <option value="AK">Alaska</option>
+                                                <option value="AZ">Arizona</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="CA">California</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="DC">District Of Columbia</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="HI">Hawaii</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">Massachusetts</option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">Mississippi</option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="NH">New Hampshire</option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">North Carolina</option>
+                                                <option value="ND">North Dakota</option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="PA">Pennsylvania</option>
+                                                <option value="RI">Rhode Island</option>
+                                                <option value="SC">South Carolina</option>
+                                                <option value="SD">South Dakota</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="UT">Utah</option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WA">Washington</option>
+                                                <option value="WV">West Virginia</option>
+                                                <option value="WI">Wisconsin</option>
+                                                <option value="WY">Wyoming</option>
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.ConsigneeStateOrProvince)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee Postal Code
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.COnsigneePostalOrZip, new { @id = "cOnsigneePostalOrZip" })
+                                            @Html.ValidationMessageFor(model => model.COnsigneePostalOrZip)
+                                        </div>
+
+                                        <div class="editor-label">
+                                            *Consignee Phone
+                                        </div>
+                                        <div class="editor-field">
+                                            @Html.TextBoxFor(model => model.ConsigneePhone, new { @id = "cOnsigneePhone" })
+                                            @Html.ValidationMessageFor(model => model.ConsigneePhone)
+                                        </div>
+
+                                        <p>
+                                            <input class="large button right" type="button" onclick="createConsignee()" value="Create">
+                                        </p>
+                                    </fieldset>
+                                }
+
+                                <script type="text/javascript">
+
+                                    function createConsignee() {
+
+                                        var url = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/SaveConsignee";
+                                       // var url = "http://localhost:60759/Account/SaveConsignee";
+
+                                        var consigneeName = $("#consigneeName").val();
+                                        var consigneeContactPerson = $("#consigneeContactPerson").val();
+                                        var consigneeAddr1 = $("#consigneeAddr1").val();
+                                        var consigneeAddr2 = $("#consigneeAddr2").val();
+                                        var consigneeCountry = $("#consigneeCountry").val();
+                                        var consigneeCity = $("#consigneeCity").val();
+                                        var consigneeStateOrProvince = $("#consigneeStateOrProvince").val();
+                                        var consigneePostalOrZip = $("#consigneePostalOrZip").val();
+                                        var consigneePhone = $("#consigneePhone").val();
+                                        var consigneeEmail = $("#consigneeEmail").val();
+
+                                        if (consigneeName == "" || consigneeContactPerson == ""
+                                            || consigneeAddr1 == "" || consigneeCity == "" || consigneeStateOrProvince == ""
+                                            || consigneeEmail == "" || consigneePostalOrZip == ""
+                                            || consigneePhone == "") {
+
+
+                                            alert("Please input data to the required fields.");
+
+                                        } else {
+                                            $.post(url, {
+                                                consigneeName: consigneeName, consigneeContactPerson: consigneeContactPerson,
+                                                consigneeAddr1: consigneeAddr1, consigneeAddr2: consigneeAddr2, consigneeCountry: consigneeCountry,
+                                                consigneeCity: consigneeCity, consigneeStateOrProvince: consigneeStateOrProvince,
+                                                consigneePostalOrZip: consigneePostalOrZip, consigneePhone: consigneePhone, consigneeEmail: consigneeEmail
+                                            }, function (result) {
+
+                                                if (result.status == "success") {
+
+                                                    alert("You've successfully created an address book.");
+                                                    window.location.href = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/CreateConsignee";
+                                                }
+
+
+                                            }, 'json');
+                                        }
+
+
+
+                                    }
+
+                                </script>
+
+                                <div>
+                                    @Html.ActionLink("Back to List", "AccessAddressBook")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

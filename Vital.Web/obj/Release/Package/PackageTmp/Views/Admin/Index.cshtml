@@ -1,0 +1,36 @@
+﻿
+<html>
+<head>
+    <title>Vital Admin</title>
+    <link rel="stylesheet" href="~/Content/admincss/style.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="loginContainer">
+            <div class="loginBanner">
+                <img src="~/Content/adminimages/bannerimage.png" />
+            </div>
+            <div class="loginInputs">
+                <table align="center">
+                    <th colspan="2">ADMINISTRATOR</th>
+                    <tr>
+                        <td>Username</td>
+                        <td><input type="text" name="uname" id="uname" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="pword" id="pword" /></td>
+                    </tr>
+                    <th colspan="2">
+                        <input type="button" value="LOGIN" id="login" name="login" onclick="submitLogin()" />
+
+                    </th>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

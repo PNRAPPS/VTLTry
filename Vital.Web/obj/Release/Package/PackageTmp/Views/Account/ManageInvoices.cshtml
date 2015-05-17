@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Vital.Model.CustomerAccountModel>
+@{
+    ViewBag.Title = "View/Manage Invoices";
+}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+<script src="~/Scripts/jquery-ui-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-bottom: 25px;">View/Manage Invoices</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <dl class="tabs" style="border-bottom: solid 1px #ee8f1e; margin-bottom: 0px;">
+                <dd class="active"><a href="~/Customer" style="cursor: pointer; color: #ffffff; width: 120px; background: url('/Content/images/whitelockicon.png') no-repeat 78% #ee8f1e; border-left: 1px solid #ee8f1e; border-right: 1px solid #ee8f1e; font-weight: normal;">My Vital</a></dd>
+            </dl>
+            <ul class="tabs-content">
+                <li class="active" id="simple1Tab">
+                    <div class="panel" style="background: #fff; border: solid 1px #ee8f1e; margin: 0 0 22px 0; padding-top: 0px;">
+                        <div class="row">
+                            <div class="twelve columns">
+                                <h5>View/Manage Invoices</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="two columns" style="width: 210px;">
+                                <select id="accountnumber">
+                                    <option value="">Select Account Number</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.Id</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="two columns" style="width: 12%;">
+                                <label class="left inline">From Date:</label>
+                            </div>
+                            <div class="two columns" style="padding-left: 0px;">
+                                <input type="text" class="twelve" id="fromdate">
+                            </div>
+                            <div class="two columns" style="width: 10%;">
+                                <label class="left inline">To Date:</label>
+                            </div>
+                            <div class="two columns end" style="padding-left: 0px;">
+                                <input type="text" class="twelve" id="todate">
+                            </div> <!--!-->
+                            <div class="two columns end" style="padding-left: 0px;">
+                                <input type="button" class="button" value="Go" id="goSearch" onclick="GoSearchInvoice()" />
+                            </div>
+                            <script type="text/javascript">
+
+                                $(document).ready(function () {
+                                    $("#fromdate").datepicker({ dateFormat: "yy-mm-dd" });
+                                    $("#todate").datepicker({ dateFormat: "yy-mm-dd" });
+                                });
+
+
+                                function GoSearchInvoice() {
+
+                                    if ($("#accountnumber").val() == "") {
+                                        alert("PLease select an account number.");
+                                    } else if ($("#fromdate").val() == "") {
+                                        alert("Please select from date.");
+                                    } else if ($("#todate").val() == "") {
+                                        alert("Please select to date.")
+                                    } else {
+                                        $("#loadInvoiceTable").load("LoadInvoiceList?accountnumber=" + $("#accountnumber").val() + "&fromdate=" + $("#fromdate").val() + "&todate=" + $("#todate").val() + "");
+
+                                    }
+
+                               }
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns" id="loadInvoiceTable">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Where is this shipment coming from?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+        <div class="row">
+            <div class="six columns">
+                <h6 style="margin-bottom: 0px; margin-top: 0px;">
+                    Ship From Address:
+                    <a id="EditCustomerProfile" href="#" data-reveal-id="EditProfileModal" style="text-decoration: underline; font-weight: normal; cursor: pointer;">Edit</a>
+                </h6>
+                <ul style="list-style-type: none; margin-left: 0px;">
+                    <li>@Model.ConsignorCompanyName</li>
+                    <li>@Model.ConsignorContactName</li>
+                    <li>@Model.ConsignorAddress1</li>
+                    <li>@Model.ConsignorAddress2</li>
+                    <li>@Model.ConsignorCity @Model.ConsignorProvince @Model.ConsignorPostalCode</li>
+                    <li>Telephone: @Model.ConsignorTelephone</li>
+                    <li>Email: @Model.ConsignorEmail</li>
+                </ul>
+                @Html.HiddenFor(r => r.ConsignorCompanyName)
+                @Html.HiddenFor(r => r.ConsignorContactName)
+                @Html.HiddenFor(r => r.ConsignorAddress1)
+                @Html.HiddenFor(r => r.ConsignorAddress2)
+                @Html.HiddenFor(r => r.ConsignorCity)
+                @Html.HiddenFor(r => r.ConsignorProvince)
+                @Html.HiddenFor(r => r.ConsignorPostalCode)
+                @Html.HiddenFor(r => r.ConsignorTelephone)
+                @Html.HiddenFor(r => r.ConsignorEmail)
+            </div>
+            <div class="six columns">
+                <p>If the shipment is undeliverable return to:</p>
+                <h6 style="margin-bottom: 0px;">Contact:</h6>
+                @Html.TextBoxFor(model => model.ConsignorContactName)
+                <h6 style="margin-bottom: 0px;">Return Address:</h6>
+                @Html.DropDownListFor(model => model.ConsignorReturnAddressQuestion, VitalHtmlHelper.GetReturnAddressOption().ToSelectList())
+            </div>
+        </div>
+    </div>
+</div>

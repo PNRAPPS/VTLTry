@@ -1,0 +1,113 @@
+﻿@model Vital.Model.CustomerModel
+
+<html>
+<head>
+    <title>Vital Admin</title>
+    <link rel="stylesheet" href="~/Content/admincss/style.css" />
+    <link rel="stylesheet" href="~/Content/admincss/blue/style.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/admin.js"></script>
+    <script type="text/javascript">
+
+        //document.getElementById('datemonth').value =
+
+    </script>
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="homeContainer">
+            <div class="header">
+                <div style="float:left;width:auto;">
+                    <img src="~/Content/adminimages/bannerimage.png" />
+                </div>
+                <div style="float:right;width:auto;">
+                    <br />
+                   <a href="/Admin/Accounts">ACCOUNTS</a> | <a href="/Admin/News">NEWS</a> | <a href="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Admin/">LOGOUT</a>
+
+                </div>
+            </div>
+
+            <div class="mainBody">
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        
+                        <td><input type="text" style="width:500px;" disabled value="@Model.Username" name="uname" id="uname" placeholder="Username" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" style="width:500px;" disabled value="@Model.Password" id="pword" placeholder="Password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.ContactPerson" id="name" placeholder="Name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email Address</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.Email" id="email" placeholder="Email Address" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Company</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.CompanyName" id="company" placeholder="Company" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.Country" id="country" placeholder="Country" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address #1</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.Address1" id="address1" placeholder="Adress #1" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address #2</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.Address2" id="address2" placeholder="Address #2" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.City" id="city" placeholder="City" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Province</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.State" id="province" placeholder="Province" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Postal Code</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.Zip" id="postal" placeholder="Postal Code" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Telephone</td>
+                        <td>
+                            <input type="text" style="width:500px;" disabled value="@Model.PhoneExt" id="telephone" placeholder="Telephone #" />
+                        </td>
+                    </tr>
+                    <th colspan="2"><input type="button" value="Edit" id="editBtn" onclick="EditAccountBtn()" /> |<input type="button" value="Update" id="updateBtn" onclick="UpdateAccountBtn()" /> | <input type="button" value="Reset" id="resetBtn" onclick="ResetAccountBtn()" /></th>
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

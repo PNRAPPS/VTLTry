@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{622FC112-A6DD-4861-A27F-1E643CC839E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UPS.Service</RootNamespace>
+    <AssemblyName>UPS.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ILabelRecoveryService.cs" />
+    <Compile Include="ILocationService.cs" />
+    <Compile Include="Image.cs" />
+    <Compile Include="IPickupService.cs" />
+    <Compile Include="IQuantumService.cs" />
+    <Compile Include="IRateService.cs" />
+    <Compile Include="IShippingService.cs" />
+    <Compile Include="IShippingTransitService.cs" />
+    <Compile Include="ITimeInTransitService.cs" />
+    <Compile Include="ITrackShipmentService.cs" />
+    <Compile Include="LabelService.cs" />
+    <Compile Include="LocationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="QuantumService.cs" />
+    <Compile Include="RateService.cs" />
+    <Compile Include="SchedulePickupService.cs" />
+    <Compile Include="ShippingService.cs" />
+    <Compile Include="ShippingTransitService.cs" />
+    <Compile Include="TNTService.cs" />
+    <Compile Include="TrackShipmentService.cs" />
+    <Compile Include="TrustAllCertificatePolicy.cs" />
+    <Compile Include="Web References\FreightShipService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LabelRecoveryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PickupService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RateWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ShipService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TimeInTransitService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TrackService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\VoidService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\XAVService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\FreightShipService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\FreightShipService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\FreightShipService\FreightShip.wsdl" />
+    <None Include="Web References\FreightShipService\FreightShipResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\FreightShipService\FreightShipWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\FreightShipService\IFWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\FreightShipService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\FreightShipService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\LabelRecoveryService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\LabelRecoveryService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\LabelRecoveryService\LabelRecovery.wsdl" />
+    <None Include="Web References\LabelRecoveryService\LabelRecoveryResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LabelRecoveryService\LBRecovery.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\LabelRecoveryService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LabelRecoveryService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\PickupService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\PickupService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\PickupService\Pickup.wsdl" />
+    <None Include="Web References\PickupService\PickupCancelResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PickupService\PickupCreationResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PickupService\PickupGetServiceCenterFacilitiesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PickupService\PickupPendingStatusResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PickupService\PickupRateResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\PickupService\PickupWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\PickupService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PickupService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RateWebService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RateWebService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RateWebService\RateResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RateWebService\RateWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\RateWebService\RateWS.wsdl" />
+    <None Include="Web References\RateWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\RateWebService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ShipService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ShipService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ShipService\IFWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ShipService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ShipService\Ship.wsdl" />
+    <None Include="Web References\ShipService\ShipAcceptResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ShipService\ShipConfirmResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ShipService\ShipmentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ShipService\ShipWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ShipService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TimeInTransitService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TimeInTransitService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TimeInTransitService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TimeInTransitService\TimeInTransit.wsdl" />
+    <None Include="Web References\TimeInTransitService\TimeInTransitResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TimeInTransitService\TimeInTransitWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TimeInTransitService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TrackService\Track.wsdl" />
+    <None Include="Web References\TrackService\TrackResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TrackService\TrackWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TrackService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\VoidService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\VoidService\Error1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\VoidService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\VoidService\UPSSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\VoidService\Void.wsdl" />
+    <None Include="Web References\VoidService\VoidShipmentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\VoidService\VoidWebServiceSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\XAVService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\XAVService\XAV.wsdl" />
+    <None Include="Web References\XAVService\XAVResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="C:\Users\Asus\Downloads\Rates_Pkg_Gnd\RatingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\RateWS.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RateWebService\</RelPath>
+      <UpdateFromURL>C:\Users\Asus\Downloads\Rates_Pkg_Gnd\RatingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\RateWS.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_RateWebService_RateService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\Asus\Downloads\Time_In_Transit\TimeInTransit\TimeInTransitforPACKAGE\TIMEINTRANSITWebServices\SCHEMA-WSDLs\TNTWS.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TimeInTransitService\</RelPath>
+      <UpdateFromURL>C:\Users\Asus\Downloads\Time_In_Transit\TimeInTransit\TimeInTransitforPACKAGE\TIMEINTRANSITWebServices\SCHEMA-WSDLs\TNTWS.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_TimeInTransitService_TimeInTransitService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\j.e.bolante\Desktop\VITAL\API\Address_Validation_Street_Level\Street Level Address Validation for SHIPPING\XAVWebServices\SCHEMAS-WSDLs\XAV.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\XAVService\</RelPath>
+      <UpdateFromURL>C:\Users\j.e.bolante\Desktop\VITAL\API\Address_Validation_Street_Level\Street Level Address Validation for SHIPPING\XAVWebServices\SCHEMAS-WSDLs\XAV.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_XAVService_XAVService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\j.e.bolante\Desktop\VITAL\API\Pickup_Pkg_Gnd\PickupforPACKAGEWebService\SCHEMAS-WSDLs\Pickup.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PickupService\</RelPath>
+      <UpdateFromURL>C:\Users\j.e.bolante\Desktop\VITAL\API\Pickup_Pkg_Gnd\PickupforPACKAGEWebService\SCHEMAS-WSDLs\Pickup.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_PickupService_PickupService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\j.e.bolante\Desktop\VITAL\API\Shipping_Pkg_Gnd\ShippingGROUNDFREIGHTWebService\SCHEMA-WSDLs\FreightShip.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\FreightShipService\</RelPath>
+      <UpdateFromURL>C:\Users\j.e.bolante\Desktop\VITAL\API\Shipping_Pkg_Gnd\ShippingGROUNDFREIGHTWebService\SCHEMA-WSDLs\FreightShip.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_FreightShipService_FreightShipService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\j.e.bolante\Desktop\VITAL\API\Shipping_Pkg_Gnd\ShippingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\Ship.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ShipService\</RelPath>
+      <UpdateFromURL>C:\Users\j.e.bolante\Desktop\VITAL\API\Shipping_Pkg_Gnd\ShippingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\Ship.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_ShipService_ShipService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\Asus\Downloads\Shipping_Pkg_Gnd\ShippingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\LabelRecoveryWS.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LabelRecoveryService\</RelPath>
+      <UpdateFromURL>C:\Users\Asus\Downloads\Shipping_Pkg_Gnd\ShippingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\LabelRecoveryWS.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_LabelRecoveryService_LBRecovery</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="D:\Desktop\Vital\Shipping_Pkg_Gnd\ShippingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\Void.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\VoidService\</RelPath>
+      <UpdateFromURL>D:\Desktop\Vital\Shipping_Pkg_Gnd\ShippingPACKAGE\PACKAGEWebServices\SCHEMA-WSDLs\Void.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_VoidService_VoidService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\Asus\Downloads\Tracking\TrackingPACKAGE\TRACKINGWebServices\SCHEMAS-WSDLs\Track.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TrackService\</RelPath>
+      <UpdateFromURL>C:\Users\Asus\Downloads\Tracking\TrackingPACKAGE\TRACKINGWebServices\SCHEMAS-WSDLs\Track.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UPS_Service_TrackService_TrackService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{5acfab88-e840-4989-8e8c-24883b1e4520}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vital.Data\Vital.Data.csproj">
+      <Project>{b6712fd4-646d-4b3a-aea2-6a62d73e87ba}</Project>
+      <Name>Vital.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vital.Model\Vital.Model.csproj">
+      <Project>{26f7289b-2981-4dfe-ba69-90f7ef412154}</Project>
+      <Name>Vital.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vital.Service\Vital.Service.csproj">
+      <Project>{f5e73dab-7b3f-4811-be15-0f537fa0c5c3}</Project>
+      <Name>Vital.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UPSLocation_SampleRequest.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="QuantumView_Tool_SampleRequest.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

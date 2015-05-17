@@ -1,0 +1,26 @@
+﻿@model Vital.Model.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @style = "padding-left: 20px; padding-right: 20px; padding-top: 20px;" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <h2 style="color: #58585a;">Login</h2>
+    <label class="lead">Username</label>
+    @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Enter your username."})
+    <label class="lead">Password</label>
+    @Html.PasswordFor(model => model.Password, new { @placeholder = "Enter your password."})
+    <label>
+        @Html.EditorFor(model => model.RememberMe)
+        Remember Me</label>
+    <input class="button right" value="Login" type="submit" />
+}
+
+<div class="panel" style="background: #e7e7e7; border-top: 1px solid #d5d5d5; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px; margin-top: 50px;">
+    <p style="color: black;">Don't have an account? <a href="~/Account/Register">Register Now!</a></p>
+</div>
+<a class="close-reveal-modal">&#215;</a>

@@ -1,0 +1,920 @@
+﻿@model Vital.Model.CalculateRequestModel
+
+@{
+    ViewBag.Title = "Rate Lookup";
+}
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px; margin-bottom: 20px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h4 style="color: #ed6c16; margin-bottom: 30px;">Rate Lookup</h4>
+            <dl class="tabs contained">
+                <dd class="active"><a href="#rateshipLTL">Rate+Ship LTL</a></dd>
+                <dd><a href="#quote">Request a Quote</a></dd>
+            </dl>
+            <ul class="tabs-content contained">
+                <li class="active" id="rateshipLTLTab">
+                    <div class="row">
+                        <!-- Where and When Form start -->
+                        @Html.ValidationSummary()
+
+                        <div class="five columns" style="padding-right: 0px;">
+                            <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                <div class="row">
+                                    <div class="twelve columns">
+                                        <h5 style="margin-top: 0; margin-bottom: 0;">When and Where</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px;">
+                                <div class="row">
+                                    <div class="twelve columns">
+                                        <h5 style="margin-bottom: 25px;">Ship from:</h5>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 5px; margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>Country:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <select name="FromCountryCode" id="fromcountry">
+                                            <option value="CANADA">Canada</option>
+                                            <option value="US">United States</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>State:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <input type="text" id="fromstate" name="fromstate" onkeyup="KeyUpInit()" />
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>City:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <input type="text" id="fromcity" name="fromcity" onkeyup="KeyUpInit()" />
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>Postal Code:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <input type="text" id="frompostalcode" name="frompostalcode" onkeyup="KeyUpInit()" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 0px; margin-bottom: 0px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; border-top: none;">
+                                <div class="row">
+                                    <div class="twelve columns">
+                                        <h5 style="margin-bottom: 25px;">Ship to:</h5>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 5px; margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>Country:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <select name="ToCountryCode" id="tocountry">
+                                            <option value="CANADA">Canada</option>
+                                            <option value="US">United States</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>State:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <input type="text" id="tostate" name="tostate" onkeyup="KeyUpInit()" />
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>City:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <input type="text" id="tocity" name="tocity" onkeyup="KeyUpInit()" />
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                    <div class="five columns">
+                                        <label>Postal Code:</label>
+                                    </div>
+                                    <div class="seven columns">
+                                        <input type="text" id="topostalcode" name="topostalcode" onkeyup="KeyUpInit()" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                <div class="row">
+                                    <div class="nine columns">
+                                        <h5 style="margin-top: 0; margin-bottom: 0;">Type of Services</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 10px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px;">
+                                <div class="row" style="margin-top: 10px;">
+                                    <select id="typeofservices">
+                                        <option>Expedited LTL</option>
+                                        <option>General LTL</option>
+                                        <option>Rail LTL</option>
+                                        <option>Road Services</option>
+                                    </select>
+                                    <br /><br />
+                                    Commodity Type : <input type="text" id="commodity" onkeyup="KeyUpInit()" />
+                                </div>
+                                <div id="services"></div>
+                            </div>
+
+                            <script type="text/javascript">
+
+                                function KeyUpInit() {
+
+                                   
+
+                                    $("#commoditytype").val($("#commodity").val());
+
+                                    $("#w_country").val($("#fromcountry").val());
+                                    $("#w_zip").val($("#frompostalcode").val());
+                                    $("#w_city").val($("#fromcity").val());
+                                    $("#w_state").val($("#fromstate").val());
+
+                                    $("#g_country").val($("#tocountry").val());
+                                    $("#g_zip").val($("#topostalcode").val());
+                                    $("#g_city").val($("#tocity").val());
+                                    $("#g_state").val($("#tostate").val());
+                                }
+
+                            </script>
+                        </div>
+
+
+                        <!-- Where and When Form end -->
+                        <!-- Result Form start -->
+                        <div class="seven columns">
+
+                            <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                <div class="row">
+                                    <div class="nine columns">
+                                        <h5 style="margin-top: 0; margin-bottom: 0;">Dimension</h5>
+                                    </div>
+                                    <img id="loadingpanel" style="display: none;" class="one columns right" src="~/Content/spinnerb.gif" alt="loading" />
+                                </div>
+                            </div>
+                            <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 0px; margin-bottom: 10px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; border-top: none;">
+                                <form>
+
+                                    <div id="hidethis">
+                                        <div class="row">
+                                            <div class="twelve columns">
+                                                <label>Package Dimension:</label>
+                                            </div>
+
+                                            <table align="center">
+                                                <tr>
+                                                    <td>Skid</td>
+                                                    <td>Length</td>
+                                                    <td>Width</td>
+                                                    <td>Height</td>
+                                                    <td>Dimensional Weight</td>
+                                                    <td>Weight</td>
+                                                </tr>
+                                                <script type="text/javascript">
+
+                                                    function CalculateDimensionalWeight(e, type) {
+                                                        $("#length").val($("#length1").val());
+                                                        $("#width").val($("#width1").val());
+                                                        $("#height").val($("#height1").val());
+                                                        $("#weight").val($("#weight1").val());
+                                                        
+
+                                                        if (type == "skid1") {
+                                                            var s1 = parseInt(($("#length1").val() * $("#width1").val() * $("#height1").val() / 1728) * 10) + 1;
+                                                            $("#dweight1").val(s1);
+                                                            
+                                                        } else if (type == "skid2") {
+                                                            var s1 = parseInt(($("#length2").val() * $("#width2").val() * $("#height2").val() / 1728) * 10) + 1;
+                                                            $("#dweight2").val(s1);
+                                                        } else if (type == "skid3") {
+                                                            var s1 = parseInt(($("#length3").val() * $("#width3").val() * $("#height3").val() / 1728) * 10) + 1;
+                                                            $("#dweight3").val(s1);
+                                                        } else if (type == "skid4") {
+                                                            var s1 = parseInt(($("#length4").val() * $("#width4").val() * $("#height4").val() / 1728) * 10) + 1;
+                                                            $("#dweight4").val(s1);
+                                                        }
+                                                        GetActualWeight2();
+
+                                                    }
+
+                                                    function GetActualWeight() {
+                                                        GetActualWeight2();
+                                                    }
+
+                                                    function GetActualWeight2() {
+
+                                                        var getWeight1;
+                                                        var getWeight2;
+                                                        var getWeight3;
+                                                        var getWeight4;
+
+                                                        var dweight1 = $("#dweight1").val();;
+                                                        var dweight2 = $("#dweight2").val();;
+                                                        var dweight3 = $("#dweight3").val();;
+                                                        var dweight4 = $("#dweight4").val();;
+
+                                                        var weight1 = $("#weight1").val();;
+                                                        var weight2 = $("#weight2").val();;
+                                                        var weight3 = $("#weight3").val();;
+                                                        var weight4 = $("#weight4").val();;
+
+                                                        if (parseInt(dweight1) >= parseInt(weight1)) {
+                                                            getWeight1 = parseInt(dweight1);
+                                                        } else {
+                                                            getWeight1 = parseInt(weight1);
+                                                        }
+
+                                                        if (parseInt(dweight2) >= parseInt(weight2)) {
+                                                            getWeight2 = parseInt(dweight2);
+                                                        } else {
+                                                            getWeight2 = parseInt(weight2);
+                                                        }
+
+                                                        if (parseInt(dweight3) >= parseInt(weight3)) {
+                                                            getWeight3 = parseInt(dweight3);
+                                                        } else {
+                                                            getWeight3 = parseInt(weight3);
+                                                        }
+
+                                                        if (parseInt(dweight4) >= parseInt(weight4)) {
+                                                            getWeight4 = parseInt(dweight4);
+                                                        } else {
+                                                            getWeight4 = parseInt(weight4);
+                                                        }
+
+                                                        var totalweight = parseInt(getWeight1 + getWeight2 + getWeight3 + getWeight4);
+
+                                                        $(".actualweight").html(totalweight);
+
+                                                    }
+
+
+                                                </script>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><input type="text" id="length1" onkeyup="CalculateDimensionalWeight(this,'skid1')" style="width:50px;"></td>
+                                                    <td><input type="text" id="width1" onkeyup="CalculateDimensionalWeight(this,'skid1')" style="width:50px;"></td>
+                                                    <td><input type="text" id="height1" onkeyup="CalculateDimensionalWeight(this,'skid1')" style="width:50px;"></td>
+                                                    <td><input type="text" id="dweight1" style="width:50px;"></td>
+                                                    <td><input type="text" id="weight1" value="0" onkeyup="GetActualWeight()" style="width:50px;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td><input type="text" id="length2" onkeyup="CalculateDimensionalWeight(this,'skid2')" style="width:50px;"></td>
+                                                    <td><input type="text" id="width2" onkeyup="CalculateDimensionalWeight(this,'skid2')" style="width:50px;"></td>
+                                                    <td><input type="text" id="height2" onkeyup="CalculateDimensionalWeight(this,'skid2')" style="width:50px;"></td>
+                                                    <td><input type="text" id="dweight2"  style="width:50px;"></td>
+                                                    <td><input type="text" id="weight2" value="0" onkeyup="GetActualWeight()" style="width:50px;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td><input type="text" id="length3" onkeyup="CalculateDimensionalWeight(this,'skid3')" style="width:50px;"></td>
+                                                    <td><input type="text" id="width3" onkeyup="CalculateDimensionalWeight(this,'skid3')" style="width:50px;"></td>
+                                                    <td><input type="text" id="height3" onkeyup="CalculateDimensionalWeight(this,'skid3')" style="width:50px;"></td>
+                                                    <td><input type="text" id="dweight3" style="width:50px;"></td>
+                                                    <td><input type="text" id="weight3" value="0" onkeyup="GetActualWeight()" style="width:50px;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td><input type="text" id="length4" onkeyup="CalculateDimensionalWeight(this,'skid4')" style="width:50px;"></td>
+                                                    <td><input type="text" id="width4" onkeyup="CalculateDimensionalWeight(this,'skid4')" style="width:50px;"></td>
+                                                    <td><input type="text" id="height4" onkeyup="CalculateDimensionalWeight(this,'skid4')" style="width:50px;"></td>
+                                                    <td><input type="text" id="dweight4" onkeyup="CalculateDimensionalWeight(this,'skid4')" style="width:50px;"></td>
+                                                    <td><input type="text" id="weight4" value="0" onkeyup="GetActualWeight()" style="width:50px;"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <div class="row" style="margin-left: 25px; margin-right: 25px;">
+                                        <div class="twelve columns">
+                                            <label><b>Actual Weight:</b></label>
+                                        </div>
+                                        <div class="four columns" style="font-size:26px; float:left;" >
+                                            <span class="actualweight"> 0 </span> LBS
+                                        </div>
+                                       
+                                    </div>
+
+                                </form>
+                                <div class="row" style="margin-left: 30px; margin-right: 25px;">
+                                    <input type="button" onclick="submitRate()" class="button" style="width:100%" value="Submit" />
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="twelve columns">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script type="text/javascript">
+
+                                function submitRate() {
+
+                                    var fromcountry = $("#fromcountry");
+                                    var fromcity = $("#fromcity");
+                                    var fromstate = $("#fromstate");
+
+                                    var tocountry = $("#tocountry");
+                                    var tocity = $("#tocity");
+                                    var tostate = $("#tostate");
+
+                                    var length = $("#length1");
+                                    var width = $("#width1");
+                                    var height = $("#height1");
+
+                                    var commodity = $("#commodity");
+
+                                    if (fromcity.val() == "") {
+                                        alert("Please input city.");
+                                        fromcity.focus();
+                                    } else if (fromstate.val() == "") {
+                                        alert("Please input state.");
+                                        fromstate.focus();
+                                    } else if (tocity.val() == "") {
+                                        alert("Please input city.");
+                                        tocity.focus();
+                                    } else if (tostate.val() == "") {
+                                        alert("Please input state.");
+                                        tostate.focus();
+                                    } else if (length.val() == "") {
+                                        alert("Please input length.");
+                                        length.focus();
+                                    } else if (width.val() == "") {
+                                        alert("Please input width.");
+                                        width.focus();
+                                    } else if (height.val() == "") {
+                                        alert("Please input height.");
+                                        height.focus();
+                                    } else if (commodity.val() == "") {
+                                        alert("Please input a commodity.");
+                                        commodity.focus();
+                                    } else {
+                                        $("#loadingpanel").show();
+                                        $("#resultrate").html("Please wait...");
+                                        //var url = "http://localhost:60759/Account/CalculateRateLTL";
+                                        var url = "http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/CalculateRateLTL";
+                                        //compute here
+                                        $.post(url, {
+                                            fromcountry: fromcountry.val(), fromcity: fromcity.val(), fromstate: fromstate.val(),
+                                            tocountry: tocountry.val(), tocity: tocity.val(), tostate: tostate.val(), totalweight: $(".actualweight").text()
+                                        }, function (result) {
+
+                                            $("#loadingpanel").hide();
+
+                                            if (result.status == "success") {
+
+
+                                                if (result.data > 0) {
+                                                    $("#resultrate").html(result.data);
+                                                } else {
+                                                    $("#resultrate").html("No Rates Found.");
+                                                }
+
+                                            } else {
+
+                                                $("#resultrate").html("No Rates Found.");
+                                            }
+
+                                        }, 'json');
+
+                                    }
+
+                                }
+
+                            </script>
+
+                            <div class="panel" style=" background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                <div class="row">
+                                    <div class="nine columns">
+                                        <h5 style="margin-top: 0; margin-bottom: 0;">Showing Rate Result:</h5>
+                                    </div>
+                                    <img id="loadingpanel" style="display: none;" class="one columns right" src="~/Content/spinnerb.gif" alt="loading" />
+                                </div>
+                            </div>
+                            <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 10px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px;">
+                                <div class="row" style="margin-top: 10px; font-size:30px;">
+                                    <center><span id="resultrate">0.00</span></center>
+                                </div>
+                                <div id="services"></div>
+                            </div>
+
+                           
+                        </div>
+                        <!-- Result Form end -->
+                    </div>
+
+                </li>
+                <li id="quoteTab">
+                    <p>We are happy to provide a quote for any type of shipment.</p>
+                    <p><strong>What do you need? *</strong></p>
+                    <script type="text/javascript">
+
+                        var billto = "";
+                        var radvalue = "";
+
+                        $(document).ready(function (e) {
+
+                            radvalue = $("#rad1").val();
+
+                            $("#submitbtn").click(function () {
+
+                                var w_compname = $("#w_compname").val();
+                                var w_cname = $("#w_cname").val();
+                                var w_address = $("#w_address").val();
+                                var w_city = $("#w_city").val();
+                                var w_state = $("#w_state").val();
+                                var w_zip = $("#w_zip").val();
+                                var w_country = $("#w_country").val();
+                                var w_tel = $("#w_tel").val();
+                                var w_email = $("#w_email").val();
+
+                                var g_compname = $("#g_compname").val();
+                                var g_cname = $("#g_cname").val();
+                                var g_address = $("#g_address").val();
+                                var g_city = $("#g_city").val();
+                                var g_state = $("#g_state").val();
+                                var g_zip = $("#g_zip").val();
+                                var g_country = $("#g_country").val();
+                                var g_tel = $("#g_tel").val();
+                                var g_email = $("#g_email").val();
+
+
+                                var o_compname = $("#o_compname").val();
+                                var o_cname = $("#o_cname").val();
+                                var o_address = $("#o_address").val();
+                                var o_city = $("#o_city").val();
+                                var o_state = $("#o_state").val();
+                                var o_zip = $("#o_zip").val();
+                                var o_country = $("#o_country").val();
+                                var o_tel = $("#o_tel").val();
+                                var o_email = $("#o_email").val();
+
+                                var quantity = $("#quantity").val();
+                                var item = $("#item").val();
+                                var length = $("#length").val();
+                                var weight = $("#weight").val();
+                                var width = $("#width").val();
+                                var height = $("#height").val();
+
+                                $("#subject").val($("#company2").val() + " - " + radvalue);
+
+
+                                if ($("#name2").val() == "") {
+                                    alert("Please fill up Contact Name.");
+                                    $("#name2").focus();
+                                } else if ($("#company2").val() == "") {
+                                    alert("Please fill up Company Name 1.");
+                                    $("#company2").focus();
+                                } else if ($("#email2").val() == "") {
+                                    alert("Please fill up Email address.");
+                                    $("#email2").focus();
+                                } else if ($("#mobile2").val() == "") {
+                                    alert("Please fill up Mobile Number.");
+                                    $("#mobile2").focus();
+                                } else if (!checkEmail($("#email2").val())) {
+                                    alert("Invalid email format.");
+                                    $("#email2").focus();
+                                } else if (w_compname == "") {
+                                    alert("Please fill up Company Name 2.");
+                                    $("#w_compname").focus();
+                                } else if (w_compname == "") {
+                                    alert("Please fill up Address.");
+                                    $("#w_address").focus();
+                                } else if (w_compname == "") {
+                                    alert("Please fill up City.");
+                                    $("#w_city").focus();
+                                } else if (w_compname == "") {
+                                    alert("Please fill up Country.");
+                                    $("#w_country").focus();
+                                } else if (w_compname == "") {
+                                    alert("Please fill up Telephone.");
+                                    $("#w_tel").focus();
+                                } else if (w_compname == "") {
+                                    alert("Please fill up Email address.");
+                                    $("#w_email").focus();
+                                } else if (!checkEmail(w_email)) {
+                                    alert("Invalid Email format.");
+                                    $("#w_email").focus();
+                                } else if (quantity == "") {
+                                    alert("Please fill up Quantity.");
+                                    $("#quantity").focus();
+                                } else if (length == "") {
+                                    alert("Please fill up Length.");
+                                    $("#length").focus();
+                                } else if (weight == "") {
+                                    alert("Please fill up Weight.");
+                                    $("#weight").focus();
+                                } else if (width == "") {
+                                    alert("Please fill up Width.");
+                                    $("#width").focus();
+                                } else if (height == "") {
+                                    alert("Please fill up Height.");
+                                    $("#height").focus();
+                                }
+                                else {
+
+                                    if (billto == "Other") {
+
+                                        if (o_compname == "") {
+                                            alert("Please fill up Company Name 3.");
+                                            $("#o_compname").focus();
+                                        } else if (o_address == "") {
+                                            alert("Please fill up Address.");
+                                            $("#o_address").focus();
+                                        } else if (o_city == "") {
+                                            alert("Please fill up City.");
+                                            $("#o_city").focus();
+                                        } else if (o_country == "") {
+                                            alert("Please fill up Country.");
+                                            $("#o_country").focus();
+                                        } else if (o_tel == "") {
+                                            alert("Please fill up Telephone Number.");
+                                            $("#o_tel").focus();
+                                        } else if (o_email == "") {
+                                            alert("Please fill up Email address.");
+                                            $("#o_email").focus();
+                                        } else if (!checkEmail(o_email)) {
+                                            alert("Invalid Email format.");
+                                            $("#o_email").focus();
+                                        } else {
+
+                                            $("#description").html("Ship From: &#10;&#10;Company Name:" + w_compname + "&#10;Contact Name:" +
+                                       w_cname + "&#10;Address:" + w_address + "&#10;City:" + w_city + "&#10;State:" + w_state +
+                                       "&#10;Zip:" + w_zip + "&#10;Country:" + w_country + "&#10;Telephone:" + w_tel + "&#10;Email:" +
+                                       w_email + "&#10;&#10;Ship To:&#10;&#10;Company Name:" + g_compname + "&#10;Contact Name:" +
+                                       g_cname + "&#10;Address:" + g_address + "&#10;City:" + g_city + "&#10;State:" + g_state +
+                                       "&#10;Zip:" + g_zip + "&#10;Country:" + g_country + "&#10;Telephone:" + g_tel + "&#10;Email:" +
+                                       g_email + "&#10;&#10;Bill to:&#10;Company Name:" + o_compname + "&#10;Contact Name:" +
+                                       o_cname + "&#10;Address:" + o_address + "&#10;City:" + o_city + "&#10;State:" + o_state +
+                                       "&#10;Zip:" + o_zip + "&#10;Country:" + o_country + "&#10;Telephone:" + o_tel + "&#10;Email:" +
+                                       o_email + "&#10;&#10;Shipment Description:&#10;Quantity:" + quantity +
+                                       "&#10;Item:" + item + "&#10;Length(inches):" + length + "&#10;Width(inches):" + width + "&#10;Height(inches)" +
+                                       height + "&#10;Weight(pounds):" + weight + "&#10;&#10;");
+
+                                            alert("Successfully submitted.");
+                                            $("#ajaxForm").submit();
+
+                                        }
+
+
+
+                                    } else {
+
+                                        $("#description").html("Ship From: &#10;&#10;Company Name:" + w_compname + "&#10;Contact Name:" +
+                                       w_cname + "&#10;Address:" + w_address + "&#10;City:" + w_city + "&#10;State:" + w_state +
+                                       "&#10;Zip:" + w_zip + "&#10;Country:" + w_country + "&#10;Telephone:" + w_tel + "&#10;Email:" +
+                                       w_email + "&#10;&#10;Ship To:&#10;&#10;Company Name:" + g_compname + "&#10;Contact Name:" +
+                                       g_cname + "&#10;Address:" + g_address + "&#10;City:" + g_city + "&#10;State:" + g_state +
+                                       "&#10;Zip:" + g_zip + "&#10;Country:" + g_country + "&#10;Telephone:" + g_tel + "&#10;Email:" +
+                                       g_email + "&#10;&#10;Bill to:" + billto + "&#10;&#10;Shipment Description:&#10;Quantity:" + quantity +
+                                       "&#10;Item:" + item + "&#10;Length(inches):" + length + "&#10;Width(inches):" + width + "&#10;Height(inches)" +
+                                       height + "&#10;Weight(pounds):" + weight + "&#10;&#10;");
+
+                                        alert("Successfully submitted.");
+                                        $("#ajaxForm").submit();
+                                    }
+
+
+
+                                }
+
+
+
+
+                            });
+
+                        });
+
+
+                        function checkEmail(emailAddress) {
+                            var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
+                            var sDtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
+                            var sAtom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
+                            var sQuotedPair = '\\x5c[\\x00-\\x7f]';
+                            var sDomainLiteral = '\\x5b(' + sDtext + '|' + sQuotedPair + ')*\\x5d';
+                            var sQuotedString = '\\x22(' + sQtext + '|' + sQuotedPair + ')*\\x22';
+                            var sDomain_ref = sAtom;
+                            var sSubDomain = '(' + sDomain_ref + '|' + sDomainLiteral + ')';
+                            var sWord = '(' + sAtom + '|' + sQuotedString + ')';
+                            var sDomain = sSubDomain + '(\\x2e' + sSubDomain + ')*';
+                            var sLocalPart = sWord + '(\\x2e' + sWord + ')*';
+                            var sAddrSpec = sLocalPart + '\\x40' + sDomain; // complete RFC822 email address spec
+                            var sValidEmail = '^' + sAddrSpec + '$'; // as whole string
+
+                            var reValidEmail = new RegExp(sValidEmail);
+
+                            if (reValidEmail.test(emailAddress)) {
+                                return true;
+                            }
+
+                            return false;
+                        }
+
+                        function rad1() {
+
+                            //$("#subject").val($("#rad1").val());;
+
+                            radvalue = $("#rad1").val();
+                        }
+
+                        function rad2() {
+
+                            // $("#subject").val($("#rad2").val());;
+                            radvalue = $("#rad2").val();
+                        }
+
+                        function rad3() {
+
+                            // $("#subject").val($("#rad3").val());;
+                            radvalue = $("#rad3").val();
+                        }
+
+                        function keyUp() {
+                            $("#name").val($("#name2").val());
+                        }
+
+                        function keyUp2() {
+                            $("#email").val($("#email2").val());
+                        }
+
+                        function keyUp3() {
+                            $("#phone").val($("#phone2").val());
+                        }
+
+                        function keyUp4() {
+                            $("#company").val($("#company2").val());
+                        }
+
+                    </script>
+                    <label>
+                        <input type="radio" onclick="rad1()" id="rad1" checked name="need" value="I would like to find out how much I can save on my annual freight expenditures (Please enter your name and email, then hit send at the bottom of the page)."><span>
+                            I would like to find out how much I can save on my annual freight expenditures<br />
+                            <a style="margin-left: 20px; color: #4D4D4D;">(Please enter your name and email, then hit send at the bottom of the page).</a>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="radio" onclick="rad2()" id="rad2" name="need" value="I am shipping one item and would like a volume rate."><span>I am shipping one item and would like a volume rate.</span>
+                    </label>
+                    <label>
+                        <input type="radio" onclick="rad3()" id="rad3" name="need" value="I am shipping several items and would like a volume rate."><span>I am shipping several items and would like a volume rate.</span>
+                    </label>
+
+                    <input id="name2" maxlength="80" name="name2" placeholder="Contact Name *" onkeyup="keyUp()" size="20" type="text" style="width:50%;" />
+
+                    <input id="company2" maxlength="40" name="company2" placeholder="Company Name *" onkeyup="keyUp4()" size="20" type="text" style="width:50%;" />
+
+
+                    <input id="email2" maxlength="80" name="email2" placeholder="Email *" onkeyup="keyUp2()" size="20" type="text" style="width:50%;" />
+
+                    <input id="phone2" maxlength="40" name="phone2" placeholder="Phone *" onkeyup="keyUp3()" size="20" type="text" style="width:50%;" />
+
+                    <h5 style="color: #ed6c16;">Here are the details of my shipment:</h5>
+
+                    <h5 style="color: #ed6c16;">Where are we picking up?</h5>
+                    <div class="wherepick_container"></div>
+                    <input class="six" type="text" placeholder="Company/Name *" id="w_compname" />
+                    <input class="six" type="text" placeholder="Contact Name" id="w_cname" />
+                    <input class="six" type="text" placeholder="Address *" id="w_address" />
+                    <input class="six" type="text" placeholder="City *" id="w_city" />
+                    <input class="six" type="text" placeholder="State/Province" id="w_state" />
+                    <input class="six" type="text" placeholder="Zip/Postal Code" id="w_zip" />
+                    <input class="six" type="text" placeholder="Country *" id="w_country" />
+                    <input class="six" type="text" placeholder="Telephone *" id="w_tel" />
+                    <input class="six" type="text" placeholder="Email *" id="w_email" />
+
+
+                    <br />
+                    <h5 style="color: #ed6c16;">Where is this shipment going?</h5>
+                    <input class="six" type="text" placeholder="Company/Name *" id="g_compname" />
+                    <input class="six" type="text" placeholder="Contact Name" id="g_cname" />
+                    <input class="six" type="text" placeholder="Address *" id="g_address" />
+                    <input class="six" type="text" placeholder="City *" id="g_city" />
+                    <input class="six" type="text" placeholder="State/Province" id="g_state" />
+                    <input class="six" type="text" placeholder="Zip/Postal Code" id="g_zip" />
+                    <input class="six" type="text" placeholder="Country *" id="g_country" />
+                    <input class="six" type="text" placeholder="Telephone *" id="g_tel" />
+                    <input class="six" type="text" placeholder="Email *" id="g_email" />
+                    <br />
+
+                    <script type="text/javascript">
+
+                        function rad4() {
+
+                            $(".othercontainer").slideUp().hide();
+                            billto = $("#rad4").val();
+                        }
+
+                        function rad5() {
+
+                            $(".othercontainer").slideUp().hide();
+                            billto = $("#rad5").val();
+                        }
+
+                        function rad6() {
+
+                            $(".othercontainer").slideDown().show();
+                            billto = $("#rad6").val();
+                        }
+
+                    </script>
+
+                    <h5 style="color: #ed6c16;">Billing address if different from shipping origin</h5>
+                    <div class="four columns" style="padding-left: 0px; padding-right: 0px">
+                        <label>
+                            <input type="radio" id="rad4" onclick="rad4()" name="billing-same-as" checked value="Same as shipper"><span>Same as shipper</span>
+                        </label>
+                    </div>
+                    <div class="four columns" style="padding-left: 0px; padding-right: 0px">
+                        <label>
+                            <input type="radio" id="rad5" onclick="rad5()" name="billing-same-as" value="Same as receiver"><span>Same as receiver</span>
+                        </label>
+                    </div>
+                    <div class="four columns" style="padding-left: 0px; padding-right: 0px; padding-bottom: 20px;">
+                        <label>
+                            <input type="radio" id="rad6" onclick="rad6()" name="billing-same-as" value="Other"><span>Other</span>
+                        </label>
+                    </div>
+                    <div class="othercontainer" style="display:none">
+                        <br />
+                        <input class="six" type="text" placeholder="Company/Name *" id="o_compname" />
+                        <input class="six" type="text" placeholder="Contact Name" id="o_cname" />
+                        <input class="six" type="text" placeholder="Address *" id="o_address" />
+                        <input class="six" type="text" placeholder="City *" id="o_city" />
+                        <input class="six" type="text" placeholder="State/Province" id="o_state" />
+                        <input class="six" type="text" placeholder="Zip/Postal Code" id="o_zip" />
+                        <input class="six" type="text" placeholder="Country *" id="o_country" />
+                        <input class="six" type="text" placeholder="Telephone *" id="o_tel" />
+                        <input class="six" type="text" placeholder="Email *" id="o_email" />
+
+                    </div>
+
+                    <br />
+                    <h5 style="color: #ed6c16;">Freight Descriptions:</h5>
+                    <table class="productdescriptions">
+                        <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Item</th>
+                                <th>Length (inches)</th>
+                                <th>Width (inches)</th>
+                                <th>Height (inches)</th>
+                                <th>Weight (pounds)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="quantity" name="productdescriptions[]['quantity']">
+                                </td>
+                                <td>
+                                    <select name="productdescriptions[]['item']" id="item" style="width: 55px;">
+                                        <option value="Skid">Skid</option>
+                                        <option value="Box">Box</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" id="length" name="productdescriptions[]['length']">
+                                </td>
+                                <td>
+                                    <input type="text" id="width" name="productdescriptions[]['width']">
+                                </td>
+                                <td>
+                                    <input type="text" id="height" name="productdescriptions[]['height']">
+                                </td>
+                                <td>
+                                    <input type="text" id="weight" name="productdescriptions[]['weight']">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="padding-top: 20px; margin-bottom: 10px;"><strong>Type of service</strong></p>
+                    <div class="row">
+                        <div class="six columns">
+                            <script type="text/javascript">
+
+                                function changeS() {
+
+                                    $("#00Nd0000007ecu1").val($("#ch").val());
+                                }
+
+                                function ups() {
+
+                                    $("#00Nd0000007ecu6").val($("#commoditytype").val())
+                                    ;
+                                }
+
+                            </script>
+                            <select onchange="changeS()" id="ch">
+                                <option value="">--None--</option>
+                                <option value="Full Truck Load (FTL)">Full Truck Load (FTL)</option>
+                                <option value="Air Freight">Air Freight</option>
+                                <option value="Expedited LTL">Expedited LTL</option>
+                                <option value="General LTL">General LTL</option>
+                                <option value="Rail LTL">Rail LTL</option>
+                                <option value="Rail LTL">Road Services</option>
+                                <option value="Standard Courier">Standard Courier</option>
+                                <option value="Express Courier">Express Courier</option>
+                                <option value="Less than Container (Sea) - Door-to-Door">Less than Container (Sea) - Door-to-Door</option>
+                                <option value="Less than Container (Sea) - Door-to-Port">Less than Container (Sea) - Door-to-Port</option>
+                                <option value="Less than Container (Sea) - Port-to-Door">Less than Container (Sea) - Port-to-Door</option>
+                                <option value="Less than Container (Sea) - Port-to-Port">Less than Container (Sea) - Port-to-Port</option>
+                                <option value="FCL (Sea) - Door-to-Door">FCL (Sea) - Door-to-Door</option>
+                                <option value="FCL (Sea) - Door-to-Port">FCL (Sea) - Door-to-Port</option>
+                                <option value="FCL (Sea) - Port-to-Door">FCL (Sea) - Port-to-Door</option>
+                                <option value="FCL (Sea) - Port-to-Port">FCL (Sea) - Port-to-Port</option>
+                                <option value="Air Cargo - Door-to-Door">Air Cargo - Door-to-Door</option>
+                                <option value="Air Cargo - Door-to-Airport">Air Cargo - Door-to-Airport</option>
+                                <option value="Air Cargo - Airport-to-Door">Air Cargo - Airport-to-Door</option>
+                                <option value="Air Cargo - Airport-to-Airport">Air Cargo - Airport-to-Airport</option>
+                                <option value="Direct Drive (Same Day)">Direct Drive (Same Day)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="six columns">
+                            <input type="text" placeholder="Commodity Type" id="commoditytype" onkeyup="ups()" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="six columns">
+                            <input type="button" id="submitbtn" class="button" value="Submit Request">
+                        </div>
+                    </div>
+
+                    <form id="ajaxForm" name="ajaxForm" style="display:none;" action="https://www.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+
+                        <input type=hidden name="orgid" value="00Dd0000000fk3J">
+                        <input type=hidden name="retURL" value="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Account/Index#quote">
+
+                        <!--  ----------------------------------------------------------------------  -->
+                        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+                        <!--  these lines if you wish to test in debug mode.
+                         <input type="hidden" name="debug" value=1>
+                        <input type="hidden" name="debugEmail"
+                         value="mercadovergel@gmail.com">                   -->
+                        <!--  ----------------------------------------------------------------------  -->
+
+                        <input id="name" maxlength="80" name="name" placeholder="Contact Name" size="20" type="hidden" /><br>
+
+                        <input id="company" maxlength="40" name="company" placeholder="Company Name *" size="20" type="hidden" style="width:50%;" />
+
+
+                        <input id="email" maxlength="80" name="email" placeholder="Email" size="20" type="hidden" /><br>
+
+                        <input id="phone" maxlength="40" name="phone" placeholder="Phone" size="20" type="hidden" /><br>
+
+                        <input id="subject" maxlength="80" name="subject" placeholder="Subject" size="20" type="hidden" /><br>
+
+                        <textarea name="description" id="description" style="display:none"></textarea><br>
+
+                        <select id="00Nd0000007ecu1" name="00Nd0000007ecu1" title="Type of Service" style="display:none;">
+                            <option value="">--None--</option>
+                            <option value="Expedited LTL">Expedited LTL</option>
+                            <option value="General LTL">General LTL</option>
+                            <option value="Rail LTL">Rail LTL</option>
+                            <option value="Standard Courier">Standard Courier</option>
+                            <option value="Express Courier">Express Courier</option>
+                            <option value="Less than Container (Sea) - Door-to-Door">Less than Container (Sea) - Door-to-Door</option>
+                            <option value="Less than Container (Sea) - Door-to-Port">Less than Container (Sea) - Door-to-Port</option>
+                            <option value="Less than Container (Sea) - Port-to-Door">Less than Container (Sea) - Port-to-Door</option>
+                            <option value="Less than Container (Sea) - Port-to-Port">Less than Container (Sea) - Port-to-Port</option>
+                            <option value="FCL (Sea) - Door-to-Door">FCL (Sea) - Door-to-Door</option>
+                            <option value="FCL (Sea) - Door-to-Port">FCL (Sea) - Door-to-Port</option>
+                            <option value="FCL (Sea) - Port-to-Door">FCL (Sea) - Port-to-Door</option>
+                            <option value="FCL (Sea) - Port-to-Port">FCL (Sea) - Port-to-Port</option>
+                            <option value="Air Cargo - Door-to-Door">Air Cargo - Door-to-Door</option>
+                            <option value="Air Cargo - Door-to-Airport">Air Cargo - Door-to-Airport</option>
+                            <option value="Air Cargo - Airport-to-Door">Air Cargo - Airport-to-Door</option>
+                            <option value="Air Cargo - Airport-to-Airport">Air Cargo - Airport-to-Airport</option>
+                            <option value="Direct Drive (Same Day)">Direct Drive (Same Day)</option>
+                        </select><br>
+
+                        <input id="00Nd0000007ecu6" maxlength="255" name="00Nd0000007ecu6" size="20" type="hidden" /><br>
+
+                    </form>
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

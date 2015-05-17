@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Tools";
+}
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <img src="~/Content/images/trackingandresources.jpg" />
+        </div>
+    </div>
+</div>
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-top: 5px; margin-bottom: 0px;">Tools</h2>
+            <div id="titleborder"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns" style="width: 29%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 10px; margin-bottom: 5px;"><a id="linkside1" href="~/Tracking/Index">Tracking & Resources</a></h5>
+                    <div id="linkside1border"></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 5px; margin-bottom: 5px;"><a id="linkside2" href="#">Tools</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="eight columns" id="abtborder" style="width: 70%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h4 style="color: #f6a11d;">Tools</h4>
+                    <script type="text/javascript">
+
+                        function calculate() {
+                            var l = $("#length").val();
+                            var w = $("#width").val();
+                            var h = $("#height").val();
+                            var s = $("#selected").val();
+
+
+                            $("#total").val(parseInt((l * w * h) / s) + 1);
+
+                        }
+
+                        function reset() {
+                            $("#length").val("");
+                            $("#width").val("");
+                            $("#height").val("");
+                            $("#selected").val("166");
+                            $("#total").val("");
+                        }
+
+                    </script>
+                    <p>
+                        This tool is use for calculating dimensional weight.
+                        <br /><br />
+                        <select style="width:150px;" id="selected">
+                            <option value="166">Standard</option>
+                            <option value="139">Express</option>
+                            <option value="139">Express Expedited</option>
+                            <option value="139">Express Saver</option>
+                        </select>
+                        <br /><br />
+                        <input id="length" placeholder="LENGTH" style="width:100px;" /> X <input style="width:100px;" id="width" placeholder="WIDTH" /> X <input style="width:100px;" id="height" placeholder="HEIGHT" /> = <input style="width:100px;" id="total" placeholder="TOTAL" />
+                        <br /><br />
+                        <input type="button" value="Calculate" class="button" onclick="calculate()" /> &nbsp; <input type="button" class="button" value="Reset" onclick="reset()" />
+                    </p>
+                    <p>
+                        For MNFC identifier,  <a href="http://www.freightquote.com/howtoship/nmfc-freight-density.aspx" style="color: #f6a11d;" target="_blank">click here</a>.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

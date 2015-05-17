@@ -1,0 +1,1140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VITALDB_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="provision_marker_dss">
+    <Key>
+      <PropertyRef Name="object_id" />
+      <PropertyRef Name="owner_scope_local_id" />
+    </Key>
+    <Property Name="object_id" Type="Int32" Nullable="false" />
+    <Property Name="owner_scope_local_id" Type="Int32" Nullable="false" />
+    <Property Name="provision_scope_local_id" Type="Int32" />
+    <Property Name="provision_timestamp" Type="Int64" Nullable="false" />
+    <Property Name="provision_local_peer_key" Type="Int32" Nullable="false" />
+    <Property Name="provision_scope_peer_key" Type="Int32" />
+    <Property Name="provision_scope_peer_timestamp" Type="Int64" />
+    <Property Name="provision_datetime" Type="DateTime" Precision="3" />
+    <Property Name="state" Type="Int32" />
+    <Property Name="version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="schema_info_dss">
+    <Key>
+      <PropertyRef Name="schema_major_version" />
+      <PropertyRef Name="schema_minor_version" />
+    </Key>
+    <Property Name="schema_major_version" Type="Int32" Nullable="false" />
+    <Property Name="schema_minor_version" Type="Int32" Nullable="false" />
+    <Property Name="schema_extended_info" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="scope_config_dss">
+    <Key>
+      <PropertyRef Name="config_id" />
+    </Key>
+    <Property Name="config_id" Type="Guid" Nullable="false" />
+    <Property Name="config_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="scope_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="scope_info_dss">
+    <Key>
+      <PropertyRef Name="sync_scope_name" />
+    </Key>
+    <Property Name="scope_local_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="scope_id" Type="Guid" Nullable="false" />
+    <Property Name="sync_scope_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="scope_sync_knowledge" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="scope_tombstone_cleanup_knowledge" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="scope_timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="scope_config_id" Type="Guid" />
+    <Property Name="scope_restore_count" Type="Int32" Nullable="false" />
+    <Property Name="scope_user_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AccessorialChargeAmount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Content" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AccessorialChargeId" Type="Guid" Nullable="false" />
+    <Property Name="CustomerAccountId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AccessorialCharge" Relationship="Self.FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId" FromRole="AccessorialChargeAmounts" ToRole="AccessorialCharges" />
+    <NavigationProperty Name="CustomerAccount" Relationship="Self.FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId" FromRole="AccessorialChargeAmounts" ToRole="CustomerAccounts" />
+  </EntityType>
+  <EntityType Name="AccessorialCharge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="AccessorialChargeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AccessorialChargeAmounts" Relationship="Self.FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId" FromRole="AccessorialCharges" ToRole="AccessorialChargeAmounts" />
+  </EntityType>
+  <EntityType Name="AddressBookInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="NickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyOrName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsResidential" Type="Boolean" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Extension" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SaveAsShipperFromFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ReceiverUPSAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverPostalCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceType2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerOfAddressBook_Id" Type="Guid" Nullable="false" />
+    <Property Name="Customer_Id" Type="Guid" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id" FromRole="AddressBookInfoes" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDate" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="BillingSummary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="BillingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TotalInvoiceAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExemptBRK" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomsGSTorVAT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExemptCharges" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TaxableBRK" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BRKTax" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GSTApp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GSTAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HBCApp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HBCAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HONApp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HONAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HNSApp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HNSAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HSTApp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HSTAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Commission" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AgentCommission" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Carrier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="BillToAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShipmentRequests" Relationship="Self.FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId" FromRole="Carriers" ToRole="ShipmentRequests" />
+    <NavigationProperty Name="SkidRates" Relationship="Self.FK_dbo_SkidRates_dbo_Carriers_CarrierId" FromRole="Carriers" ToRole="SkidRates" />
+    <NavigationProperty Name="SpecialInstructionAmounts" Relationship="Self.FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId" FromRole="Carriers" ToRole="SpecialInstructionAmounts" />
+  </EntityType>
+  <EntityType Name="Consignee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="AddressBookName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ConsigneeAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeAddress3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeStateOrProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="COnsigneePostalOrZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeCountry" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneePhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneePhoneExt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeIsResidential" Type="Boolean" />
+    <Property Name="UPSId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ShipmentRequests" Relationship="Self.FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId" FromRole="Consignees" ToRole="ShipmentRequests" />
+    <NavigationProperty Name="Customers" Relationship="Self.ConsigneeCustomers" FromRole="Consignees" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="CustomerAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RateYear" Type="Int32" Nullable="false" />
+    <Property Name="UPSEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="TermId" Type="Guid" Nullable="false" />
+    <Property Name="CustomerId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="AccessorialChargeAmounts" Relationship="Self.FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId" FromRole="CustomerAccounts" ToRole="AccessorialChargeAmounts" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_CustomerAccounts_dbo_Customers_CustomerId" FromRole="CustomerAccounts" ToRole="Customers" />
+    <NavigationProperty Name="Term" Relationship="Self.FK_dbo_CustomerAccounts_dbo_Terms_TermId" FromRole="CustomerAccounts" ToRole="Terms" />
+    <NavigationProperty Name="ZoneDiscountPercentages" Relationship="Self.FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId" FromRole="CustomerAccounts" ToRole="ZoneDiscountPercentages" />
+  </EntityType>
+  <EntityType Name="CustomerMarkup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="MarkupPercentage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_CustomerMarkups_dbo_Customers_CustomerId" FromRole="CustomerMarkups" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneExt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AltPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AltContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="SalesRepresentative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommissionRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UPSUsername" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UPSPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AddressBookInfoes" Relationship="Self.FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id" FromRole="Customers" ToRole="AddressBookInfoes" />
+    <NavigationProperty Name="CustomerAccounts" Relationship="Self.FK_dbo_CustomerAccounts_dbo_Customers_CustomerId" FromRole="Customers" ToRole="CustomerAccounts" />
+    <NavigationProperty Name="CustomerMarkups" Relationship="Self.FK_dbo_CustomerMarkups_dbo_Customers_CustomerId" FromRole="Customers" ToRole="CustomerMarkups" />
+    <NavigationProperty Name="CustomerShipments" Relationship="Self.FK_CustomerShipment_Customers" FromRole="Customers" ToRole="CustomerShipment" />
+    <NavigationProperty Name="CustomerSpInstructionAmounts" Relationship="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId" FromRole="Customers" ToRole="CustomerSpInstructionAmounts" />
+    <NavigationProperty Name="ShipmentRequests" Relationship="Self.FK_dbo_ShipmentRequests_dbo_Customers_CustomerId" FromRole="Customers" ToRole="ShipmentRequests" />
+    <NavigationProperty Name="Consignees" Relationship="Self.ConsigneeCustomers" FromRole="Customers" ToRole="Consignees" />
+    <NavigationProperty Name="Roles" Relationship="Self.RoleCustomers" FromRole="Customers" ToRole="Roles" />
+    <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AlternateContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AlternateEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CustomerShipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="customerId" Type="Guid" Nullable="false" />
+    <Property Name="trackingNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pickupNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="modifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="shipmentLabel" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerShipment_Customers" FromRole="CustomerShipment" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="CustomerSpInstructionAmount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="CustomerAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerId" Type="Guid" Nullable="false" />
+    <Property Name="SpecialInstructionId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId" FromRole="CustomerSpInstructionAmounts" ToRole="Customers" />
+    <NavigationProperty Name="SpecialInstruction" Relationship="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" FromRole="CustomerSpInstructionAmounts" ToRole="SpecialInstructions" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="invoiceId" />
+    </Key>
+    <Property Name="invoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="invoiceSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="invoiceDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="invoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="invoiceFileName" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="dateUpload" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="accountnumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookupTable">
+    <Key>
+      <PropertyRef Name="LookupId" />
+    </Key>
+    <Property Name="LookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookupCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LookupValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LookupText" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NewsTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NewsDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NewsCaption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NewsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PostalCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="OriginCountry" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OriginPostalCodeMin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OriginPostalCodeMax" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationCountry" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DestinationPostalCodeMin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DestinationPostalCodeMax" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PostalCodeZones" Relationship="Self.FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId" FromRole="PostalCodes" ToRole="PostalCodeZones" />
+  </EntityType>
+  <EntityType Name="PostalCodeZone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="PostalCodeId" Type="Guid" Nullable="false" />
+    <Property Name="ShippingTypeId" Type="Guid" Nullable="false" />
+    <Property Name="ZoneId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PostalCode" Relationship="Self.FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId" FromRole="PostalCodeZones" ToRole="PostalCodes" />
+    <NavigationProperty Name="ShippingType" Relationship="Self.FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId" FromRole="PostalCodeZones" ToRole="ShippingTypes" />
+    <NavigationProperty Name="Zone" Relationship="Self.FK_dbo_PostalCodeZones_dbo_Zones_ZoneId" FromRole="PostalCodeZones" ToRole="Zones" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers" Relationship="Self.RoleCustomers" FromRole="Roles" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="ShipmentDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShipmentReferenceNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PackageQuantity" Type="Int32" Nullable="false" />
+    <Property Name="TrackingNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EnteredWeight" Type="Int32" Nullable="false" />
+    <Property Name="EnteredWeightUnitOfMeasure" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BilledWeight" Type="Int32" Nullable="false" />
+    <Property Name="BilledWeightUnitOfMeasure" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Zone" Type="Int32" Nullable="false" />
+    <Property Name="ChargeClassificationCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ChargeDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceCurrencyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FreightCharge" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Fuel" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SalesTax" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SenderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SenderCompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SenderAddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SenderAddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SenderCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SenderState" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="SenderPostal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SenderCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverCompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverAddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverAddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverState" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverPostal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToCompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToAddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToAddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToState" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToPostal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoldToCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LeadShipmentNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WorldEaseNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EnteredHeight" Type="Int32" Nullable="false" />
+    <Property Name="EnteredWidth" Type="Int32" Nullable="false" />
+    <Property Name="EnteredLength" Type="Int32" Nullable="false" />
+    <Property Name="IsLargePackage" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdditionalHandling" Type="Boolean" Nullable="false" />
+    <Property Name="PackageDeclaredValue" Type="Int32" Nullable="false" />
+    <Property Name="ServiceCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SendEmailNotificationFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ReceiveConfirmationAndDeliveryFlag" Type="Boolean" Nullable="false" />
+    <Property Name="DeliveryOnSundayFlag" Type="Boolean" Nullable="false" />
+    <Property Name="CODFlag" Type="Boolean" Nullable="false" />
+    <Property Name="ReferenceNumber1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceNumber2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceNumber3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BillShippingChargesTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShipmentRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShipmentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SpecialInstruction1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialInstruction1Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SpecialInstruction2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialInstruction2Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SpecialInstruction3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialInstruction3Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="WeightAs" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SkidRate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="EstimatedCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ActualCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NumberOfPieces" Type="Int32" Nullable="false" />
+    <Property Name="FreightCharge" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FuelSurcharge" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerMarkup" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SalesTax" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ShipperName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShipperReference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShipperPostal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ConsigneeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ConsigneeReference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeProvince" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ConsigneePostal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConsigneeCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerId" Type="Guid" Nullable="false" />
+    <Property Name="ConsigneeId" Type="Guid" Nullable="false" />
+    <Property Name="CarrierId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Carrier" Relationship="Self.FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId" FromRole="ShipmentRequests" ToRole="Carriers" />
+    <NavigationProperty Name="Consignee" Relationship="Self.FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId" FromRole="ShipmentRequests" ToRole="Consignees" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_ShipmentRequests_dbo_Customers_CustomerId" FromRole="ShipmentRequests" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="ShippingType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Service" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PostalCodeZones" Relationship="Self.FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId" FromRole="ShippingTypes" ToRole="PostalCodeZones" />
+  </EntityType>
+  <EntityType Name="SkidRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SkidPieces" Type="Int32" Nullable="false" />
+    <Property Name="OriginCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OriginState" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OriginAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OriginCountry" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DestinationCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DestinationState" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DestinationAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DestinationCountry" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CarrierId" Type="Guid" Nullable="false" />
+    <Property Name="SkidWeightId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Carrier" Relationship="Self.FK_dbo_SkidRates_dbo_Carriers_CarrierId" FromRole="SkidRates" ToRole="Carriers" />
+    <NavigationProperty Name="SkidWeight" Relationship="Self.FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId" FromRole="SkidRates" ToRole="SkidWeights" />
+  </EntityType>
+  <EntityType Name="Skid">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SkidDescription" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ItemLength" Type="Double" Nullable="false" />
+    <Property Name="ItemWidth" Type="Double" Nullable="false" />
+    <Property Name="ItemHeight" Type="Double" Nullable="false" />
+    <Property Name="SkidVolume" Type="Double" Nullable="false" />
+    <Property Name="SkidWeight" Type="Double" Nullable="false" />
+    <Property Name="UnitOfMeasurement" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QuotationId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkidWeight">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Label" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Low" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="High" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="SkidRates" Relationship="Self.FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId" FromRole="SkidWeights" ToRole="SkidRates" />
+  </EntityType>
+  <EntityType Name="SpecialInstructionAmount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="CarrierAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CarrierId" Type="Guid" Nullable="false" />
+    <Property Name="SpecialInstructionId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Carrier" Relationship="Self.FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId" FromRole="SpecialInstructionAmounts" ToRole="Carriers" />
+    <NavigationProperty Name="SpecialInstruction" Relationship="Self.FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" FromRole="SpecialInstructionAmounts" ToRole="SpecialInstructions" />
+  </EntityType>
+  <EntityType Name="SpecialInstruction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="SpecialInstructionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CustomerSpInstructionAmounts" Relationship="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" FromRole="SpecialInstructions" ToRole="CustomerSpInstructionAmounts" />
+    <NavigationProperty Name="SpecialInstructionAmounts" Relationship="Self.FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" FromRole="SpecialInstructions" ToRole="SpecialInstructionAmounts" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="LookupId" />
+    </Key>
+    <Property Name="LookupId" Type="Int32" Nullable="false" />
+    <Property Name="LookupCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LookupValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LookupText" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TaxName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxStateAbbreviation" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxState" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxPercent" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Term">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TermName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CustomerAccounts" Relationship="Self.FK_dbo_CustomerAccounts_dbo_Terms_TermId" FromRole="Terms" ToRole="CustomerAccounts" />
+  </EntityType>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Weight">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Low" Type="Int32" Nullable="false" />
+    <Property Name="High" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ZoneRates" Relationship="Self.FK_dbo_ZoneRates_dbo_Weights_WeightId" FromRole="Weights" ToRole="ZoneRates" />
+  </EntityType>
+  <EntityType Name="ZoneDiscountPercentage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Content" Type="Double" Nullable="false" />
+    <Property Name="PAKDiscountPercentage" Type="Double" Nullable="false" />
+    <Property Name="LTRDiscountPercentage" Type="Double" Nullable="false" />
+    <Property Name="CustomerAccountId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZoneId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustomerAccount" Relationship="Self.FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId" FromRole="ZoneDiscountPercentages" ToRole="CustomerAccounts" />
+    <NavigationProperty Name="Zone" Relationship="Self.FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId" FromRole="ZoneDiscountPercentages" ToRole="Zones" />
+  </EntityType>
+  <EntityType Name="ZoneRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Minimum" Type="Double" Nullable="false" />
+    <Property Name="Rate" Type="Double" Nullable="false" />
+    <Property Name="RateYear" Type="Int32" Nullable="false" />
+    <Property Name="ZoneId" Type="Int32" Nullable="false" />
+    <Property Name="WeightId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Weight" Relationship="Self.FK_dbo_ZoneRates_dbo_Weights_WeightId" FromRole="ZoneRates" ToRole="Weights" />
+    <NavigationProperty Name="Zone" Relationship="Self.FK_dbo_ZoneRates_dbo_Zones_ZoneId" FromRole="ZoneRates" ToRole="Zones" />
+  </EntityType>
+  <EntityType Name="Zone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ZoneName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PostalCodeZones" Relationship="Self.FK_dbo_PostalCodeZones_dbo_Zones_ZoneId" FromRole="Zones" ToRole="PostalCodeZones" />
+    <NavigationProperty Name="ZoneDiscountPercentages" Relationship="Self.FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId" FromRole="Zones" ToRole="ZoneDiscountPercentages" />
+    <NavigationProperty Name="ZoneRates" Relationship="Self.FK_dbo_ZoneRates_dbo_Zones_ZoneId" FromRole="Zones" ToRole="ZoneRates" />
+  </EntityType>
+  <Association Name="FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId">
+    <End Role="AccessorialCharges" Type="Self.AccessorialCharge" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessorialChargeAmounts" Type="Self.AccessorialChargeAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessorialCharges">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccessorialChargeAmounts">
+        <PropertyRef Name="AccessorialChargeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId">
+    <End Role="CustomerAccounts" Type="Self.CustomerAccount" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AccessorialChargeAmounts" Type="Self.AccessorialChargeAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AccessorialChargeAmounts">
+        <PropertyRef Name="CustomerAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="AddressBookInfoes" Type="Self.AddressBookInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddressBookInfoes">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId">
+    <End Role="Carriers" Type="Self.Carrier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentRequests" Type="Self.ShipmentRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentRequests">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SkidRates_dbo_Carriers_CarrierId">
+    <End Role="Carriers" Type="Self.Carrier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SkidRates" Type="Self.SkidRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkidRates">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId">
+    <End Role="Carriers" Type="Self.Carrier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SpecialInstructionAmounts" Type="Self.SpecialInstructionAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carriers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecialInstructionAmounts">
+        <PropertyRef Name="CarrierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId">
+    <End Role="Consignees" Type="Self.Consignee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentRequests" Type="Self.ShipmentRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consignees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentRequests">
+        <PropertyRef Name="ConsigneeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerAccounts_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerAccounts" Type="Self.CustomerAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerAccounts">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerAccounts_dbo_Terms_TermId">
+    <End Role="Terms" Type="Self.Term" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerAccounts" Type="Self.CustomerAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerAccounts">
+        <PropertyRef Name="TermId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId">
+    <End Role="CustomerAccounts" Type="Self.CustomerAccount" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneDiscountPercentages" Type="Self.ZoneDiscountPercentage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneDiscountPercentages">
+        <PropertyRef Name="CustomerAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerMarkups_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerMarkups" Type="Self.CustomerMarkup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerMarkups">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerShipment_Customers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="CustomerShipment" Type="Self.CustomerShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerShipment">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerSpInstructionAmounts" Type="Self.CustomerSpInstructionAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerSpInstructionAmounts">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ShipmentRequests_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentRequests" Type="Self.ShipmentRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentRequests">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+    <End Role="SpecialInstructions" Type="Self.SpecialInstruction" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CustomerSpInstructionAmounts" Type="Self.CustomerSpInstructionAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialInstructions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CustomerSpInstructionAmounts">
+        <PropertyRef Name="SpecialInstructionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId">
+    <End Role="PostalCodes" Type="Self.PostalCode" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostalCodeZones" Type="Self.PostalCodeZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostalCodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalCodeZones">
+        <PropertyRef Name="PostalCodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId">
+    <End Role="ShippingTypes" Type="Self.ShippingType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostalCodeZones" Type="Self.PostalCodeZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShippingTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalCodeZones">
+        <PropertyRef Name="ShippingTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PostalCodeZones_dbo_Zones_ZoneId">
+    <End Role="Zones" Type="Self.Zone" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostalCodeZones" Type="Self.PostalCodeZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostalCodeZones">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId">
+    <End Role="SkidWeights" Type="Self.SkidWeight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SkidRates" Type="Self.SkidRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkidWeights">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SkidRates">
+        <PropertyRef Name="SkidWeightId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+    <End Role="SpecialInstructions" Type="Self.SpecialInstruction" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SpecialInstructionAmounts" Type="Self.SpecialInstructionAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialInstructions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecialInstructionAmounts">
+        <PropertyRef Name="SpecialInstructionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneRates_dbo_Weights_WeightId">
+    <End Role="Weights" Type="Self.Weight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneRates" Type="Self.ZoneRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Weights">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneRates">
+        <PropertyRef Name="WeightId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId">
+    <End Role="Zones" Type="Self.Zone" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneDiscountPercentages" Type="Self.ZoneDiscountPercentage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneDiscountPercentages">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ZoneRates_dbo_Zones_ZoneId">
+    <End Role="Zones" Type="Self.Zone" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ZoneRates" Type="Self.ZoneRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneRates">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConsigneeCustomers">
+    <End Role="Consignees" Type="Self.Consignee" Multiplicity="*" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+  </Association>
+  <Association Name="RoleCustomers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="VITALDB_TESTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="provision_marker_dss" EntityType="Self.provision_marker_dss" />
+    <EntitySet Name="schema_info_dss" EntityType="Self.schema_info_dss" />
+    <EntitySet Name="scope_config_dss" EntityType="Self.scope_config_dss" />
+    <EntitySet Name="scope_info_dss" EntityType="Self.scope_info_dss" />
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AccessorialChargeAmounts" EntityType="Self.AccessorialChargeAmount" />
+    <EntitySet Name="AccessorialCharges" EntityType="Self.AccessorialCharge" />
+    <EntitySet Name="AddressBookInfoes" EntityType="Self.AddressBookInfo" />
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+    <EntitySet Name="BillingSummaries" EntityType="Self.BillingSummary" />
+    <EntitySet Name="Carriers" EntityType="Self.Carrier" />
+    <EntitySet Name="Consignees" EntityType="Self.Consignee" />
+    <EntitySet Name="CustomerAccounts" EntityType="Self.CustomerAccount" />
+    <EntitySet Name="CustomerMarkups" EntityType="Self.CustomerMarkup" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="CustomerShipments" EntityType="Self.CustomerShipment" />
+    <EntitySet Name="CustomerSpInstructionAmounts" EntityType="Self.CustomerSpInstructionAmount" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+    <EntitySet Name="LookupTables" EntityType="Self.LookupTable" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="PostalCodes" EntityType="Self.PostalCode" />
+    <EntitySet Name="PostalCodeZones" EntityType="Self.PostalCodeZone" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="ShipmentDetails" EntityType="Self.ShipmentDetail" />
+    <EntitySet Name="ShipmentRequests" EntityType="Self.ShipmentRequest" />
+    <EntitySet Name="ShippingTypes" EntityType="Self.ShippingType" />
+    <EntitySet Name="SkidRates" EntityType="Self.SkidRate" />
+    <EntitySet Name="Skids" EntityType="Self.Skid" />
+    <EntitySet Name="SkidWeights" EntityType="Self.SkidWeight" />
+    <EntitySet Name="SpecialInstructionAmounts" EntityType="Self.SpecialInstructionAmount" />
+    <EntitySet Name="SpecialInstructions" EntityType="Self.SpecialInstruction" />
+    <EntitySet Name="Tables" EntityType="Self.Table" />
+    <EntitySet Name="Taxes" EntityType="Self.Tax" />
+    <EntitySet Name="Terms" EntityType="Self.Term" />
+    <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+    <EntitySet Name="Weights" EntityType="Self.Weight" />
+    <EntitySet Name="ZoneDiscountPercentages" EntityType="Self.ZoneDiscountPercentage" />
+    <EntitySet Name="ZoneRates" EntityType="Self.ZoneRate" />
+    <EntitySet Name="Zones" EntityType="Self.Zone" />
+    <AssociationSet Name="FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId" Association="Self.FK_dbo_AccessorialChargeAmounts_dbo_AccessorialCharges_AccessorialChargeId">
+      <End Role="AccessorialCharges" EntitySet="AccessorialCharges" />
+      <End Role="AccessorialChargeAmounts" EntitySet="AccessorialChargeAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId" Association="Self.FK_dbo_AccessorialChargeAmounts_dbo_CustomerAccounts_CustomerAccountId">
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+      <End Role="AccessorialChargeAmounts" EntitySet="AccessorialChargeAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id" Association="Self.FK_dbo_AddressBookInfoes_dbo_Customers_Customer_Id">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="AddressBookInfoes" EntitySet="AddressBookInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId" Association="Self.FK_dbo_ShipmentRequests_dbo_Carriers_CarrierId">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="ShipmentRequests" EntitySet="ShipmentRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SkidRates_dbo_Carriers_CarrierId" Association="Self.FK_dbo_SkidRates_dbo_Carriers_CarrierId">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="SkidRates" EntitySet="SkidRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId" Association="Self.FK_dbo_SpecialInstructionAmounts_dbo_Carriers_CarrierId">
+      <End Role="Carriers" EntitySet="Carriers" />
+      <End Role="SpecialInstructionAmounts" EntitySet="SpecialInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId" Association="Self.FK_dbo_ShipmentRequests_dbo_Consignees_ConsigneeId">
+      <End Role="Consignees" EntitySet="Consignees" />
+      <End Role="ShipmentRequests" EntitySet="ShipmentRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerAccounts_dbo_Customers_CustomerId" Association="Self.FK_dbo_CustomerAccounts_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerAccounts_dbo_Terms_TermId" Association="Self.FK_dbo_CustomerAccounts_dbo_Terms_TermId">
+      <End Role="Terms" EntitySet="Terms" />
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId" Association="Self.FK_dbo_ZoneDiscountPercentages_dbo_CustomerAccounts_CustomerAccountId">
+      <End Role="CustomerAccounts" EntitySet="CustomerAccounts" />
+      <End Role="ZoneDiscountPercentages" EntitySet="ZoneDiscountPercentages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerMarkups_dbo_Customers_CustomerId" Association="Self.FK_dbo_CustomerMarkups_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerMarkups" EntitySet="CustomerMarkups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerShipment_Customers" Association="Self.FK_CustomerShipment_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerShipment" EntitySet="CustomerShipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId" Association="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CustomerSpInstructionAmounts" EntitySet="CustomerSpInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ShipmentRequests_dbo_Customers_CustomerId" Association="Self.FK_dbo_ShipmentRequests_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="ShipmentRequests" EntitySet="ShipmentRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" Association="Self.FK_dbo_CustomerSpInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+      <End Role="SpecialInstructions" EntitySet="SpecialInstructions" />
+      <End Role="CustomerSpInstructionAmounts" EntitySet="CustomerSpInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId" Association="Self.FK_dbo_PostalCodeZones_dbo_PostalCodes_PostalCodeId">
+      <End Role="PostalCodes" EntitySet="PostalCodes" />
+      <End Role="PostalCodeZones" EntitySet="PostalCodeZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId" Association="Self.FK_dbo_PostalCodeZones_dbo_ShippingTypes_ShippingTypeId">
+      <End Role="ShippingTypes" EntitySet="ShippingTypes" />
+      <End Role="PostalCodeZones" EntitySet="PostalCodeZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PostalCodeZones_dbo_Zones_ZoneId" Association="Self.FK_dbo_PostalCodeZones_dbo_Zones_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="PostalCodeZones" EntitySet="PostalCodeZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId" Association="Self.FK_dbo_SkidRates_dbo_SkidWeights_SkidWeightId">
+      <End Role="SkidWeights" EntitySet="SkidWeights" />
+      <End Role="SkidRates" EntitySet="SkidRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId" Association="Self.FK_dbo_SpecialInstructionAmounts_dbo_SpecialInstructions_SpecialInstructionId">
+      <End Role="SpecialInstructions" EntitySet="SpecialInstructions" />
+      <End Role="SpecialInstructionAmounts" EntitySet="SpecialInstructionAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneRates_dbo_Weights_WeightId" Association="Self.FK_dbo_ZoneRates_dbo_Weights_WeightId">
+      <End Role="Weights" EntitySet="Weights" />
+      <End Role="ZoneRates" EntitySet="ZoneRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId" Association="Self.FK_dbo_ZoneDiscountPercentages_dbo_Zones_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="ZoneDiscountPercentages" EntitySet="ZoneDiscountPercentages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ZoneRates_dbo_Zones_ZoneId" Association="Self.FK_dbo_ZoneRates_dbo_Zones_ZoneId">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="ZoneRates" EntitySet="ZoneRates" />
+    </AssociationSet>
+    <AssociationSet Name="ConsigneeCustomers" Association="Self.ConsigneeCustomers">
+      <End Role="Consignees" EntitySet="Consignees" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="RoleCustomers" Association="Self.RoleCustomers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <EntitySet Name="QVSyncSummaries" EntityType="VITALDB_TESTModel.QVSyncSummary" />
+    <EntitySet Name="QVSubscriptionFiles" EntityType="VITALDB_TESTModel.QVSubscriptionFile" />
+    <EntitySet Name="QVShipmentDetails" EntityType="VITALDB_TESTModel.QVShipmentDetail" />
+  </EntityContainer>
+  <EntityType Name="QVSyncSummary">
+    <Key>
+      <PropertyRef Name="QVSyncId" />
+    </Key>
+    <Property Name="QVSyncId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QVSyncDate" Type="DateTime" Precision="3" />
+    <Property Name="QVSyncStatusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QVSyncStatusDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="QVEventName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="QVSubscriptionFile">
+    <Key>
+      <PropertyRef Name="SubscriptionFileId" />
+    </Key>
+    <Property Name="SubscriptionFileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SyncId" Type="Int32" />
+    <Property Name="SubscriptionFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="QVShipmentDetail">
+    <Key>
+      <PropertyRef Name="QVShipmentDetailId" />
+    </Key>
+    <Property Name="QVShipmentDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubscriptionFileId" Type="Int32" />
+    <Property Name="TrackingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipperNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipmentEvent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ManifestDate" Type="DateTime" Precision="3" />
+    <Property Name="ShipTo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Service" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SignedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToAttention" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToAddressLine1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToAddressLine2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToTelephoneNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToCity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToStateProvince" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToPostalCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToCountry" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ExceptionDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

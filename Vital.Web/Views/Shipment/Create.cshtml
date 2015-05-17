@@ -1,0 +1,283 @@
+﻿@model Vital.Model.ShipmentModel
+
+@{
+    ViewBag.Title = "Create a Shipment";
+}
+
+<style type="text/css">
+    #WhatAreYouShipping label {
+        /*font-weight: bold;*/
+    }
+</style>
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px; margin-bottom: 10px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            @*<h4 style="color: #ed6c16; margin-bottom: 30px;">Create a Shipment</h4>*@
+            <dl class="tabs contained">
+                <dd class="active"><a href="#rateshipUPS">Create a Shipment</a></dd>
+                @*<dd><a href="#rateshipLTL">Rate+Ship LTL</a></dd>
+                    <dd><a href="#quote">Request a Quote</a></dd>*@
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(r => r.DraftId);
+                @Html.HiddenFor(model => model.ConsigneeIsEditMode)
+                <ul class="tabs-content contained">
+                    <li class="active" id="rateshipUPSTab">
+                        <div class="row">
+                            @if (!Model.IsSuccess)
+                            {
+                                @Model.ResultMessage
+                            }
+                        </div>
+                        <br />
+                        <p>Please provide information about your shipment including destination, origin, shipment date, and weight.</p>
+                        <div class="row">
+                            @Html.ValidationSummary()
+                        </div>
+                        <p style="font-style: italic;">(Required fields are indicated with *)</p>
+                        <div class="row">
+                            @Html.Partial("_ShipmentAddressToInfo", Model)
+                        </div>
+                        <div class="row" id="ConsignorInformation">
+                            @Html.Partial("_ShipmentComingFrom", Model)
+                        </div>
+                        <div class="row" id="WhatAreYouShipping">
+                            @Html.Partial("_WhatAreYouShipping", Model)
+                        </div>
+                        <div class="row" id="HowWouldYouLikeToShip">
+                            @Html.Partial("_HowWouldYouLikeToShip", Model)
+                        </div>
+                        <div class="row" id="ReferenceNumber">
+                            @Html.Partial("_ReferenceNumber", Model)
+                        </div>
+                        <div class="row" id="SchedulePickup">
+                            @Html.Partial("SchedulePickupLayout", Model)
+                        </div>
+                        <div class="row" id="HowwouldyouliketoPay">
+                            @Html.Partial("_HowwouldyouliketoPay", Model)
+                        </div>
+                        <label>
+                            @Html.CheckBoxFor(r=>r.IsForReview)
+                            Review Shipping details, including price, before completing this shipment
+                        </label>
+                        @*<label>
+                            <input type="checkbox">
+                            Save As Shipping Ticket
+                        </label>*@
+                        <div class="row">
+                            <div class="button-bar" style="float: right;">
+                                <ul class="button-group">
+                                    <li><a href="#" class="button" onclick="window.location.reload();">Start Over</a></li>
+                                </ul>
+                                <ul class="button-group">
+                                    <li>
+                                        <input type="submit" value="Submit" class="button" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    @*<li id="rateshipLTLTab">This is simple tab 2s content. Now you see it!</li>
+                        <li id="quoteTab">This is simple tab 3s content.</li>*@
+                </ul>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="EditProfileModal" class="row reveal-modal medium" data-reveal>
+    @{
+        Html.RenderAction("GetCustomerInfo");
+    }
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="EditConsigneeInfo" class="reveal-modal medium" data-reveal>
+    @{
+        Html.RenderAction("GetCustomerInfo");
+    }
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+<div id="WhatIsShipmentReferenceModal" class="reveal-modal small " data-reveal>
+    <p>Help</p>
+
+    <p>What is a shipment reference?</p>
+    <p>A shipment reference may be added to any shipment for ease of tracking or allocating costs. Shipment references can be any combination of letters and numbers up to 35 characters. Reference Field #1 can be selected to print as a bar code on the shipping label. This option applies to all packages in the shipment. Your UPS CampusShip Administrator may assign specific value types for your company (e.g., Charge Back Code, Client Account Number, Purchase Order Number). Administrators may also set preferences to require or validate the Reference Number fields.</p>
+
+    <p>Note: Some UPS CampusShip services and functionality must be assigned by your UPS CampusShip Administrator. To contact your administrator, select the Administrator Lookup button (if available) or Company Support at the bottom of the page.</p>
+    <a class="close-reveal-modal">&#215;</a>
+    <input type="button" class="button close-reveal-modal right" value="Close" />
+</div>
+<div id="AdditionalChargesModal" class="reveal-modal large" data-reveal>
+    <h3>UPS Value-Added Services Comparison</h3>
+    <table class="twelve">
+        <thead>
+            <tr>
+                <th colspan="3">These are extra services you can add to your shipping selection to meet a complete range of shipping needs.</th>
+            </tr>
+            <tr>
+                <th style="width: 150px">Shipping Option</th>
+                <th>Description</th>
+                <th style="width: 150px">Available for</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>UPS 10 KG Box and UPS 25 KG Box</td>
+                <td>Simplify and save on your international shipping with fixed rates for Express shipments</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>UPS carbon neutral</td>
+                <td>Offset the carbon emissions associated with the transportation of your shipment</td>
+                <td>Some countries</td>
+            </tr>
+            <tr>
+                <td>C.O.D.</td>
+                <td>Rely on UPS to collect payment for your shipment at the time of delivery</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Declared Value</td>
+                <td>Enter a declared value for domestic packages and international shipments in excess of US$100.00 (or local currency equivalent)</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Delivery Confirmation</td>
+                <td>Verify that your shipment was delivered with your choice of signature or adult signature options</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Hold for Pickup</td>
+                <td>At no additional charge, UPS can hold your package up to five days</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Notification Services</td>
+                <td>Track the status of critical shipments with e-mail notifications</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>UPS Premium Care</td>
+                <td>Enjoy peace of mind knowing that your regulated and sensitive shipments are compliant and secure</td>
+                <td>Canada only</td>
+            </tr>
+            <tr>
+                <td>Returns</td>
+                <td>Simplify the process of collecting customer returns</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Returns Plus</td>
+                <td>Send a UPS driver, with a return label in hand, to your customer</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Saturday Delivery</td>
+                <td>Stretch your business week with Saturday Delivery</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Saturday Pickup</td>
+                <td>Get the same delivery commitment as a package shipped on a Friday</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Shipper Release</td>
+                <td>Authorize a delivery without a signature requirement</td>
+                <td>Most countries</td>
+            </tr>
+            <tr>
+                <td>Verbal Confirmation of Delivery</td>
+                <td>Receive confirmation by telephone that UPS delivered your urgent morning shipment</td>
+                <td>Most countries</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a class="close-reveal-modal">&#215;</a>
+    <input type="button" class="button close-reveal-modal right" value="Close" />
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#AddNewAddressButton").click(function () {
+            $("#ConsigneeAddressBookId").val("-99");
+            ShowLoading("Loading Address Form.. <br>Please wait.");
+            $("#ConsigneeIsEditMode").val("Y");
+            $("#AddressBookPanel").load("@Url.Content("~/Shipment/AddressBook")", null, function (result) {
+                $("#AddressBookPanel").show();
+                $("#AddressBookInfo").hide();
+                HideLoading();
+            });
+        });
+
+        $("#ConsigneeAddressBookId").change(function () {
+            $("#ConsigneeIsEditMode").val("");
+            $("#AddressBookPanel").hide();
+            $("#AddressBookInfo").hide();
+            if ($(this).val() != "-99") {
+                ShowLoading("Loading Consignee Address Information.. <br>Please wait.");
+                $("#AddressBookInfo").load("@Url.Content("~/Shipment/AddressBookViewInfo/")" + $(this).val(), null, function (result) {
+                    $("#AddressBookInfo").show();
+                    HideLoading();
+                });
+            }
+        });
+
+        $("#EditCustomerProfile").click(function () {
+            $("#EditAddressBookPanel").show();
+        });
+
+        $("#PackagingType").change(function () {
+            switch ($(this).val()) {
+                default:
+                    break;
+            }
+        });
+
+        if ($("#ConsigneeAddressBookId").val() != "-99") {
+            $("#AddressBookInfo").hide();
+            if ($(this).val() != "-99") {
+                ShowLoading("Loading Consignee Address Information.. <br>Please wait.");
+                $("#AddressBookInfo").load("@Url.Content("~/Shipment/AddressBookViewInfo/")" + $("#ConsigneeAddressBookId").val(), null, function (result) {
+                    $("#AddressBookInfo").show();
+                    HideLoading();
+                });
+            }
+        }
+
+    });
+
+    function EditConsigneeAddress(ctrl) {
+        var id = $(ctrl).attr("addressid");
+        $("#AddressBookInfo").hide();
+        $("#ConsigneeIsEditMode").val("Y");
+        ShowLoading();
+        $("#AddressBookPanel").load("@Url.Content("~/Shipment/AddressBook/")" + id, null, function (result) {
+            $("#AddressBookPanel").show();
+
+            $("#ConsigneeSaveOptionForAddress").val("2");
+            HideLoading();
+        });
+    }
+
+    function CloseAddressBookPanel() {
+        $("#AddressBookPanel").hide();
+        $("#ConsigneeAddressBookId").change();
+    }
+
+    function RefreshConsignorInfo() {
+        HideLoading();
+        $('#EditProfileModal').foundation('reveal', 'close');
+    }
+
+</script>

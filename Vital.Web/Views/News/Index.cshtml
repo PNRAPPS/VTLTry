@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Vital.Model.NewsModel>
+@{
+    ViewBag.Title = "News";
+}
+
+<title>News</title>
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <img src="~/Content/images/news.jpg" />
+        </div>
+    </div>
+</div>
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-top: 5px; margin-bottom: 0px;">News</h2>
+            <div id="titleborder"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns" style="width: 29%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 10px; margin-bottom: 5px;"><a id="linkside1" href="~/News/Index">News</a></h5>
+                    <div id="linkside1border"></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 5px; margin-bottom: 5px;"><a id="linkside2" href="~/Career/Index">Careers</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="eight columns" id="abtborder" style="width: 70%;">
+            <div class="row">
+                <div class="twelve columns" style="text-align:justify">
+                    <h4 style="color: #f6a11d;">News</h4>
+                    @foreach (var i in Model)
+                    { 
+                    <div style="float:left;width:100%;height:auto">
+                        <b> @Html.DisplayFor(modelItem => i.NewsTitle) </b><br />
+                        @*@Html.DisplayFor(modelItem => i.NewsDate.ToString("MMMM dd, yyyy"))<br /><br />*@
+                        @Html.Raw(i.NewsDate.ToString("MMMM dd, yyyy"))<br /><br />
+                        @*@Html.Raw(i.NewsContent)*@
+                        @{var TempData = i.NewsContent.Replace("\n", "<br>");}
+                        @foreach (var j in TempData)
+                        { 
+                            @Html.Raw(j);
+                            
+                        }
+
+                        <br />
+                    </div>
+                    <div style="float:left;width:100%;height:0px;border:solid 1px #000; margin-bottom:10px;"></div>
+                    
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

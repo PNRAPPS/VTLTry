@@ -1,0 +1,36 @@
+﻿@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Would you like to add reference numbers to this shipment?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+        <div class="row">
+            UPS gives you the option to track your shipments using <a href="#" data-reveal-id="WhatIsShipmentReferenceModal">references</a> that you define.
+        </div>
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => model.ReferenceNumber1)
+                <div>
+                    @Html.TextBoxFor(model => model.ReferenceNumber1, new { placeholder = "Reference # 1" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => model.ReferenceNumber2)
+                <div>
+                    @Html.TextBoxFor(model => model.ReferenceNumber2, new { placeholder = "Reference # 1" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => model.ReferenceNumber3)
+                <div>
+                    @Html.TextBoxFor(model => model.ReferenceNumber3, new { placeholder = "Reference # 1" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

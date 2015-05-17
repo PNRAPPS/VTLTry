@@ -1,0 +1,34 @@
+﻿@model Vital.Model.AddressInformation
+<div class="twelve columns">
+    <hr style="margin-top: 10px; margin-bottom: 10px;" />
+</div>
+<div class="panel" style="border: none;">
+    <div class="row">
+        <div class="six columns">
+            <h6 style="margin-bottom: 0px; margin-top: 0px;">
+                Ship To Address:
+                <a href="javascript:void(0);" onclick="EditConsigneeAddress(this)" addressid="@Model.Id.ToString()" style="text-decoration: underline; font-weight: normal; cursor: pointer;">Edit</a>
+            </h6>
+            <ul id="AddressDetails" style="list-style-type: none; margin-left: 0px;">
+                <li>
+                    @Model.Address1
+                </li>
+                <li>
+                    @Model.Address2
+                </li>
+                <li>
+                    @Model.Address3
+                </li>
+                <li>
+                    @(Model.City + " " + Model.StateOrProvince + " " + Model.Country)
+                </li>
+                <li>
+                    @Model.Phone
+                </li>
+                <li>
+                    @Model.PostalOrZip
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

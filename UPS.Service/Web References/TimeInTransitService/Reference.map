@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/Asus/Downloads/Time_In_Transit/TimeInTransit/TimeInTransitforPACKAGE/TIMEINTRANSITWebServices/SCHEMA-WSDLs/UPSSecurity.xsd" filename="UPSSecurity.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="file:///C:/Users/Asus/Downloads/Time_In_Transit/TimeInTransit/TimeInTransitforPACKAGE/TIMEINTRANSITWebServices/SCHEMA-WSDLs/TNTWS.wsdl" filename="TimeInTransit.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/Asus/Downloads/Time_In_Transit/TimeInTransit/TimeInTransitforPACKAGE/TIMEINTRANSITWebServices/SCHEMA-WSDLs/common.xsd" filename="common.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/Asus/Downloads/Time_In_Transit/TimeInTransit/TimeInTransitforPACKAGE/TIMEINTRANSITWebServices/SCHEMA-WSDLs/TimeInTransitWebServiceSchema.xsd" filename="TimeInTransitWebServiceSchema.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="file:///C:/Users/Asus/Downloads/Time_In_Transit/TimeInTransit/TimeInTransitforPACKAGE/TIMEINTRANSITWebServices/SCHEMA-WSDLs/Error1.1.xsd" filename="Error1.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <img src="~/Content/images/contact us.jpg" />
+        </div>
+    </div>
+</div>
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row" style="margin-bottom:20px;">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-top: 5px; margin-bottom: 0px;">Customer Service</h2>
+            <p style="padding-left: 70px; font-size: 18px;">Vital Logistics Ltd is consistent in delivering exceptional service to ensure fast shipping and reliability. Feel free to email, write and call us at <strong>1.888.848.1879</strong>.</p>
+            <div id="titleborder"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+                <div class="row">
+                    <h4 style="color: #f6a11d;">Contact Us</h4>
+                    <p><strong>Vital Logistics Ltd.</strong></p>
+                    <p>
+                        <strong>Ontario:</strong><br />
+                        6—295 Queen St E, Suite 452,
+                        Brampton<br />
+                        ON L6W 4S6
+                    </p>
+                    <p>
+                        <strong>British Columbia:</strong><br />
+                        810-207 W Hastings Street
+                        Vancouver<br />
+                        BC V6B 1H7
+                    </p>
+                    <p>
+                        Tel: 1.888.848.1879<br />
+                        Fax: 1.866.827.6014
+                    </p>
+                </div>
+            </div>
+            <div class="four columns">
+                <div class="row">
+                    <h4 style="color: #f6a11d;">How can we help?</h4>
+                    <ul class="disc">
+                        <li>To get a quote online <a href="~/">click here.</a></li>
+                        <li>To track a package <a href="~/">click here.</a></li>
+                        <li>To talk to a representative call toll free: 1.888.848.1879</li>
+                        <li>To schedule a review and comparison of<br />your yearly expenditures call toll free: 1.888.848.1879</li>
+                        <li>To send a fax: 1.866.827.6014</li>
+                        <li>Or email us.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="four columns">
+                <div class="row">
+                    <h4 style="color: #f6a11d;">E-mail Us</h4>
+
+                    <script type="text/javascript">
+
+                        $(document).ready(function () {
+
+                            $("#btn").click(function (er) {
+
+                                var fname = $("#first_name").val();
+                                var lname = $("#last_name").val();
+                                var email = $("#email").val();
+                                var desc = $("#description").val();
+
+                                if (fname == "") {
+                                    alert("First name is required.");
+                                    $("#first_name").focus();
+                                } else if (lname == "") {
+                                    alert("Last name is required.");
+                                    $("#last_name").focus();
+                                } else if (email == "") {
+
+                                    alert("Email address is required.");
+                                    $("#email").focus();
+                                } else if (desc == "") {
+                                    alert("Your message is required.");
+                                    $("#description").focus()
+                                } else if (!checkEmail(email)) {
+                                    alert("Invalid email format.");
+                                    $("#email").focus();
+                                } else {
+                                    alert("Successfully submitted.");
+                                    $("#ajaxform").submit();
+                                }
+
+                            });
+                        });
+
+                        function checkEmail(emailAddress) {
+                            var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
+                            var sDtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
+                            var sAtom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
+                            var sQuotedPair = '\\x5c[\\x00-\\x7f]';
+                            var sDomainLiteral = '\\x5b(' + sDtext + '|' + sQuotedPair + ')*\\x5d';
+                            var sQuotedString = '\\x22(' + sQtext + '|' + sQuotedPair + ')*\\x22';
+                            var sDomain_ref = sAtom;
+                            var sSubDomain = '(' + sDomain_ref + '|' + sDomainLiteral + ')';
+                            var sWord = '(' + sAtom + '|' + sQuotedString + ')';
+                            var sDomain = sSubDomain + '(\\x2e' + sSubDomain + ')*';
+                            var sLocalPart = sWord + '(\\x2e' + sWord + ')*';
+                            var sAddrSpec = sLocalPart + '\\x40' + sDomain; // complete RFC822 email address spec
+                            var sValidEmail = '^' + sAddrSpec + '$'; // as whole string
+
+                            var reValidEmail = new RegExp(sValidEmail);
+
+                            if (reValidEmail.test(emailAddress)) {
+                                return true;
+                            }
+
+                            return false;
+                        }
+
+                    </script>
+
+                    <form id="ajaxform" name="ajaxform" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+                        <input type=hidden name="oid" value="00Dd0000000fk3J">
+                        <input type=hidden name="retURL" value="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Contact/Index">
+                        <input type=hidden name="recordType" id="recordType" value="012d0000000hIQk">
+
+
+                        <!--  ----------------------------------------------------------------------  -->
+                        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+                        <!--  these lines if you wish to test in debug mode.                          -->
+                       <!-- <input type="hidden" name="debug" value=1>
+                        <input type="hidden" name="debugEmail"
+                               value="mercadovergel@gmail.com">
+                         ----------------------------------------------------------------------  -->
+
+
+
+                        <input id="first_name" maxlength="40" name="first_name" placeholder="First Name" size="20" type="text" />
+
+                        <input id="last_name" maxlength="80" name="last_name" placeholder="Last Name" size="20" type="text" />
+
+                        <input id="email" maxlength="80" name="email" size="20" placeholder="Email" type="text" />
+
+                        <input id="phone" maxlength="40" name="phone" size="20" placeholder="Phone" type="text" />
+
+                        <input id="company" maxlength="40" name="company" size="20" placeholder="Company" type="text" />
+
+                        <textarea name="street" placeholder="Street"></textarea>
+
+                        <input id="city" maxlength="40" name="city" placeholder="City" size="20" type="text" />
+
+                        <input id="state" maxlength="20" name="state" placeholder="State" size="20" type="text" />
+
+                        <input id="zip" maxlength="20" name="zip" size="20" placeholder="Zip" type="text" />
+
+                        <input id="country" maxlength="40" name="country" placeholder="Country" size="20" type="text" />
+
+                        <textarea name="description" id="description" placeholder="Message"></textarea>
+
+                        <input type="button" id="btn" value="Submit" class="button" />
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

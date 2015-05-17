@@ -1,0 +1,121 @@
+﻿@model Vital.Model.QuantumViewOutbound
+
+<div>
+
+    @using (@Html.BeginForm("Index", "Quantum", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="eight columns">
+                <div class="row">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(r => r.OutboundView)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(r => r.OutboundView, (IEnumerable<SelectListItem>)ViewBag.OutboundCustomViews)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(r => r.FromDate)&nbsp;@Html.TextBoxFor(r => r.FromDate, new { @class = "datepicker", @readonly = "readonly", style = "width:100% !important" })</td>
+                            <td>@Html.DisplayNameFor(r => r.ToDate)&nbsp;@Html.TextBoxFor(r => r.ToDate, new { @class = "datepicker", @readonly = "readonly", style = "width:100% !important" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(r => r.SearchTag)&nbsp;@Html.TextBoxFor(r => r.SearchTag)</td>
+                            <td>@Html.DisplayNameFor(r => r.SearchFilter)<br />@Html.DropDownListFor(r => r.SearchFilter, (IEnumerable<SelectListItem>)ViewBag.OutboundSearchFilters)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.ActionLink("Apply Filters", "Index", null, new { @class = "button" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Save View", "Index", null, new { @class = "button" })
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div class="four columns">
+                <p style="text-align: right">
+                    @Html.ActionLink("Preferences", "OutboundPreferences", null, new { @class = "button" })&nbsp;@Html.ActionLink("Alerts", "OutboundAlerts", null, new { @class = "button" })
+                </p>
+            </div>
+        </div>
+        <table class="dataTable twelve" role="grid" id="OutboundSummary">
+            <thead>
+                <tr>
+                    <th>UPS Account</th>
+                    <th>Manifest</th>
+                    <th>In Transit</th>
+                    <th>Out for Deliver</th>
+                    <th>Ready for Pickup</th>
+                    <th>Exception</th>
+                    <th>Delivered</th>
+                    <th>Void</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OutboundSummary)
+                {
+                    <tr>
+                        <td><a href="@Url.Content("~/Quantum/?outShipNum=")@item.UPSAccount">@item.UPSAccount</a></td>
+                        <td>@item.Manifest</td>
+                        <td>@item.InTransit</td>
+                        <td>@item.OutOfDeliver</td>
+                        <td>@item.ReadyForPickup</td>
+                        <td>@item.Exception</td>
+                        <td>@item.Delivered</td>
+                        <td>@item.Void</td>
+                        <td>@item.Total</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Manifest)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.InTransit)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.OutOfDeliver)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.ReadyForPickup)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Exception)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Delivered)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Void)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Total)</td>
+                </tr>
+            </tfoot>
+        </table>
+        <br />
+        <table class="dataTable twelve" role="grid" id="OutboundShipmentDetails">
+            <thead>
+                <tr>
+                    <th>Tracking Number</th>
+                    <th>Reference Number</th>
+                    <th>Status</th>
+                    <th>Manifest Date</th>
+                    <th>Ship To</th>
+                    <th>Service</th>
+                    <th>Scheduled Delivery</th>
+                    <th>Images</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OutboundShipmentDetails)
+                {
+                    <tr>
+                        <td><a class="button" href="@Url.Content("~/TrackShipment/Info/" + item.TrackingNumber.ToString())">@item.TrackingNumber</a></td>
+                        <td>@item.ReferenceNumber</td>
+                        <td>@item.Status</td>
+                        <td>@item.ManifestDate</td>
+                        <td>@item.ShipTo</td>
+                        <td>@item.Service</td>
+                        <td>@item.ScheduledDelivery</td>
+                        <td>@item.Images</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+</div>

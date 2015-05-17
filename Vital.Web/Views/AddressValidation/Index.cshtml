@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Address Validation";
+}
+
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color: #f79020; margin-bottom: 25px;">Address Validation</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <dl class="tabs" style="border-bottom: solid 1px #ee8f1e; margin-bottom: 0px;">
+                <dd class="active"><a href="#simple1" style="cursor: default; color: #ffffff; background: #ee8f1e; border-left: 1px solid #ee8f1e; border-right: 1px solid #ee8f1e; font-weight: normal;">Address Validation</a></dd>
+            </dl>
+            <ul class="tabs-content">
+                <li class="active" id="simple1Tab">
+                    <div class="panel" style="background: #fff; border: solid 1px #ee8f1e; margin: 0 0 22px 0; padding-top: 0px;">
+                        <div class="row">
+                            @using (Html.BeginForm("Index", "AddressValidation", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary()
+                                <div class="six columns">
+                                    <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                        <div class="row">
+                                            <div class="twelve columns">
+                                                <h5 style="margin-top: 0; margin-bottom: 0;">Address Validation</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0px; margin-top: 0px; padding-top: 20px; padding-bottom: 0px;">
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>Consignee Name:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>Building Name:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>Street Address:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>Town/City:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>State/Province:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>Postal Code:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label style="font-size: 11px;">
+                                                    Postal Code Extension<br />
+                                                    (for US only):</label>
+                                            </div>
+                                            <div class="seven columns">
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="five columns">
+                                                <label>Country:</label>
+                                            </div>
+                                            <div class="seven columns">
+                                                <select class="ten" name="Country">
+                                                    <option value="US">United States</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 20px;">
+                                            <div class="twelve columns">
+                                                <input type="submit" class=" small button right" value="Check">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="six columns">
+                                <div class="panel" style="background: #e7e7e7; border-bottom: none; border-top: 1px solid #d5d5d5; border-left: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0; padding-bottom: 8px; padding-top: 8px;">
+                                    <div class="row">
+                                        <div class="twelve columns">
+                                            <h5 style="margin-top: 0; margin-bottom: 0;">Valid/Invalid Address</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel" style="background: #f5f5f5; border: 1px solid #d5d5d5; margin-top: 10px; margin-bottom: 0px; margin-top: 0px; padding-top: 20px; padding-bottom: 0px; height: 422px;">
+                                    @Html.ValidationSummary()
+                                    
+                                            <div class="row">
+                                        <div class="five columns">
+                                            <label>Consignee Name:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>Building Name:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>Street Address:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>Town/City:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>State/Province:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>Postal Code:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>Postal Code Ext.:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="five columns">
+                                            <label>Country:</label>
+                                        </div>
+                                        <div class="seven columns">
+                                            
+                                        </div>
+                                    </div>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

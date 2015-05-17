@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Quantum Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px;margin-bottom: 0px; padding-bottom: 60px;">
+    <div class="six columns centered">
+        @using (Html.BeginForm("Login", "Quantum", FormMethod.Post, new { @style = "padding-left: 20px; padding-right: 20px; padding-top: 20px;", @id = "loginForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <h2 style="color: #58585a;">Quantum Login</h2>
+            <label class="lead">Username</label>
+            @Html.TextBox("userName", string.Empty, new { @placeholder = "Enter your username.", @id = "username" })
+            <label class="lead">Password</label>
+            @Html.Password("passWord", string.Empty, new { @placeholder = "Enter your password.", @id = "password" })
+            <input class="radius button right" value="Login" type="submit" />
+        }
+    </div>
+</div>
+

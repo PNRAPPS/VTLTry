@@ -1,0 +1,164 @@
+﻿@using Vital.Model
+@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>What are you shipping?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+        <div class="row">
+            <div class="three columns">
+                @Html.LabelFor(model => model.NoOfPackage)
+                <div class="six columns" style="padding: 0">
+                    @* @Html.TextBoxFor(model => model.NoOfPackage) *@
+                    @Html.DropDownListFor(model => model.NoOfPackage, VitalHtmlHelper.GetNumberOfPackage().ToSelectList())
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => model.UnitOfMeasurement)
+                @Html.DropDownListFor(model => model.UnitOfMeasurement, VitalHtmlHelper.GetUnitOfMeasure().ToSelectList())
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <a href="#" style="font-weight: bold;">Package Type</a>
+                <div>
+                    @Html.DropDownListFor(model => model.PackagingType, VitalHtmlHelper.GetPackageType().ToSelectList())
+                </div>
+            </div>
+        </div>
+        <div class="row" id="row_weight">
+            <div class="six columns">
+                @Html.LabelFor(model => model.Weight)
+                <div class="three columns" style="padding: 0">
+                    @Html.TextBoxFor(model => model.Weight)
+                </div>
+                <script type="text/javascript">
+
+                    $(document).ready(function () {
+
+                        $("#UnitOfMeasurement").change(function (e) {
+
+                            e.preventDefault();
+
+                            if ($("#UnitOfMeasurement").val() == "2") {
+                                $("#weight_name").html("KG");
+                            } else {
+                                $("#weight_name").html("LB");
+                            }
+
+                        });
+
+                    });
+
+                </script>
+                &nbsp;<span id="weight_name">LB</span>
+            </div>
+            <div class="row twelve columns" id="row_weightNote">
+                &nbsp;Tenths of a lb allowed for Letter
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="row" id="row_dimension">
+            <div class="eight columns">
+                <a href="#" style="font-weight: bold;">Package Dimensions</a>
+                <div class="row twelve columns">
+                    <div class="three columns" style="padding: 0">
+                        @Html.LabelFor(model => model.PackageDimensionsLength)
+                        @Html.TextBoxFor(model => model.PackageDimensionsLength)
+                    </div>
+                    <div class=" columns" style="padding: 0; text-align: center;">
+                        <label>&nbsp;</label>
+                        &nbsp;&nbsp;X&nbsp;&nbsp;
+                    </div>
+                    <div class="three columns" style="padding: 0">
+                        @Html.LabelFor(model => model.PackageDimensionsWidth)
+                        @Html.TextBoxFor(model => model.PackageDimensionsWidth)
+                    </div>
+                    <div class="columns" style="padding: 0; text-align: center;">
+                        <label>&nbsp;</label>
+                        &nbsp;&nbsp;X&nbsp;&nbsp;
+                    </div>
+                    <div class="three columns" style="padding: 0">
+                        @Html.LabelFor(model => model.PackageDimensionsHeight)
+                        @Html.TextBoxFor(model => model.PackageDimensionsHeight)
+                    </div>
+                    <div class="columns" style="padding: 0; text-align: center;">
+                        <label>&nbsp;</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="row_ShapedPackages">
+            <a href="#" style="font-weight: bold">Large or Unusually Shaped Packages</a>
+            <div class="row">
+                &nbsp;&nbsp;@Html.CheckBoxFor(model => model.LargePackage)  @Html.DisplayNameFor(model => model.LargePackage)
+            </div>
+            <div class="row">
+                &nbsp;&nbsp;@Html.CheckBoxFor(model => model.AdditionalHandling)  @Html.DisplayNameFor(model => model.AdditionalHandling)
+            </div>
+        </div>
+        <div class="row" id="row_dimension">
+            <div class="eight columns">
+                <a href="#" style="font-weight: bold;">Package Declared Value</a>
+                <div class="row twelve columns">
+                    <div class="three columns" style="padding: 0">
+                        @Html.TextBoxFor(model => model.PackageDeclaredValueCAD, new { value = "0" })
+                    </div>
+                    <div class=" columns" style="padding: 0; text-align: center;">
+                        &nbsp;&nbsp;CAD
+                    </div>
+                    <div class="columns" style="padding: 0; text-align: center;">
+                        <label>&nbsp;</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <b>Note:</b> Additional shipping fees may apply based on declared value.
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PackagingType").change(function () {
+
+                $("#row_weight").hide();
+                $("#row_dimension").hide();
+                $("#row_ShapedPackages").hide();
+                $("#row_weightNote").hide();
+
+                switch ($(this).val()) {
+                    case "@Vital.Model.PackagingTypeEnum.ExpressBox.GetValue()":
+                    case "@Vital.Model.PackagingTypeEnum.Tube.GetValue()":
+                        $("#row_weight").show();
+                        $("#row_dimension").show();
+                        break;
+                    case "@Vital.Model.PackagingTypeEnum.OtherPackaging.GetValue()":
+                        $("#row_weight").show();
+                        $("#row_dimension").show();
+                        $("#row_ShapedPackages").show();
+                        break;
+                    case "@Vital.Model.PackagingTypeEnum.PAK.GetValue()":
+                        $("#row_weight").show();
+                        break;
+                    case "@Vital.Model.PackagingTypeEnum.ExpressEnvelope.GetValue()":
+                        $("#row_weight").show();
+                        $("#row_weightNote").show();
+                        break;
+                    default:
+                        break;
+                }
+
+                //yield return PackagingTypeEnum.ExpressBox.ToValueText();
+                //yield return PackagingTypeEnum.PAK.ToValueText();
+                //yield return PackagingTypeEnum.Tube.ToValueText();
+                //yield return PackagingTypeEnum.OtherPackaging.ToValueText();
+                //yield return PackagingTypeEnum.ExpressEnvelope.ToValueText();
+            });
+
+            $("#PackagingType").change();
+        });
+    </script>

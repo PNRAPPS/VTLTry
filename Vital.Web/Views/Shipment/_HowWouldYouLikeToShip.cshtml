@@ -1,0 +1,42 @@
+﻿@model Vital.Model.ShipmentModel
+<div class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>How would you like to ship?</h6>
+    </div>
+    <div class="panel" style="border: none;">
+        <div class="row">
+            <div class="six columns">
+                @Html.LabelFor(model => model.ServiceType)
+                <div>
+                    @Html.DropDownListFor(model => model.ServiceType, VitalHtmlHelper.GetServiceType().ToSelectList())
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+                Do you need <a data-reveal-id="AdditionalChargesModal" href="#">additional services</a>?
+                <span style="font-weight: bold" class="right">Fee?</span>
+            </div>
+            <div class="twelve columns">
+                @Html.CheckBoxFor(model => model.SendEmailNotification)  @Html.DisplayNameFor(model => model.SendEmailNotification)
+                <span class="right">Free</span>
+            </div>
+            <div class="twelve columns">
+                @Html.CheckBoxFor(model => model.ReceiveConfirmationofDelivery)  @Html.DisplayNameFor(model => model.ReceiveConfirmationofDelivery)
+                <span class="right">Yes</span>
+            </div>
+            <div class="twelve columns">
+                @Html.CheckBoxFor(model => model.DeliverOnSaturday)  @Html.DisplayNameFor(model => model.DeliverOnSaturday)
+                <span class="right">Yes</span>
+            </div>
+            <div class="twelve columns">
+                @Html.CheckBoxFor(model => model.COD)  @Html.DisplayNameFor(model => model.COD)
+                <span class="right">Yes</span>
+            </div>
+        </div>
+
+        Some services may require extra information. You will be able to enter the required information on the next page.
+    </div>
+
+</div>

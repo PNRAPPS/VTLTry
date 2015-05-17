@@ -1,0 +1,67 @@
+﻿@Html.Partial("~/Views/Quantum/_QuantumFilter.cshtml")
+
+<div id="summaryInformation" class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Quantum Summary</h6>
+    </div>
+    <div id="SummaryPanel" class="panel" style="border: none;">
+        <div class="row">
+            <table id="tblSummary" class="shipmentSummary twelve columns">
+                <thead>
+                    <tr>
+                        <th>UPS Account</th>
+                        <th>Manifest</th>
+                        <th>In Transit</th>
+                        <th>Out for Deliver</th>
+                        <th>Ready for Pickup</th>
+                        <th>Exception</th>
+                        <th>Delivered</th>
+                        <th>Void</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<button class="button export" onclick="ExportData();">Export as CSV</button>
+<br /><br />
+
+<div id="shipmentInfotmation" class="twelve columns">
+    <div class="panel" style="background: #cbbaa8; border: none; padding-top: 10px; padding-bottom: 10px; margin-bottom: 0px;">
+        <h6>Shipment Details</h6>
+    </div>
+    <div id="ShipmentPanel" class="panel" style="border: none;">
+        <div id="dvData" class="row">
+            <table id="tblShipment" class="shipmentDetails twelve columns">
+                <thead>
+                    <tr>
+                        <th>Tracking Number</th>
+                        <th>Reference Number</th>
+                        <th>Status</th>
+                        <th>Manifest Date</th>
+                        <th>Ship To</th>
+                        <th>Address Line 1</th>
+                        <th>Address Line 2</th>
+                        <th>City</th>
+                        <th>StateProvince</th>
+                        <th>Country</th>
+                        <th>Postal Code</th>
+                        <th>Ship To Attention</th>
+                        <th>Ship To Name</th>
+                        <th>Signed By</th>
+                        <th>Exception Description</th>
+                        <th>Service</th>
+                        <th>Scheduled Delivery</th>
+                        <th>Images</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

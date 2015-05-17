@@ -1,0 +1,510 @@
+﻿@{
+    ViewBag.Title = "Request a Quote";
+}
+<div class="panel" style="background: #ededed; border: #ededed; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="twelve columns">
+            <img src="~/Content/images/request a quote.jpg" />
+        </div>
+    </div>
+</div>
+<div class="panel" style="background: url('/Content/images/watermark.png') #ededed no-repeat 65% 50%; border: #ededed; margin-top: 0px; padding-top: 5px;">
+    <div class="row">
+        <div class="twelve columns">
+            <h2 style="color:#f79020;margin-top:5px;margin-bottom:0px;">Resources</h2>
+            <div id="titleborder"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="four columns" style="width: 29%;">
+            <div class="row">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 10px;margin-bottom: 5px;"><a id="linkside1" href="~/Quote/Index">Request a Quote</a></h5>
+                    <div id="linkside1border"></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+                <div class="twelve columns">
+                    <h5 style="margin-top: 5px;margin-bottom: 5px;"><a id="linkside2" href="~/Tracking/Index">Tracking and Resources</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="eight columns" id="abtborder" style="width: 70%;">
+            <h4 style="color: #f6a11d;">Request a Quote</h4>
+            <p>We are happy to provide a quote for any type of shipment.</p>
+            <p><strong>What do you need? *</strong></p>
+            <script type="text/javascript">
+
+                var billto = "";
+                var radvalue = "";
+
+                $(document).ready(function (e) {
+
+                    radvalue = $("#rad1").val();
+
+                    $("#submitbtn").click(function () {
+
+                        var w_compname = $("#w_compname").val();
+                        var w_cname = $("#w_cname").val();
+                        var w_address = $("#w_address").val();
+                        var w_city = $("#w_city").val();
+                        var w_state = $("#w_state").val();
+                        var w_zip = $("#w_zip").val();
+                        var w_country = $("#w_country").val();
+                        var w_tel = $("#w_tel").val();
+                        var w_email = $("#w_email").val();
+
+                        var g_compname = $("#g_compname").val();
+                        var g_cname = $("#g_cname").val();
+                        var g_address = $("#g_address").val();
+                        var g_city = $("#g_city").val();
+                        var g_state = $("#g_state").val();
+                        var g_zip = $("#g_zip").val();
+                        var g_country = $("#g_country").val();
+                        var g_tel = $("#g_tel").val();
+                        var g_email = $("#g_email").val();
+
+
+                        var o_compname = $("#o_compname").val();
+                        var o_cname = $("#o_cname").val();
+                        var o_address = $("#o_address").val();
+                        var o_city = $("#o_city").val();
+                        var o_state = $("#o_state").val();
+                        var o_zip = $("#o_zip").val();
+                        var o_country = $("#o_country").val();
+                        var o_tel = $("#o_tel").val();
+                        var o_email = $("#o_email").val();
+
+                        var quantity = $("#quantity").val();
+                        var item = $("#item").val();
+                        var length = $("#length").val();
+                        var weight = $("#weight").val();
+                        var width = $("#width").val();
+                        var height = $("#height").val();
+
+                        $("#subject").val($("#company2").val() + " - " + radvalue);
+
+
+                        if ($("#name2").val() == "") {
+                            alert("Please fill up Contact Name.");
+                            $("#name2").focus();
+                        } else if ($("#company2").val() == "") {
+                            alert("Please fill up Company Name 1.");
+                            $("#company2").focus();
+                        } else if ($("#email2").val() == "") {
+                            alert("Please fill up Email address.");
+                            $("#email2").focus();
+                        } else if ($("#mobile2").val() == "") {
+                            alert("Please fill up Mobile Number.");
+                            $("#mobile2").focus();
+                        } else if (!checkEmail($("#email2").val())) {
+                            alert("Invalid email format.");
+                            $("#email2").focus();
+                        } else if (w_compname == "") {
+                            alert("Please fill up Company Name 2.");
+                            $("#w_compname").focus();
+                        } else if (w_compname == "") {
+                            alert("Please fill up Address.");
+                            $("#w_address").focus();
+                        } else if (w_compname == "") {
+                            alert("Please fill up City.");
+                            $("#w_city").focus();
+                        } else if (w_compname == "") {
+                            alert("Please fill up Country.");
+                            $("#w_country").focus();
+                        } else if (w_compname == "") {
+                            alert("Please fill up Telephone.");
+                            $("#w_tel").focus();
+                        } else if (w_compname == "") {
+                            alert("Please fill up Email address.");
+                            $("#w_email").focus();
+                        } else if (!checkEmail(w_email)) {
+                            alert("Invalid Email format.");
+                            $("#w_email").focus();
+                        } else if (quantity == "") {
+                            alert("Please fill up Quantity.");
+                            $("#quantity").focus();
+                        } else if (length == "") {
+                            alert("Please fill up Length.");
+                            $("#length").focus();
+                        } else if (weight == "") {
+                            alert("Please fill up Weight.");
+                            $("#weight").focus();
+                        } else if (width == "") {
+                            alert("Please fill up Width.");
+                            $("#width").focus();
+                        } else if (height == "") {
+                            alert("Please fill up Height.");
+                            $("#height").focus();
+                        }
+                        else {
+
+                            if (billto == "Other") {
+
+                                if (o_compname == "") {
+                                    alert("Please fill up Company Name 3.");
+                                    $("#o_compname").focus();
+                                } else if (o_address == "") {
+                                    alert("Please fill up Address.");
+                                    $("#o_address").focus();
+                                } else if (o_city == "") {
+                                    alert("Please fill up City.");
+                                    $("#o_city").focus();
+                                } else if (o_country == "") {
+                                    alert("Please fill up Country.");
+                                    $("#o_country").focus();
+                                } else if (o_tel == "") {
+                                    alert("Please fill up Telephone Number.");
+                                    $("#o_tel").focus();
+                                } else if (o_email == "") {
+                                    alert("Please fill up Email address.");
+                                    $("#o_email").focus();
+                                } else if (!checkEmail(o_email)) {
+                                    alert("Invalid Email format.");
+                                    $("#o_email").focus();
+                                } else {
+                                   
+                                    $("#description").html("Ship From: &#10;&#10;Company Name:" + w_compname + "&#10;Contact Name:" +
+                               w_cname + "&#10;Address:" + w_address + "&#10;City:" + w_city + "&#10;State:" + w_state +
+                               "&#10;Zip:" + w_zip + "&#10;Country:" + w_country + "&#10;Telephone:" + w_tel + "&#10;Email:" +
+                               w_email + "&#10;&#10;Ship To:&#10;&#10;Company Name:" + g_compname + "&#10;Contact Name:" +
+                               g_cname + "&#10;Address:" + g_address + "&#10;City:" + g_city + "&#10;State:" + g_state +
+                               "&#10;Zip:" + g_zip + "&#10;Country:" + g_country + "&#10;Telephone:" + g_tel + "&#10;Email:" +
+                               g_email + "&#10;&#10;Bill to:&#10;Company Name:" + o_compname + "&#10;Contact Name:" +
+                               o_cname + "&#10;Address:" + o_address + "&#10;City:" + o_city + "&#10;State:" + o_state +
+                               "&#10;Zip:" + o_zip + "&#10;Country:" + o_country + "&#10;Telephone:" + o_tel + "&#10;Email:" +
+                               o_email + "&#10;&#10;Shipment Description:&#10;Quantity:" + quantity +
+                               "&#10;Item:" + item + "&#10;Length(inches):" + length + "&#10;Width(inches):" + width + "&#10;Height(inches)" +
+                               height + "&#10;Weight(pounds):" + weight + "&#10;&#10;");
+
+                                    alert("Successfully submitted.");
+                                    $("#ajaxForm").submit();
+
+                                }
+
+                                
+
+                            } else {
+
+                                $("#description").html("Ship From: &#10;&#10;Company Name:" + w_compname + "&#10;Contact Name:" +
+                               w_cname + "&#10;Address:" + w_address + "&#10;City:" + w_city + "&#10;State:" + w_state +
+                               "&#10;Zip:" + w_zip + "&#10;Country:" + w_country + "&#10;Telephone:" + w_tel + "&#10;Email:" +
+                               w_email + "&#10;&#10;Ship To:&#10;&#10;Company Name:" + g_compname + "&#10;Contact Name:" +
+                               g_cname + "&#10;Address:" + g_address + "&#10;City:" + g_city + "&#10;State:" + g_state +
+                               "&#10;Zip:" + g_zip + "&#10;Country:" + g_country + "&#10;Telephone:" + g_tel + "&#10;Email:" +
+                               g_email + "&#10;&#10;Bill to:" + billto + "&#10;&#10;Shipment Description:&#10;Quantity:" + quantity +
+                               "&#10;Item:" + item + "&#10;Length(inches):" + length + "&#10;Width(inches):" + width + "&#10;Height(inches)" +
+                               height + "&#10;Weight(pounds):" + weight + "&#10;&#10;");
+
+                                alert("Successfully submitted.");
+                                $("#ajaxForm").submit();
+                            }
+                            
+                           
+
+                        }
+
+                        
+                        
+
+                    });
+
+                });
+
+
+                function checkEmail(emailAddress) {
+                    var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
+                    var sDtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
+                    var sAtom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
+                    var sQuotedPair = '\\x5c[\\x00-\\x7f]';
+                    var sDomainLiteral = '\\x5b(' + sDtext + '|' + sQuotedPair + ')*\\x5d';
+                    var sQuotedString = '\\x22(' + sQtext + '|' + sQuotedPair + ')*\\x22';
+                    var sDomain_ref = sAtom;
+                    var sSubDomain = '(' + sDomain_ref + '|' + sDomainLiteral + ')';
+                    var sWord = '(' + sAtom + '|' + sQuotedString + ')';
+                    var sDomain = sSubDomain + '(\\x2e' + sSubDomain + ')*';
+                    var sLocalPart = sWord + '(\\x2e' + sWord + ')*';
+                    var sAddrSpec = sLocalPart + '\\x40' + sDomain; // complete RFC822 email address spec
+                    var sValidEmail = '^' + sAddrSpec + '$'; // as whole string
+
+                    var reValidEmail = new RegExp(sValidEmail);
+
+                    if (reValidEmail.test(emailAddress)) {
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                function rad1() {
+                   
+                    //$("#subject").val($("#rad1").val());;
+
+                    radvalue = $("#rad1").val();
+                }
+
+                function rad2() {
+                 
+                   // $("#subject").val($("#rad2").val());;
+                    radvalue = $("#rad2").val();
+                }
+
+                function rad3() {
+                    
+                   // $("#subject").val($("#rad3").val());;
+                    radvalue = $("#rad3").val();
+                }
+
+                function keyUp() {
+                    $("#name").val($("#name2").val());
+                }
+
+                function keyUp2() {
+                    $("#email").val($("#email2").val());
+                }
+
+                function keyUp3() {
+                    $("#phone").val($("#phone2").val());
+                }
+
+                function keyUp4() {
+                    $("#company").val($("#company2").val());
+                }
+
+            </script>
+            <label>
+                <input type="radio" onclick="rad1()" id="rad1" checked name="need" value="I would like to find out how much I can save on my annual freight expenditures (Please enter your name and email, then hit send at the bottom of the page)."><span>I would like to find out how much I can save on my annual freight expenditures<br />
+                    <a style="margin-left: 20px; color: #4D4D4D;">(Please enter your name and email, then hit send at the bottom of the page).</a></span></label>
+            <label>
+                <input type="radio" onclick="rad2()" id="rad2" name="need" value="I am shipping one item and would like a volume rate."><span>I am shipping one item and would like a volume rate.</span></label>
+            <label>
+                <input type="radio" onclick="rad3()" id="rad3" name="need" value="I am shipping several items and would like a volume rate."><span>I am shipping several items and would like a volume rate.</span></label>
+            
+            <input id="name2" maxlength="80" name="name2" placeholder="Contact Name *" onkeyup="keyUp()" size="20" type="text" style="width:50%;" />
+
+            <input id="company2" maxlength="40" name="company2" placeholder="Company Name *" onkeyup="keyUp4()" size="20" type="text" style="width:50%;" />
+
+
+            <input id="email2" maxlength="80" name="email2" placeholder="Email *" onkeyup="keyUp2()" size="20" type="text" style="width:50%;" />
+
+            <input id="phone2" maxlength="40" name="phone2" placeholder="Phone *" onkeyup="keyUp3()" size="20" type="text" style="width:50%;" />
+           
+            <h5 style="color: #ed6c16;">Here are the details of my shipment:</h5>
+            
+            <h5 style="color: #ed6c16;">Where are we picking up?</h5>
+            <div class="wherepick_container"></div>
+                <input class="six" type="text" placeholder="Company/Name *" id="w_compname" />
+                <input class="six" type="text" placeholder="Contact Name" id="w_cname" />
+                <input class="six" type="text" placeholder="Address *" id="w_address" />
+                <input class="six" type="text" placeholder="City *" id="w_city" />
+                <input class="six" type="text" placeholder="State/Province" id="w_state" />
+                <input class="six" type="text" placeholder="Zip/Postal Code" id="w_zip" />
+                <input class="six" type="text" placeholder="Country *" id="w_country" />
+                <input class="six" type="text" placeholder="Telephone *" id="w_tel" />
+                <input class="six" type="text" placeholder="Email *" id="w_email" />
+            
+            
+            <br />
+            <h5 style="color: #ed6c16;">Where is this shipment going?</h5>
+            <input class="six" type="text" placeholder="Company/Name *" id="g_compname" />
+            <input class="six" type="text" placeholder="Contact Name" id="g_cname" />
+            <input class="six" type="text" placeholder="Address *" id="g_address" />
+            <input class="six" type="text" placeholder="City *" id="g_city" />
+            <input class="six" type="text" placeholder="State/Province" id="g_state" />
+            <input class="six" type="text" placeholder="Zip/Postal Code" id="g_zip" />
+            <input class="six" type="text" placeholder="Country *" id="g_country" />
+            <input class="six" type="text" placeholder="Telephone *" id="g_tel" />
+            <input class="six" type="text" placeholder="Email *" id="g_email" />
+            <br />
+
+            <script type="text/javascript">
+
+                function rad4() {
+
+                    $(".othercontainer").slideUp().hide();
+                    billto = $("#rad4").val();
+                }
+
+                function rad5() {
+
+                    $(".othercontainer").slideUp().hide();
+                    billto = $("#rad5").val();
+                }
+
+                function rad6() {
+
+                    $(".othercontainer").slideDown().show();
+                    billto = $("#rad6").val();
+                }
+
+            </script>
+
+            <h5 style="color: #ed6c16;">Billing address if different from shipping origin</h5>
+            <div class="four columns" style="padding-left: 0px; padding-right: 0px">
+                <label>
+                    <input type="radio" id="rad4" onclick="rad4()" name="billing-same-as" checked value="Same as shipper"><span>Same as shipper</span></label>
+            </div>
+            <div class="four columns" style="padding-left: 0px; padding-right: 0px">
+                <label>
+                    <input type="radio" id="rad5" onclick="rad5()" name="billing-same-as" value="Same as receiver"><span>Same as receiver</span></label>
+            </div>
+            <div class="four columns" style="padding-left: 0px; padding-right: 0px; padding-bottom: 20px;">
+                <label>
+                    <input type="radio" id="rad6" onclick="rad6()" name="billing-same-as" value="Other"><span>Other</span></label>
+            </div>
+            <div class="othercontainer" style="display:none">
+                   <br />
+                <input class="six" type="text" placeholder="Company/Name *" id="o_compname" />
+                <input class="six" type="text" placeholder="Contact Name" id="o_cname" />
+                <input class="six" type="text" placeholder="Address *" id="o_address" />
+                <input class="six" type="text" placeholder="City *" id="o_city" />
+                <input class="six" type="text" placeholder="State/Province" id="o_state" />
+                <input class="six" type="text" placeholder="Zip/Postal Code" id="o_zip" />
+                <input class="six" type="text" placeholder="Country *" id="o_country" />
+                <input class="six" type="text" placeholder="Telephone *" id="o_tel" />
+                <input class="six" type="text" placeholder="Email *" id="o_email" />
+
+            </div>
+            
+            <br />
+            <h5 style="color: #ed6c16;">Freight Descriptions:</h5>
+            <table class="productdescriptions">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Item</th>
+                        <th>Length (inches)</th>
+                        <th>Width (inches)</th>
+                        <th>Height (inches)</th>
+                        <th>Weight (pounds)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" id="quantity" name="productdescriptions[]['quantity']"></td>
+                        <td>
+                            <select name="productdescriptions[]['item']" id="item" style="width: 55px;">
+                                <option value="Skid">Skid</option>
+                                <option value="Box">Box</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" id="length" name="productdescriptions[]['length']"></td>
+                        <td>
+                            <input type="text" id="width" name="productdescriptions[]['width']"></td>
+                        <td>
+                            <input type="text" id="height" name="productdescriptions[]['height']"></td>
+                        <td>
+                            <input type="text" id="weight" name="productdescriptions[]['weight']"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="padding-top: 20px; margin-bottom: 10px;"><strong>Type of service</strong></p>
+            <div class="row">
+                <div class="six columns">
+                    <script type="text/javascript">
+
+                        function changeS() {
+
+                            $("#00Nd0000007ecu1").val($("#ch").val());
+                        }
+
+                        function ups(){
+                        
+                            $("#00Nd0000007ecu6").val($("#commoditytype").val())
+                            ;
+                        }
+
+                    </script>
+                    <select onchange="changeS()" id="ch">
+                        <option value="">--None--</option>
+                        <option value="Expedited LTL">Expedited LTL</option>
+                        <option value="General LTL">General LTL</option>
+                        <option value="Rail LTL">Rail LTL</option>
+                        <option value="Standard Courier">Standard Courier</option>
+                        <option value="Express Courier">Express Courier</option>
+                        <option value="Less than Container (Sea) - Door-to-Door">Less than Container (Sea) - Door-to-Door</option>
+                        <option value="Less than Container (Sea) - Door-to-Port">Less than Container (Sea) - Door-to-Port</option>
+                        <option value="Less than Container (Sea) - Port-to-Door">Less than Container (Sea) - Port-to-Door</option>
+                        <option value="Less than Container (Sea) - Port-to-Port">Less than Container (Sea) - Port-to-Port</option>
+                        <option value="FCL (Sea) - Door-to-Door">FCL (Sea) - Door-to-Door</option>
+                        <option value="FCL (Sea) - Door-to-Port">FCL (Sea) - Door-to-Port</option>
+                        <option value="FCL (Sea) - Port-to-Door">FCL (Sea) - Port-to-Door</option>
+                        <option value="FCL (Sea) - Port-to-Port">FCL (Sea) - Port-to-Port</option>
+                        <option value="Air Cargo - Door-to-Door">Air Cargo - Door-to-Door</option>
+                        <option value="Air Cargo - Door-to-Airport">Air Cargo - Door-to-Airport</option>
+                        <option value="Air Cargo - Airport-to-Door">Air Cargo - Airport-to-Door</option>
+                        <option value="Air Cargo - Airport-to-Airport">Air Cargo - Airport-to-Airport</option>
+                        <option value="Direct Drive (Same Day)">Direct Drive (Same Day)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="six columns">
+                    <input type="text" placeholder="Commodity Type" id="commoditytype" onkeyup="ups()" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="six columns">
+                    <input type="button" id="submitbtn" class="button" value="Submit Rate">
+                </div>
+            </div>                    
+            
+                        <form id="ajaxForm" name="ajaxForm" style="display:none;" action="https://www.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+                        
+                        <input type=hidden name="orgid" value="00Dd0000000fk3J">
+                            <input type=hidden name="retURL" value="http://86e5809092cb478994f1900a6012ac93.cloudapp.net/Quote/Index">
+
+                        <!--  ----------------------------------------------------------------------  -->
+                        <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+                        <!--  these lines if you wish to test in debug mode.                          
+                         <input type="hidden" name="debug" value=1>                          
+                        <input type="hidden" name="debugEmail"                               
+                         value="mercadovergel@gmail.com">                   -->                  
+                        <!--  ----------------------------------------------------------------------  -->
+
+                        <input id="name" maxlength="80" name="name" placeholder="Contact Name" size="20" type="hidden" /><br>
+
+                        <input id="company" maxlength="40" name="company" placeholder="Company Name *" size="20" type="hidden" style="width:50%;" />
+
+
+                        <input id="email" maxlength="80" name="email" placeholder="Email" size="20" type="hidden" /><br>
+
+                        <input id="phone" maxlength="40" name="phone" placeholder="Phone" size="20" type="hidden" /><br>
+
+                        <input id="subject" maxlength="80" name="subject" placeholder="Subject" size="20" type="hidden" /><br>
+
+                        <textarea name="description" id="description" style="display:none"></textarea><br>
+
+                       <select id="00Nd0000007ecu1" name="00Nd0000007ecu1" title="Type of Service" style="display:none;">
+                            <option value="">--None--</option>
+                            <option value="Expedited LTL">Expedited LTL</option>
+                            <option value="General LTL">General LTL</option>
+                            <option value="Rail LTL">Rail LTL</option>
+                            <option value="Standard Courier">Standard Courier</option>
+                            <option value="Express Courier">Express Courier</option>
+                            <option value="Less than Container (Sea) - Door-to-Door">Less than Container (Sea) - Door-to-Door</option>
+                            <option value="Less than Container (Sea) - Door-to-Port">Less than Container (Sea) - Door-to-Port</option>
+                            <option value="Less than Container (Sea) - Port-to-Door">Less than Container (Sea) - Port-to-Door</option>
+                            <option value="Less than Container (Sea) - Port-to-Port">Less than Container (Sea) - Port-to-Port</option>
+                            <option value="FCL (Sea) - Door-to-Door">FCL (Sea) - Door-to-Door</option>
+                            <option value="FCL (Sea) - Door-to-Port">FCL (Sea) - Door-to-Port</option>
+                            <option value="FCL (Sea) - Port-to-Door">FCL (Sea) - Port-to-Door</option>
+                            <option value="FCL (Sea) - Port-to-Port">FCL (Sea) - Port-to-Port</option>
+                            <option value="Air Cargo - Door-to-Door">Air Cargo - Door-to-Door</option>
+                            <option value="Air Cargo - Door-to-Airport">Air Cargo - Door-to-Airport</option>
+                            <option value="Air Cargo - Airport-to-Door">Air Cargo - Airport-to-Door</option>
+                            <option value="Air Cargo - Airport-to-Airport">Air Cargo - Airport-to-Airport</option>
+                            <option value="Direct Drive (Same Day)">Direct Drive (Same Day)</option>
+                        </select><br>
+
+                        <input id="00Nd0000007ecu6" maxlength="255" name="00Nd0000007ecu6" size="20" type="hidden" /><br>
+
+                    </form>
+                   
+               
+            
+        </div>
+    </div>
+</div>

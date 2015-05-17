@@ -1,0 +1,31 @@
+﻿@model Vital.Model.QuantumViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="twelve columns">
+        <br />
+        <h2>Quantum View Manage</h2>
+        <dl class="tabs contained">
+            <dd><a href="#combined">Combined</a></dd>
+            <dd class="active"><a href="#outbound">Outbound</a></dd>
+            <dd><a href="#inbound">Inbound</a></dd>
+            <dd><a href="#thirdparty">Third Party</a></dd>
+            <dd><a href="#imports">Imports</a></dd>
+        </dl>
+        <ul class="tabs-content contained">
+            <li id="combinedTab">This is simple tab 1s content. Pretty neat, huh?</li>
+            <li id="outboundTab" class="active">
+                @Html.Partial("_Outbound", Model.Outbound)
+            </li>
+            <li id="inboundTab">This is simple tab 3s content.</li>
+            <li id="thirdpartyTab">This is simple tab 2s content. Now you see it!</li>
+            <li id="importsTab">This is simple tab 3s content.</li>
+        </ul>
+        <br />
+    </div>
+</div>
+

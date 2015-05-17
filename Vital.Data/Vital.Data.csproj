@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6712FD4-646D-4B3A-AEA2-6A62D73E87BA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vital.Data</RootNamespace>
+    <AssemblyName>Vital.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mapping\LookupTableMap.cs" />
+    <Compile Include="Mapping\InvoiceMap.cs" />
+    <Compile Include="Mapping\NewsMap.cs" />
+    <Compile Include="Mapping\AdminUserMap.cs" />
+    <Compile Include="Mapping\CustomerShipmentMap.cs" />
+    <Compile Include="Mapping\QVShipmentDetailMap.cs" />
+    <Compile Include="Mapping\QVSubscriptionFileMap.cs" />
+    <Compile Include="Mapping\QVSyncSummaryMap.cs" />
+    <Compile Include="Mapping\ShipmentDraftMap.cs" />
+    <Compile Include="Models\AccessorialCharge.cs" />
+    <Compile Include="Models\AccessorialChargeAmount.cs" />
+    <Compile Include="Models\AddressBookInfo.cs" />
+    <Compile Include="Models\LookupTable.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\AdminUser.cs" />
+    <Compile Include="Models\CustomerShipment.cs" />
+    <Compile Include="Models\BillingSummary.cs" />
+    <Compile Include="Models\Carrier.cs" />
+    <Compile Include="Models\Consignee.cs" />
+    <Compile Include="Models\ConsigneeCustomer.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerAccount.cs" />
+    <Compile Include="Models\CustomerMarkup.cs" />
+    <Compile Include="Models\CustomerSpInstructionAmount.cs" />
+    <Compile Include="Mapping\AccessorialChargeAmountMap.cs" />
+    <Compile Include="Mapping\AccessorialChargeMap.cs" />
+    <Compile Include="Mapping\AddressBookInfoMap.cs" />
+    <Compile Include="Mapping\BillingSummaryMap.cs" />
+    <Compile Include="Mapping\CarrierMap.cs" />
+    <Compile Include="Mapping\ConsigneeCustomerMap.cs" />
+    <Compile Include="Mapping\ConsigneeMap.cs" />
+    <Compile Include="Mapping\CustomerAccountMap.cs" />
+    <Compile Include="Mapping\CustomerMap.cs" />
+    <Compile Include="Mapping\CustomerMarkupMap.cs" />
+    <Compile Include="Mapping\CustomerSpInstructionAmountMap.cs" />
+    <Compile Include="Mapping\PostalCodeMap.cs" />
+    <Compile Include="Mapping\PostalCodeZoneMap.cs" />
+    <Compile Include="Mapping\provision_marker_dssMap.cs" />
+    <Compile Include="Mapping\RoleMap.cs" />
+    <Compile Include="Mapping\schema_info_dssMap.cs" />
+    <Compile Include="Mapping\scope_config_dssMap.cs" />
+    <Compile Include="Mapping\scope_info_dssMap.cs" />
+    <Compile Include="Mapping\ShipmentDetailMap.cs" />
+    <Compile Include="Mapping\ShipmentRequestMap.cs" />
+    <Compile Include="Mapping\ShippingTypeMap.cs" />
+    <Compile Include="Mapping\SkidMap.cs" />
+    <Compile Include="Mapping\SkidRateMap.cs" />
+    <Compile Include="Mapping\SkidWeightMap.cs" />
+    <Compile Include="Mapping\SpecialInstructionAmountMap.cs" />
+    <Compile Include="Mapping\SpecialInstructionMap.cs" />
+    <Compile Include="Mapping\TableTestMap.cs" />
+    <Compile Include="Mapping\TaxMap.cs" />
+    <Compile Include="Mapping\TermMap.cs" />
+    <Compile Include="Mapping\UserAccountMap.cs" />
+    <Compile Include="Mapping\WeightMap.cs" />
+    <Compile Include="Mapping\ZoneDiscountPercentageMap.cs" />
+    <Compile Include="Mapping\ZoneMap.cs" />
+    <Compile Include="Mapping\ZoneRateMap.cs" />
+    <Compile Include="Models\PostalCode.cs" />
+    <Compile Include="Models\PostalCodeZone.cs" />
+    <Compile Include="Models\provision_marker_dss.cs" />
+    <Compile Include="Models\QVShipmentDetail.cs" />
+    <Compile Include="Models\QVSubscriptionFile.cs" />
+    <Compile Include="Models\QVSyncSummary.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\schema_info_dss.cs" />
+    <Compile Include="Models\scope_config_dss.cs" />
+    <Compile Include="Models\scope_info_dss.cs" />
+    <Compile Include="Models\ShipmentDetail.cs" />
+    <Compile Include="Models\ShipmentDraft.cs" />
+    <Compile Include="Models\ShipmentRequest.cs" />
+    <Compile Include="Models\ShippingType.cs" />
+    <Compile Include="Models\Skid.cs" />
+    <Compile Include="Models\SkidRate.cs" />
+    <Compile Include="Models\SkidWeight.cs" />
+    <Compile Include="Models\SpecialInstruction.cs" />
+    <Compile Include="Models\SpecialInstructionAmount.cs" />
+    <Compile Include="Models\TableTest.cs" />
+    <Compile Include="Models\Tax.cs" />
+    <Compile Include="Models\Term.cs" />
+    <Compile Include="Models\UserAccount.cs" />
+    <Compile Include="VitalContext.cs" />
+    <Compile Include="Models\Weight.cs" />
+    <Compile Include="Models\Zone.cs" />
+    <Compile Include="Models\ZoneDiscountPercentage.cs" />
+    <Compile Include="Models\ZoneRate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Script\Script.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{5acfab88-e840-4989-8e8c-24883b1e4520}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

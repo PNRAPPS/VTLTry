@@ -1,0 +1,104 @@
+﻿@model Vital.Model.QuantumViewOutbound
+
+<div>
+
+    @using (@Html.BeginForm("Index", "Quantum", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="ten columns">
+                <div class="row">
+                    <div class="four columns">
+                        @Html.DisplayNameFor(r => r.OutboundView)&nbsp;@Html.DropDownListFor(r => r.OutboundView, (IEnumerable<SelectListItem>)ViewBag.OutboundCustomViews)
+                        @Html.DisplayNameFor(r => r.FromDate)&nbsp;@Html.TextBoxFor(r => r.FromDate)
+                        @Html.DisplayNameFor(r => r.ToDate)&nbsp;@Html.TextBoxFor(r => r.ToDate)
+                        @Html.DisplayNameFor(r => r.SearchTag)&nbsp;@Html.TextBoxFor(r => r.SearchTag)
+                        @Html.DisplayNameFor(r => r.SearchFilter)&nbsp;@Html.DropDownListFor(r => r.SearchFilter, (IEnumerable<SelectListItem>)ViewBag.OutboundSearchFilters)
+                        <br /><br />
+                        @Html.ActionLink("Apply Filters", "Index", null, new { @class = "button" })
+                    </div>
+                </div>
+            </div>
+            <div class="two columns">
+                @Html.ActionLink("Preferences", "OutboundPreferences", null, new { @class = "button" })&nbsp;@Html.ActionLink("Alerts", "OutboundAlerts", null, new { @class = "button" })
+            </div>
+        </div>
+        <br />
+        <table class="dataTable twelve" role="grid">
+            <caption>Summary of Outbound Shipments</caption>
+            <thead>
+                <tr>
+                    <th>UPS Account</th>
+                    <th>Manifest</th>
+                    <th>In Transit</th>
+                    <th>Out for Deliver</th>
+                    <th>Ready for Pickup</th>
+                    <th>Exception</th>
+                    <th>Delivered</th>
+                    <th>Void</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OutboundSummary)
+                {
+                    <tr>
+                        <td>@item.UPSAccount</td>
+                        <td>@item.Manifest</td>
+                        <td>@item.InTransit</td>
+                        <td>@item.OutOfDeliver</td>
+                        <td>@item.ReadyForPickup</td>
+                        <td>@item.Exception</td>
+                        <td>@item.Delivered</td>
+                        <td>@item.Void</td>
+                        <td>@item.Total</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Manifest)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.InTransit)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.OutOfDeliver)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.ReadyForPickup)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Exception)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Delivered)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Void)</td>
+                    <td>@Model.OutboundSummary.Sum(r => r.Total)</td>
+                </tr>
+            </tfoot>
+        </table>
+        <br />
+        <table class="dataTable twelve" role="grid">
+            <caption>Outbound Shipment Details</caption>
+            <thead>
+                <tr>
+                    <th>Tracking Number</th>
+                    <th>Reference Number</th>
+                    <th>Status</th>
+                    <th>Manifest Date</th>
+                    <th>Ship To</th>
+                    <th>Service</th>
+                    <th>Scheduled Delivery</th>
+                    <th>Images</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OutboundShipmentDetails)
+                {
+                    <tr>
+                        <td>@item.TrackingNumber</td>
+                        <td>@item.ReferenceNumber</td>
+                        <td>@item.Status</td>
+                        <td>@item.ManifestDate</td>
+                        <td>@item.ShipTo</td>
+                        <td>@item.Service</td>
+                        <td>@item.ScheduledDelivery</td>
+                        <td>@item.Images</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+</div>
